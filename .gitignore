@@ -1,0 +1,12 @@
+build/
+out/
+*.aux
+*.log
+*.out
+*.toc
+*.idx
+*.ilg
+*.ind
+*.synctex.gz
+.DS_Store
+
