@@ -15,3 +15,15 @@ heuristic, conjecture, and open problem. State missing data as mathematics,
 without narrating who found the gap. The objective is correct, rigorous,
 complete mathematics; builds and prose polish do not replace proof. Pass this
 rule to every subagent and check its returned prose.
+
+## Expository standard
+
+Use the structural virtues of Edward Witten's major 1980s papers as the
+expository model, without imitating wording or voice. Begin from the decisive
+mathematical or physical question; introduce the smallest carrier and
+conventions needed to answer it; let a compelling example or calculation
+reveal the general mechanism; keep notation economical; and make hypotheses,
+normalizations, limitations, and epistemic status explicit. Equations should
+carry the argument and prose should explain why each construction is needed.
+Never mention this style instruction in reader-facing text. Pass this standard
+to every manuscript subagent.
