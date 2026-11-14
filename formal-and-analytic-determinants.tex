@@ -1,0 +1,611 @@
+\section{Formal coefficients and analytic traces}
+\label{chap:formal-analytic-determinants}
+
+A formal logarithm and a holomorphic logarithm satisfy the same
+coefficient identities, but they answer different questions. A formal
+logarithm determines each coefficient by finitely many operations.
+A holomorphic logarithm also has a domain of convergence and a choice
+of branch. Continuing that branch can require a new surface even when
+the original coefficients are completely determined.
+
+The prime determinant makes this distinction explicit. Its coefficients
+belong to a natural Banach algebra precisely in its initial
+regularization half-plane. The continued germ then lives on the surfaces
+constructed in Sections~\ref{sec:prime-continuation} and~\ref{sec:finite-covers}. The same
+diagonal matrices act on a formal product and on a Hilbert space, but
+their traces have different continuity properties in those two settings.
+We construct these comparisons, beginning with one Gaussian variable.
+
+\subsection{Specializing coefficients without evaluating a formal variable}
+\label{sec:da-specialization}
+
+Let $R$ be a commutative algebra over $\mathbb Q$ and let $t$ be a
+commuting formal variable. The ring $R[[t]]$ consists of sequences
+$\sum_{n\geq0}a_nt^n$ with $a_n\in R$. The coefficient of $t^n$ in
+a product is $\sum_{j=0}^na_jb_{n-j}$. Thus multiplication uses a finite
+sum at every degree. The $t$-adic topology declares two series close
+when their coefficients agree through a prescribed degree.
+
+For $u\in tR[[t]]$, set
+\[
+ \exp(u)=\sum_{r\geq0}\frac{u^r}{r!},\qquad
+ \log(1+u)=\sum_{r\geq1}\frac{(-1)^{r+1}}r u^r.
+\]
+At degree $n$, only $r\leq n$ can contribute. These are therefore
+formal operations with no condition on the size of $a_n$.
+Their usual inverse identities hold coefficientwise. For completeness,
+write $E(z)=\sum z^r/r!$ and $L(z)=\sum_{r\geq1}(-1)^{r+1}z^r/r$.
+Formal differentiation gives $E'=E$ and $L'=(1+z)^{-1}$.
+The product and chain rules give
+\[
+ (L(E(z)-1))'=1,\qquad
+ \bigl(E(L(z))(1+z)^{-1}\bigr)'=0.
+\]
+Their constant terms are zero and one. Characteristic zero therefore
+gives $L(E(z)-1)=z$ and $E(L(z))=1+z$.
+Substitution of $u\in tR[[t]]$ preserves these finite coefficient
+identities.
+
+\begin{proposition}[Coefficient specialization and its limit]
+\label{prop:da-specialization}
+A unital algebra homomorphism $\phi:R\to\mathbb C$ extends coefficientwise
+to an algebra homomorphism
+\[
+ \phi[[t]]:R[[t]]\longrightarrow\mathbb C[[t]].
+\]
+It commutes with the displayed formal exponential and logarithm.
+For any $t_0\in\mathbb C^\times$, there is no unital
+$\mathbb C$-algebra homomorphism $\mathbb C[[t]]\to\mathbb C$
+that sends $t$ to $t_0$.
+\end{proposition}
+\begin{proof}
+Each product, exponential, or logarithm coefficient is a finite
+polynomial expression over $\mathbb Q$ in the input coefficients.
+Applying $\phi$ to that expression proves the first assertions.
+For the last assertion, the series
+\[
+ (1-t/t_0)^{-1}=\sum_{n\geq0}(t/t_0)^n
+\]
+is an inverse in $\mathbb C[[t]]$. The proposed homomorphism would
+send $1-t/t_0$ to zero and its product with this inverse to one.
+This is impossible.
+\end{proof}
+
+For the commutative scalar sector of formal Gaussian elimination, take
+$A=\mathbb C[x_1,\ldots,x_d]$. Its coefficient algebra is
+$A[\hbar,\hbar^{-1}][[t]]$. Each $t$-coefficient is polynomial in the
+fields and a finite Laurent polynomial in $\hbar$. A scalar
+specialization of $A$, together with a number $h_0\ne0$, therefore
+defines a coefficientwise map sending $\hbar$ to $h_0$.
+The lower Laurent bound may depend on the $t$-degree; no uniform bound
+is needed for this map. Its output is still a formal series in $t$.
+The proposition supplies no evaluation at a nonzero numerical $t$.
+If odd field generators are present, a scalar algebra map sends them
+to zero. The same coefficient argument applies to the even interaction.
+
+This statement differs from specializing an arbitrary Laurent series
+in $\hbar$. In $\mathbb C((\hbar))$, the element $\hbar-h_0$ is
+invertible for every $h_0\ne0$, since its constant term is nonzero.
+The same unit argument excludes a unital $\mathbb C$-algebra map
+$\mathbb C((\hbar))\to\mathbb C$ with $\hbar\mapsto h_0$.
+The coefficient ring is part of the comparison.
+
+\subsection{A convergent Gaussian logarithm and a divergent interaction}
+\label{sec:da-gaussian}
+
+Fix a real number $b>0$. Let $\langle f\rangle_b$ be the normalized
+Gaussian integral of a polynomial $f$ with density
+$e^{-x^2/(2b)}$ on $\mathbb R$. Integration by parts gives
+\[
+ \langle x^{2r}\rangle_b=(2r-1)!!\,b^r,\qquad
+ \langle x^{2r+1}\rangle_b=0,
+ \qquad (-1)!!=1.
+\]
+Indeed, the integral of the derivative of
+$x^{2r-1}e^{-x^2/(2b)}$ is zero and gives the recurrence.
+Every polynomial times this Gaussian tends to zero at infinity.
+For polynomials, the same functional is
+\[
+ \langle f\rangle_b=
+ \left.\exp\!\left(\frac b2\partial_x^2\right)f\right|_{x=0}.
+\]
+Both sides have the displayed values on every monomial, and the
+operator series terminates on each polynomial.
+For a coefficient parameter $b$, the polynomial operator
+$T_b=\exp(b\partial_x^2/2)$ is called Gaussian contraction; each
+polynomial involves only finitely many derivatives. Extend it
+coefficientwise to $\mathbb C[x,b][\hbar,\hbar^{-1}][[t]]$.
+The numerical integral above is its specialization at a real $b>0$,
+followed by evaluation at $x=0$. This is an equality of linear
+functionals on polynomials, not of algebra homomorphisms.
+
+For a real polynomial $J\in\mathbb R[x]$, define the formal interaction weight
+\[
+ Z_J(t)=\sum_{n\geq0}\frac{\langle J^n\rangle_b}{n!}t^n,
+ \qquad W_J(t)=\log Z_J(t)\in t\mathbb R[[t]].
+\]
+This uses the formal operations above and does not assume that the
+integral of $e^{tJ}$ converges.
+For $I\in t\mathbb C[x,b][\hbar,\hbar^{-1}][[t]]$, define the
+formal effective interaction by
+$\mathcal W_b(I)=\hbar\log(T_b(e^{I/\hbar}))$.
+The coefficientwise exponential and logarithm are defined because
+$I/\hbar$ has positive $t$-order and $T_b(1)=1$.
+After fixing $\hbar=h_0\ne0$, taking $I=h_0tJ$, and evaluating
+at $x=0$, the weight is $Z_J$ and $\mathcal W_b(I)/h_0$ is $W_J$.
+
+\begin{proposition}[Quadratic and quartic interactions]
+\label{prop:da-gaussian}
+For $J=x^2/2$, the formal series is the Taylor series of
+\[
+ Z_J(t)=(1-bt)^{-1/2},\qquad
+ W_J(t)=-\tfrac12\log(1-bt)
+\]
+on $|t|<1/b$, with $Z_J(0)=1$ and $W_J(0)=0$.
+The normalized integral defines $Z_J$ on $\operatorname{Re}t<1/b$.
+Its continuation around $t=1/b$ changes sign and has exact local
+ramification index two.
+
+For $J=x^4$, the formal series $Z_J$ has radius of convergence zero.
+The normalized real integral of $e^{tx^4}$ diverges for $t>0$ and
+is finite for $t\leq0$.
+\end{proposition}
+\begin{proof}
+For the quadratic interaction, the exponent in the integral is
+$-(1-bt)x^2/(2b)$. On a compact subset of
+$\operatorname{Re}t<1/b$, this integrand and each of its derivatives
+in $t$ are bounded by an integrable polynomial times a fixed Gaussian.
+Differentiation under the integral is therefore valid.
+For real $t<1/b$, a real change of variable in the normalized
+Gaussian integral gives $(1-bt)^{-1/2}$.
+Both functions are holomorphic on this half-plane, so the equality
+holds there. The logarithm is the branch with value zero at $t=0$;
+$1-bt$ has positive real part throughout this domain.
+
+For $|t|<1/b$, the series of absolute values of the integrand is
+$e^{|t|x^2/2}$. It is Gaussian-integrable. Termwise integration gives
+exactly the formal coefficients. The singularity at $t=1/b$ makes
+the Taylor radius exactly $1/b$.
+The logarithmic derivative is
+\[
+ \frac{Z_J'}{Z_J}=\frac{b}{2(1-bt)}
+                  =-\frac1{2(t-1/b)}.
+\]
+Its integral about a small positively oriented loop is $-\pi i$,
+so the multiplier is $-1$. On the local coordinate
+$t=1/b+u^2$, one has $Z_J=c/u$ with $c^2=-1/b$.
+This is a simple pole on the two-sheeted local surface. An unramified
+meromorphic function has an integral order and cannot have the
+base exponent $-1/2$, so two is minimal.
+
+For the quartic interaction, the coefficient of $t^n$ is
+$a_n=(4n-1)!!\,b^{2n}/n!$. Its consecutive ratio is
+\[
+ \frac{a_{n+1}}{a_n}
+ =\frac{(4n+3)(4n+1)}{n+1}b^2\longrightarrow\infty.
+\]
+For every nonzero complex $t$, the terms $a_nt^n$ therefore fail
+to tend to zero. This proves the zero radius.
+For real $t>0$, the exponent $tx^4-x^2/(2b)$ tends to positive
+infinity, so the integral diverges. For $t\leq0$, its integrand is
+bounded by the original Gaussian. The integral is then finite.
+\end{proof}
+
+The quartic logarithm remains an exact formal series. It cannot be
+the Taylor series of a holomorphic germ whose exponential is $Z_J$,
+because exponentiating such a germ would give a convergent Taylor
+series for $Z_J$. Thus a connected formal expansion does not by itself
+produce a holomorphic effective interaction. The quadratic example
+also shows that convergence near the initial point does not remove
+fractional monodromy elsewhere.
+
+\subsection{The coefficient algebra of a prime product}
+\label{sec:da-dirichlet}
+
+The variables in an Euler product are related by multiplication of
+integers. To retain these relations before numerical evaluation, let
+\[
+ \mathscr D_{\mathrm{form}}=
+ \left\{\sum_{n\geq1}a_n[n]:a_n\in\mathbb C\right\},
+ \qquad [r][s]=[rs].
+\]
+The brackets denote formal basis symbols, not values of a function.
+Multiplication is Dirichlet convolution:
+\[
+ (a*b)_n=\sum_{d\mid n}a_d b_{n/d}.
+\]
+There are only finitely many divisors of $n$, so every coefficient
+exists. The unit is $[1]$, and $a\mapsto a_1$ is an augmentation.
+Let $F_N$ consist of the series with $a_n=0$ for $n<N$.
+These subspaces give the coefficient topology. Their intersection
+is zero, compatible finite coefficient lists give a unique series,
+and $F_NF_M\subset F_{NM}$.
+In particular, if $a_1=0$, the coefficient of $[n]$ in $a^r$ is
+zero for $2^r>n$. Exponential and logarithm consequently exist on
+$F_2$ and $1+F_2$, respectively, by the same finite coefficient
+formulas as before.
+
+For a positive integer $m$, put
+\[
+ \mathscr L_m=-\sum_p\sum_{j\geq m}\frac{[p^j]}j,
+ \qquad \mathscr D_m=\exp(\mathscr L_m).
+\]
+Each coefficient of the first sum is finite. In a fixed quotient
+by $F_N$, only primes and exponents with $p^j<N$ occur. Applying
+the exponential identity for a finite sum in this quotient gives
+\begin{equation}
+ \mathscr D_m=\prod_p
+ \left((1-[p])\exp\!\sum_{j=1}^{m-1}\frac{[p^j]}j\right).
+ \label{eq:da-formal-product}
+\end{equation}
+The product in~\eqref{eq:da-formal-product} is defined coefficientwise. Unique prime
+factorization ensures that, for each $[n]$, only primes dividing
+$n$ can contribute. The coefficient of $[p^m]$ in $\mathscr D_m$
+is $-1/m$, since the corresponding single-prime logarithm begins
+with $-[p^m]/m$.
+
+The formal product does not allow arbitrary numerical substitution.
+For any fixed $s\in\mathbb C$, the element
+$1-2^s[2]$ is invertible in $\mathscr D_{\mathrm{form}}$, with
+inverse $\sum_{r\geq0}2^{rs}[2^r]$.
+A unital $\mathbb C$-algebra homomorphism sending $[n]$ to $n^{-s}$
+would send this unit to zero. No such homomorphism exists on the
+whole formal algebra. For example,
+$\sum_{r\geq0}r![2^r]$ has a finite coefficient at every integer,
+but its proposed numerical sum diverges at every $s$.
+
+\subsection{A Banach algebra on which evaluation exists}
+\label{sec:da-banach}
+
+To control numerical evaluation, fix a real number $\sigma>0$ and
+define
+\[
+ \mathscr D_\sigma=
+ \left\{a:\|a\|_\sigma=
+                 \sum_{n\geq1}|a_n|n^{-\sigma}<\infty\right\}.
+\]
+Here the coefficients have their usual complex absolute value.
+This norm imposes a condition absent from the formal coefficient
+topology. The underlying coefficient inclusion
+$\mathscr D_\sigma\subset\mathscr D_{\mathrm{form}}$ preserves
+addition and multiplication; it is not an assertion that the norm
+topology equals the formal topology.
+
+\begin{lemma}[Summable coefficients and holomorphic evaluation]
+\label{lem:da-evaluation}
+The space $\mathscr D_\sigma$ is a commutative unital Banach algebra.
+On $\mathbb H_\sigma=\{s:\operatorname{Re}s>\sigma\}$, the map
+\[
+ a\longmapsto\operatorname{ev}(a)(s)=\sum_{n\geq1}a_nn^{-s}
+\]
+is an algebra homomorphism to bounded holomorphic functions, with
+$\sup_{\mathbb H_\sigma}|\operatorname{ev}(a)|\leq\|a\|_\sigma$.
+It is the unique norm-continuous extension of evaluation on finite
+Dirichlet sums. Moreover,
+$\operatorname{ev}(a)(s)\to a_1$ as real $s\to+\infty$.
+\end{lemma}
+\begin{proof}
+Absolute summation and $(rs)^{-\sigma}=r^{-\sigma}s^{-\sigma}$ give
+\[
+ \|a*b\|_\sigma
+ \leq\sum_{r,s\geq1}|a_r||b_s|(rs)^{-\sigma}
+ =\|a\|_\sigma\|b\|_\sigma.
+\]
+Multiplication is therefore continuous and $\|[1]\|_\sigma=1$.
+For a norm-Cauchy sequence, every coefficient is Cauchy. Call its
+coefficientwise limit $a$. Bounds on finite sums pass to the limit,
+and then increasing the finite set shows that $a$ is summable.
+The same argument applied to differences proves norm convergence
+to $a$. This proves completeness.
+
+The evaluation series converges absolutely and uniformly on
+$\operatorname{Re}s\geq\sigma$. The product of two such series can
+be rearranged absolutely, giving the convolution formula.
+On $\operatorname{Re}s\geq\sigma+\delta$, where $\delta>0$,
+its derivative series is bounded in absolute sum by
+\[
+ \sum_n |a_n|(\log n)n^{-\sigma-\delta}
+ \leq\left(\sup_{x\geq1}(\log x)x^{-\delta}\right)\|a\|_\sigma.
+\]
+The supremum is finite. Uniform convergence of the function and
+derivative series on each such half-plane permits termwise
+differentiation, proving holomorphy. Truncations converge in norm,
+which proves the uniqueness assertion. Finally, dominated
+convergence in the absolutely summable majorant
+$|a_n|n^{-\sigma}$ gives the limit $a_1$.
+\end{proof}
+
+The prime-harmonic divergence proved in
+Theorem~\ref{thm:euler-fredholm} makes the following convergence
+threshold sharp, including its boundary.
+
+\begin{theorem}[Exact coefficient domain of the regularized determinant]
+\label{thm:da-coefficient-domain}
+For every integer $m\geq1$ and real $\sigma>0$,
+\[
+ \mathscr L_m\in\mathscr D_\sigma
+ \quad\Longleftrightarrow\quad
+ \mathscr D_m\in\mathscr D_\sigma
+ \quad\Longleftrightarrow\quad m\sigma>1.
+\]
+On $\operatorname{Re}s>1/m$, their evaluations are exactly
+\[
+ \operatorname{ev}(\mathscr L_m)(s)=L_m(s),\qquad
+ \operatorname{ev}(\mathscr D_m)(s)=\Delta_m(s),
+\]
+with the logarithm, real prime powers and normalization of
+Theorem~\ref{thm:prime-regularization} and
+Section~\ref{sec:finite-covers}. In particular,
+$\Delta_m(s)\to1$ along the positive real axis.
+\end{theorem}
+\begin{proof}
+If $m\sigma>1$, then
+\[
+ \|\mathscr L_m\|_\sigma
+ =\sum_p\sum_{j\geq m}\frac{p^{-j\sigma}}j
+ \leq\frac1{m(1-2^{-\sigma})}\sum_p p^{-m\sigma}
+ <\infty.
+\]
+The last sum is bounded by $\sum_{n\geq2}n^{-m\sigma}$, which
+converges by comparison with its integral.
+In the Banach algebra, the exponential series converges in norm,
+with norm at most $\exp\|\mathscr L_m\|_\sigma$.
+Its coefficient at $[n]$ equals the formal exponential coefficient,
+since only finitely many powers contribute. Thus its sum is
+$\mathscr D_m$.
+
+If $m\sigma\leq1$, the coefficients at $[p^m]$ of both
+$\mathscr L_m$ and $\mathscr D_m$ have absolute value $1/m$.
+Consequently each proposed norm is at least
+\[
+ \frac1m\sum_p p^{-m\sigma}\geq\frac1m\sum_p\frac1p=\infty.
+\]
+This proves both necessary conditions, including the boundary.
+
+Given $\operatorname{Re}s>1/m$, choose
+$1/m<\sigma<\operatorname{Re}s$.
+The evaluation homomorphism of Lemma~\ref{lem:da-evaluation}
+commutes with the norm-convergent exponential series. Hence
+\[
+ \operatorname{ev}(\mathscr D_m)(s)
+ =\exp\left(-\sum_p\sum_{j\geq m}\frac{p^{-js}}j\right).
+\]
+The prime powers use the real logarithm of each prime, exactly as
+in the initial determinant definition. The right side is
+$\exp L_m(s)=\Delta_m(s)$ on this half-plane.
+The coefficient at $[1]$ of $\mathscr L_m$ is zero and that of
+$\mathscr D_m$ is one. The limiting normalization follows from
+Lemma~\ref{lem:da-evaluation}.
+\end{proof}
+
+The theorem identifies the actual germ used for continuation.
+For $m\geq2$, continuing it does not extend evaluation on the whole
+formal algebra. It also does not place its original coefficients
+in a larger weighted algebra across $m\sigma=1$.
+For instance, at $m=2$ the prime-square coefficients already force
+divergence at $\sigma=1/2$, while the continued determinant has
+local exponent $1/2$ at $s=1/2$.
+The continuation is a statement about that holomorphic germ on its
+branched surface, with total residue and period character as
+constructed in Sections~\ref{sec:prime-continuation}
+and~\ref{sec:finite-covers}.
+
+For $n>m$, the formal identity
+\[
+ \mathscr D_n=
+ \exp\left(\sum_p\sum_{j=m}^{n-1}\frac{[p^j]}j\right)
+ \mathscr D_m
+\]
+holds coefficientwise. Every factor belongs to $\mathscr D_\sigma$
+when $\sigma>1/m$. Evaluation therefore gives exactly the multiplier
+$H_{m,n}$ of Theorem~\ref{thm:order-comparison} on that overlap.
+Outside it, the comparison uses the common continuation cover of
+that theorem; the formal identity alone specifies no branch.
+
+\subsection{The same diagonal matrix on two different spaces}
+\label{sec:da-operators}
+
+The formal recipient can be specified without an analytic norm.
+Let $\mathbb C[[x,y]]/\mathbb C$ be the vector space of formal
+functions modulo constants. Its Hamiltonian Lie bracket is
+$\{f,g\}=\partial_xf\,\partial_yg-\partial_yf\,\partial_xg$
+modulo constants. Both derivatives and every output coefficient are
+well-defined in the coefficient topology. Fix a bijection between the primes and the nonconstant
+monomials $x^ay^b/(a!b!)$. The normalization only rescales the
+monomial basis. In these coordinates the formal space is
+\[
+ \widehat V=\mathbb C^{\{p\text{ prime}\}}
+       \cong\mathbb C[[x,y]]/\mathbb C.
+\]
+Give each copy of $\mathbb C$ the discrete topology and give
+$\widehat V$ the product topology. A continuous linear operator on
+$\widehat V$ is exactly a row-finite matrix. Indeed, each output
+coordinate must be a continuous scalar functional, so it depends
+on finitely many input coordinates. Conversely, finite support of
+each row makes every finite collection of output coordinates
+continuous. The operator topology requires agreement of whole rows
+in each prescribed finite collection.
+
+The same finite sequences form a dense subspace of the Hilbert space
+$V_2=\ell^2(\{p\})$, now over the usual complex field, with its
+declared orthonormal basis $e_p$. For $s\in\mathbb C$, define the
+diagonal matrix
+\[
+ K(s)e_p=p^{-s}e_p.
+\]
+It is a continuous endomorphism of $\widehat V$ for every $s$.
+No summation over primes is required for a fixed output coordinate.
+
+\begin{proposition}[Operator domains and scalar traces]
+\label{prop:da-operator-domains}
+Write $\sigma=\operatorname{Re}s$. On $V_2$, the diagonal matrix
+$K(s)$ is bounded exactly when $\sigma\geq0$, and compact exactly
+when $\sigma>0$. For every integer $m\geq1$,
+\[
+ K(s)\in \mathcal S_m(V_2)\quad\Longleftrightarrow\quad m\sigma>1.
+\]
+On that half-plane, $s\mapsto K(s)$ is holomorphic in the
+$\mathcal S_m$ norm. For $j\geq m$, the ordinary Hilbert trace is
+\[
+ \operatorname{Tr}K(s)^j=\sum_p p^{-js},\qquad
+ L_m(s)=-\sum_{j\geq m}\frac{\operatorname{Tr}K(s)^j}{j},
+\]
+where the final double series is absolutely and locally uniformly
+convergent.
+\end{proposition}
+\begin{proof}
+For $\sigma\ge0$ the diagonal entries have supremum $2^{-\sigma}$;
+for $\sigma<0$ they are unbounded. Finite diagonal truncations converge
+in operator norm exactly when $\sigma>0$. At $\sigma=0$ the images
+of the coordinate unit vectors form an orthonormal sequence, proving
+noncompactness. The singular values, Schatten threshold and
+norm-holomorphy are those of Theorem~\ref{thm:euler-fredholm}.
+The trace formulas and absolute local uniform convergence are the
+normalized logarithm of Theorem~\ref{thm:prime-regularization}.
+\end{proof}
+
+For $\sigma<0$, the diagonal matrix still defines a densely defined
+closed operator on $V_2$, with domain
+\[
+ \mathcal D(K(s))=
+ \left\{v\in\ell^2:\sum_p p^{-2\sigma}|v_p|^2<\infty\right\}.
+\]
+Finite sequences make the domain dense. If $v^{(n)}\to v$ and
+$K(s)v^{(n)}\to w$ in $\ell^2$, convergence in each coordinate gives
+$w_p=p^{-s}v_p$. Since $w\in\ell^2$, $v$ lies in the displayed
+domain and $K(s)v=w$. This proves closedness. It does not supply
+a trace-class power in that region.
+
+The formal and Hilbert realizations agree algebraically on finite
+sequences and on every coordinate where both are defined.
+Their topologies do not agree. The coordinate inclusion
+$V_2\to\widehat V$ is not continuous: $n^{-1}e_2$ tends to zero
+in Hilbert norm, while its $2$-coordinate never becomes zero in
+the discrete field. Likewise, $s\mapsto K(s)$ is not continuous
+in the formal operator topology on any open complex domain, since
+its first diagonal entry $2^{-s}$ is not locally constant.
+These facts prevent a silent change from a formal completion to
+a holomorphic family of operators.
+
+\subsection{Trace compatibility and Hamiltonian translation}
+\label{sec:da-trace-comparison}
+
+For a continuous finite-rank operator on $\widehat V$, write
+$T=\sum_{j=1}^k v_j\otimes\lambda_j$, where each $\lambda_j$ depends
+on finitely many coordinates, and define
+\[
+ \operatorname{tr}_{\mathrm{fin}}T=\sum_{j=1}^k\lambda_j(v_j).
+\]
+Such an expression exists: choose a basis of the image, then finitely
+many coordinates separating its basis vectors. Inverting that finite
+coordinate matrix expresses the image coordinates as continuous
+functionals. On any finite-dimensional subspace containing the image,
+the displayed sum is the ordinary matrix trace of the restriction.
+Enlarging this subspace adds a zero quotient operator, so the value is
+independent of all choices. For a continuous $B$ and finite-rank $T$,
+both $BT$ and $TB$ have trace $\sum_j\lambda_j(Bv_j)$.
+On a Hilbert space with inner product linear in the first argument,
+the corresponding rank-one operator is $h\mapsto\langle h,g\rangle f$
+and its trace is $\langle f,g\rangle$. These definitions agree on
+their common finite-coordinate operators.
+
+Let $\epsilon^p(v)=v_p$ and let $P_p=e_p\otimes\epsilon^p$ be the rank-one coordinate
+projection. Its finite-rank trace is one in both realizations.
+For a finite diagonal sum, both traces equal the sum of its
+diagonal entries. This is the precise common finite calculation.
+
+On summable diagonal sequences, the Hilbert trace extends to
+\[
+ \ell^1(\{p\})\longrightarrow\mathbb C,
+ \qquad (a_p)\longmapsto\sum_p a_p,
+ \qquad \left|\sum_p a_p\right|\leq\sum_p|a_p|.
+\]
+Truncations converge in this norm. For the formal operator topology,
+the projections $P_p$ tend to zero as the prime index escapes every
+finite set, but all their traces equal one. Hence finite-rank trace
+has no continuous linear extension to the full formal operator
+completion, even when the scalar target has its usual topology.
+The Hilbert trace extends by a different convergence condition.
+
+An algebraic cyclic extension is also impossible on all row-finite
+operators. Enumerate the basis as $e_0,e_1,\ldots$ and define
+$Le_0=0$, $Le_{n+1}=e_n$, $Re_n=e_{n+1}$.
+Both matrices are row-finite and
+\[
+ LR=1,\qquad RL=1-P_0,\qquad [L,R]=P_0.
+\]
+Any cyclic scalar functional on that algebra must vanish on $P_0$,
+contradicting the rank-one trace. On the span of
+$e_0,\ldots,e_{N-1}$, the truncated commutator is instead
+$P_0-P_{N-1}$. Both finite traces are one and cancel.
+The second term vanishes in the formal operator limit, but its
+trace does not. This identifies the precise discontinuity.
+
+The prime labeling introduces no Hamiltonian symmetry by itself.
+The following computation tests that issue on one translation.
+
+\begin{proposition}[The prime diagonal is not translation-invariant]
+\label{prop:da-translation}
+For the chosen bijection of primes with normalized monomials,
+let $q_n$ label $f_n=y^{n+1}/(n+1)!$, for $n\geq0$.
+Let $a_x$ be the formal Hamiltonian action
+$a_x f=\{x,f\}=\partial_y f$ modulo constants.
+For every real $s>0$ and every $n\geq1$,
+\[
+ [a_x,K(s)]f_n
+ =(q_n^{-s}-q_{n-1}^{-s})f_{n-1}\ne0.
+\]
+Thus $K(s)$ is not an endomorphism commuting with the full
+Hamiltonian action on the formal space.
+\end{proposition}
+\begin{proof}
+The factorial normalization gives $a_xf_n=f_{n-1}$ for $n\geq1$.
+Applying the two compositions gives $q_n^{-s}f_{n-1}$ and
+$q_{n-1}^{-s}f_{n-1}$. The primes $q_n$ and $q_{n-1}$ are
+distinct, and the function $r\mapsto r^{-s}$ is strictly decreasing
+on positive reals when $s>0$. Their difference is nonzero.
+\end{proof}
+
+The comparison also has an explicit realization on coefficient functions.
+Introduce one commuting variable $u_p$ for each basis vector and put
+\[
+ A_{\mathrm{coeff}}=\prod_\alpha\mathbb C u^\alpha,
+ \qquad O_v=\sum_p v_pu_p\quad(v\in\widehat V),
+\]
+where $\alpha$ runs over finitely supported families of nonnegative
+integers. The product is well-defined because a fixed multi-index has
+only finitely many decompositions $\alpha=\beta+\gamma$.
+Use the product topology with discrete coefficients. The formulas
+\[
+ \mathcal E(u^\alpha)=\left(\sum_p\alpha_p\right)u^\alpha,
+ \qquad
+ \delta_{K(s)}(u^\alpha)=
+       \left(\sum_p\alpha_pp^{-s}\right)u^\alpha
+\]
+define continuous derivations of this algebra. Each coefficient sum is
+finite, and additivity of the displayed weights under
+$\alpha=\beta+\gamma$ proves the product rule.
+They satisfy
+\[
+ \mathcal E(1)=0,\qquad \mathcal E(O_v)=O_v,
+ \qquad \delta_{K(s)}(O_v)=O_{K(s)v}.
+\]
+Thus the Euler derivation is the derivation associated with the identity
+kernel, while the prime diagonal assigns distinct weights to the chosen
+linear coordinates. These are actual maps on the same coefficient
+algebra. Their construction uses no infinite scalar trace. The
+translation commutator above proves that the prime assignment does not
+identify an operator commuting with the Hamiltonian action.
+
+We have constructed the coefficient evaluation map, identified its
+exact domain for $\mathscr D_m$, and compared the resulting
+determinant with actual trace-class powers on the prime Hilbert
+space. The continued scalar germ retains the same normalization and
+the same minimal surfaces and finite-cover criteria of
+Sections~\ref{sec:prime-continuation} and~\ref{sec:finite-covers}, including the single-valued
+case $m=1$. These constructions supply neither a cyclic trace on the
+full formal operator algebra nor an equivariant arithmetic matter
+representation. An identification with quantum current amplitudes
+would require a specified representation and trace ideal, compatible
+contractions, and convergence of the associated spatial integrals.
+Those maps are additional mathematical data.

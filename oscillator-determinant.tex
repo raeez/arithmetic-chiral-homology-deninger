@@ -1,0 +1,298 @@
+\section{The archimedean oscillator determinant}
+\label{sec:oscillator}
+
+\subsection{An equally spaced spectrum}
+
+The Gaussian Mellin integral defines the real archimedean factor.
+An additive operator model for its reciprocal must account for an infinite
+sequence of equally spaced zeros. The diagonal oscillator is the simplest
+such model. Its eigenvalue product diverges, so the normalization must come
+from a convergent spectral sum and its analytic continuation.
+
+Let \(H=\ell^2(\mathbb N_0;\mathbb C)\), where
+\(\mathbb N_0=\{0,1,2,\ldots\}\). Its inner product is
+\(\langle x,y\rangle=\sum_{r\geq0}x_r\overline{y_r}\), linear in
+the first variable, and \(e_r\) is the coordinate basis vector.
+For positive real \(b\), define
+\[
+ B_b e_r=br e_r,\qquad
+ \mathcal D(B_b)=
+ \left\{x\in H:\sum_{r\geq0}b^2r^2|x_r|^2<\infty\right\}.
+\]
+For positive real \(c\) and \(\operatorname{Re}s>0\), put
+\[
+ T_{b,c}(s):\mathcal D(B_b)\longrightarrow H,
+ \qquad T_{b,c}(s)=\frac{sI+B_b}{c}.
+\]
+The domain is independent of \(s\). This is a complex operator pencil.
+For real \(s>0\), it is positive and self-adjoint.
+
+To check the domain claims, finite sequences give a dense domain.
+Coordinate convergence shows that a limit of graph pairs \((x,B_bx)\)
+is again a graph pair, so \(B_b\) is closed.
+If \(y\) is in the adjoint domain, testing against \(e_r\) forces
+\((B_b^*y)_r=br y_r\). This sequence belongs to \(H\) exactly when
+\(y\in\mathcal D(B_b)\). The converse follows from the inner product
+formula, proving self-adjointness.
+For complex \(s\), the same coordinate computation proves normality of
+\(T_{b,c}(s)\). Its inverse has diagonal entries \(c/(s+br)\),
+which tend to zero. Truncation in the coordinate basis approximates this
+inverse in operator norm by finite-rank operators, so it is compact.
+Its range lies in \(\mathcal D(B_b)\), since \(br/(s+br)\) is bounded.
+The eigenvalues of the pencil are exactly \((s+br)/c\), each of multiplicity
+one. Indeed, away from this discrete set the diagonal inverse of the
+shifted pencil is bounded and has range in the same domain.
+
+Every eigenvalue lies in the right half-plane. We use its principal
+logarithm, with argument in \((-\pi,\pi)\), to define
+\begin{equation}
+ Z(w,s)=\sum_{r=0}^{\infty}
+ \exp\left(-w\operatorname{Log}\frac{s+br}{c}\right),
+ \qquad \operatorname{Re}w>1.                     \label{eq:osc-spectral-sum}
+\end{equation}
+For real \(s>0\), the logarithms of the eigenvalues tend to \(+\infty\),
+so their ordinary product diverges. If \(Z\) continues holomorphically
+through \(w=0\), its zeta-regularized determinant is, by definition,
+\begin{equation}
+ D_{b,c}(s)=\det_\infty T_{b,c}(s)
+ :=\exp\bigl(-\partial_w Z(0,s)\bigr).             \label{eq:osc-det-definition}
+\end{equation}
+For the real Hilbert space \(\ell^2(\mathbb N_0;\mathbb R)\), this
+definition uses complexification. Each real eigenline becomes one complex
+eigenline, so its multiplicity remains one.
+
+\subsection{Continuation and the gamma normalization}
+
+\input{oscillator-special-values}
+
+\subsection{The determinant and the zero mode}
+
+\begin{theorem}[The normalized oscillator determinant]
+\label{thm:osc-det}\label{prop:oscillator-det}
+For positive real \(b,c\), the spectral sum~\eqref{eq:osc-spectral-sum}
+has a jointly meromorphic continuation to
+\(\{\operatorname{Re}w>-1\}\times\{\operatorname{Re}s>0\}\).
+Its only pole in \(w\) is at \(1\), with residue \(c/b\).
+It is jointly holomorphic near \(w=0\), and
+\begin{equation}
+ D_{b,c}(s)
+ =\left(\frac bc\right)^{1/2-s/b}
+       \frac{\sqrt{2\pi}}{\Gamma(s/b)}.
+ \label{eq:osc-det-formula}
+\end{equation}
+The power uses the real logarithm of \(b/c\).
+This function extends to an entire function of \(s\), with simple zeros
+exactly at \(s=-br\), \(r\in\mathbb N_0\).
+\end{theorem}
+
+\begin{proof}
+Set \(a=s/b\) and \(k=b/c>0\).
+Since positive scaling preserves the principal argument,
+\(\operatorname{Log}(k(a+r))=\log k+\operatorname{Log}(a+r)\).
+Absolute local uniform convergence gives
+\[
+ Z(w,s)=k^{-w}\zeta_H(w,a).
+\]
+Lemma~\ref{lem:osc-summation} proves the joint continuation and its
+residue. Proposition~\ref{prop:osc-hurwitz-values} gives
+\[
+ -\partial_w Z(0,s)
+ =\left(\frac12-a\right)\log k-L(a)+\frac12\log(2\pi).
+\]
+Exponentiation proves~\eqref{eq:osc-det-formula} on \(\operatorname{Re}s>0\).
+For all complex \(s\), define its continuation by
+\[
+ \sqrt{2\pi}\exp\bigl((\tfrac12-s/b)\log k\bigr)E(s/b).
+\]
+The exponential is entire and nonzero. Lemma~\ref{lem:osc-gamma}
+identifies the simple zeros of \(E(s/b)\).
+\end{proof}
+
+The continuation in this theorem is a scalar entire continuation.
+At \(s=-br\), the operator has a zero eigenvalue.
+Across a negative real eigenvalue, the principal logarithm has a cut,
+so the theorem does not assert a holomorphic principal-cut spectral family
+on the whole \(s\)-plane. The specified right half-plane fixes the entire
+scalar function uniquely.
+
+\begin{corollary}[Scale and removal of the lowest mode]
+For \(d>0\), scaling the operator gives
+\begin{equation}
+ \det_\infty(dT_{b,c}(s))
+ =d^{1/2-s/b}D_{b,c}(s).                           \label{eq:osc-scale}
+\end{equation}
+The determinant on the closed span of \(e_1,e_2,\ldots\) is
+\(D_{b,c}(s+b)\), and
+\begin{equation}
+ D_{b,c}(s)=\frac{s}{c}D_{b,c}(s+b),\qquad
+ D'_{b,c}(0)=\sqrt{\frac{2\pi}{bc}}.               \label{eq:osc-mode}
+\end{equation}
+The continued determinant with the lowest mode removed has value
+\(D_{b,c}(b)=\sqrt{2\pi c/b}\) at \(s=0\).
+\end{corollary}
+
+\begin{proof}
+Positive scaling replaces \(Z\) by \(d^{-w}Z\).
+Differentiating at zero gives~\eqref{eq:osc-scale}, since
+\(Z(0,s)=1/2-s/b\).
+Reindexing the tail identifies its spectral zeta function with the one
+at \(s+b\). The omitted eigenvalue contributes \((s/c)^{-w}\), whose
+derivative at zero is \(-\operatorname{Log}(s/c)\).
+This proves the first identity in~\eqref{eq:osc-mode} initially in the
+right half-plane and then everywhere by entire continuation.
+Since \(E(a)/a\to1\) at zero by~\eqref{eq:osc-gamma-product},
+\eqref{eq:osc-det-formula} gives the stated slope.
+Setting \(s=b\) in that formula gives the final value.
+\end{proof}
+
+More generally, recurrence and \(E(a)/a\to1\) give
+\[
+ D'_{b,c}(-br)=\frac{\sqrt{2\pi}}{b}
+       \left(\frac bc\right)^{r+1/2}(-1)^r r!.
+\]
+Indeed, \(E(a)=a(a+1)\cdots(a+r)E(a+r+1)\), and \(E(1)=1\).
+This also verifies the multiplicity at every zero directly.
+
+\subsection{Three scales and the archimedean comparison}
+
+\begin{example}[Unit spacing and unit scale]
+For \(b=c=1\), the eigenvalues are \(s,s+1,s+2,\ldots\), and
+\[
+ D_{1,1}(s)=\frac{\sqrt{2\pi}}{\Gamma(s)},\qquad
+ Z(0,s)=\frac12-s.
+\]
+The integral values \(\Gamma(1)=1\) and \(\Gamma(1/2)=\sqrt\pi\) give
+\[
+ D_{1,1}(1)=\sqrt{2\pi},\qquad D_{1,1}(1/2)=\sqrt2.
+\]
+At \(s=1/2\), the exponent in~\eqref{eq:osc-scale} vanishes, so positive
+operator rescaling leaves the determinant unchanged. At \(s=1\),
+rescaling by \(d\) multiplies it by \(d^{-1/2}\).
+The mode identity reads \(D_{1,1}(s)=sD_{1,1}(s+1)\).
+It gives a simple zero at zero with slope \(\sqrt{2\pi}\), while the
+tail determinant there equals \(\sqrt{2\pi}\).
+\end{example}
+
+\begin{example}[The real archimedean scale]
+Use Lebesgue measure \(dx\) on \(\mathbb R\), multiplicative measure
+\(d^\times x=dx/|x|\) on \(\mathbb R^\times\), and the test function
+\(e^{-\pi x^2}\). For \(\operatorname{Re}s>0\), substitution
+\(u=\pi x^2\) gives the absolutely convergent integral
+\begin{align}
+ \Gamma_{\mathbb R}(s)
+ &=\int_{\mathbb R^\times}e^{-\pi x^2}|x|^s\,d^\times x
+   =2\int_0^\infty e^{-\pi x^2}x^{s-1}\,dx\notag\\
+ &=\pi^{-s/2}\int_0^\infty e^{-u}u^{s/2-1}\,du
+   =\pi^{-s/2}\Gamma(s/2).                         \label{eq:osc-real-factor}
+\end{align}
+The factor \(2\) comes from the two real components, and cancels the
+Jacobian factor \(1/2\).
+For spacing \(b=2\) and operator scale \(c=2\pi\),
+\begin{equation}
+ \Delta_\infty(s):=D_{2,2\pi}(s)
+ =\pi^{s/2-1/2}\frac{\sqrt{2\pi}}{\Gamma(s/2)}
+ =\frac{\sqrt2}{\Gamma_{\mathbb R}(s)}.             \label{eq:osc-archimedean}
+\end{equation}
+Thus \(\Delta_\infty(1)=\sqrt2\) and
+\(\Delta_\infty(2)=\sqrt2\,\pi\).
+The entire function has zeros at \(0,-2,-4,\ldots\), with
+\(\Delta_\infty'(0)=1/\sqrt2\).
+Removing the zero mode instead gives value \(\sqrt2\,\pi\) at zero.
+These constants use both the measure and the operator scale just stated.
+\end{example}
+
+\begin{corollary}[Completed Euler determinant]
+\label{cor:completed-euler}
+With the measures of Proposition~\ref{prop:local-tate} and scale $2\pi$,
+\[
+ \frac1{\Delta_\infty(s)\Delta_1(s)}
+ =2^{-1/2}\Lambda(s),\qquad \operatorname{Re}s>1.
+\]
+Both sides continue as single-valued meromorphic scalar functions.
+\end{corollary}
+\begin{proof}
+Theorem~\ref{thm:euler-fredholm} gives $\Delta_1=1/\zeta$ on the
+initial half-plane. Equation~\eqref{eq:osc-archimedean} gives
+$\Delta_\infty=\sqrt2/\GammaR$. Multiplying proves the identity;
+the scalar continuations prove its meromorphic extension.
+\end{proof}
+The meromorphic identity changes neither the Schatten domain of the
+prime diagonal nor the principal spectral cut of the oscillator.
+It fixes the normalization a cohomological realization must recover.
+
+\begin{example}[Prime logarithmic spacing]
+Let \(p\) be a prime, \(b=\log p\), and \(c=2\pi\).
+The heat operator is the diagonal bounded operator with entries
+\(e^{-tbr}\). For \(\operatorname{Re}t>0\), these entries have summable
+absolute values. Finite truncation therefore gives its trace as
+\[
+ \operatorname{Tr}(e^{-tB_b})=\sum_{r\geq0}p^{-tr}
+ =\frac1{1-p^{-t}}.
+\]
+The additive determinant has a different spectral parameter:
+\[
+ D_{\log p,2\pi}(s)
+ =\left(\frac{\log p}{2\pi}\right)^{1/2-s/\log p}
+       \frac{\sqrt{2\pi}}{\Gamma(s/\log p)}.
+\]
+At \(t=1\), the trace is \(p/(p-1)\).
+At \(s=\log p\), the determinant is \(2\pi/\sqrt{\log p}\).
+Its slope at zero is \(1/\sqrt{\log p}\).
+After identifying the two parameter planes by \(t=s\), the reciprocal
+heat trace has simple zeros at \(2\pi i\mathbb Z/\log p\).
+The additive determinant has simple zeros at \(-\mathbb N_0\log p\).
+For example, \(-\log p\) is a zero only of the additive determinant.
+Hence a nonzero constant cannot identify the two entire functions.
+\end{example}
+
+
+\subsection{Limits of ordinary spectral traces}
+
+\begin{proposition}[Obstructions to ordinary spectral constructions]
+\label{prop:spectral-obstructions}
+Let \(H\) be the operator of Proposition~\ref{prop:prime-product}.
+For every real \(a>0\), its shifted spectral sum
+\[
+ \sum_{n\geq1}(a+\log n)^{-w}
+\]
+has no right half-plane of convergence.  In particular, it does not define
+a determinant by the spectral-zeta prescription of
+\eqref{eq:osc-det-definition}.
+There is also no self-adjoint operator \(C\) on a Hilbert space satisfying
+\[
+ e^{-tC}\in\mathcal S_1,\qquad
+ \operatorname{Tr}(e^{-tC})=\GammaR(t)\quad(t>0).
+\]
+\end{proposition}
+
+\begin{proof}
+For real \(w>0\), the terms with \(e^j\leq n<e^{j+1}\) have sum at
+least
+\[
+ \bigl(\lfloor e^{j+1}\rfloor-\lceil e^j\rceil\bigr)
+ (a+j+1)^{-w},
+\]
+which tends to infinity.  For real \(w\leq0\), the summands do not tend
+to zero.  Every right half-plane contains such divergent real parameters.
+The spectral zeta function has no initial half-plane to continue.
+
+For the second assertion, boundedness of \(e^{-2C}\) forces the
+self-adjoint \(C\) to be bounded below, say by \(E_0\).  Functional
+calculus and positivity then give
+\[
+ \operatorname{Tr}(e^{-(2n+2)C})
+ \leq e^{-2E_0}\operatorname{Tr}(e^{-2nC}).
+\]
+But the gamma recurrence gives
+\[
+ \frac{\GammaR(2n+2)}{\GammaR(2n)}=\frac n\pi,
+\]
+which is unbounded.  This contradiction proves the claim.
+\end{proof}
+
+The first obstruction persists although \(H\) has compact resolvent.
+The second concerns ordinary Hilbert traces of a fixed self-adjoint
+operator.  The oscillator determinant in
+Proposition~\ref{prop:oscillator-det} supplies a regularized construction
+with the required archimedean factor.
+

@@ -1,0 +1,142 @@
+\section{One Euler factor and five kinds of structure}
+\label{sec:opening}
+
+For a prime number $p$, put
+\[
+ E_p(s)=\frac1{1-p^{-s}},\qquad
+ p^{-s}=\exp(-s\log p),\qquad \operatorname{Re}s>0,
+\]
+where $\log p$ is real. The geometric series defining $E_p$ counts
+arbitrary occupation of one mode of energy $\log p$. It also occurs in
+integration over the rational local field. The question is what, beyond
+this scalar value, either construction determines. An arithmetic
+cohomological explanation of the zeta function must retain operations
+that the value alone does not record: multiplication, local restriction,
+duality, and the choice of a state.
+
+The local integral has complex coefficients and the $p$-adic field
+$\mathbb Q_p$ as its domain. Its test space consists of locally constant,
+compactly supported functions, with the inductive-limit topology of
+finite-dimensional spaces of functions of bounded support and fixed
+local constancy. These functions have degree zero and pointwise product.
+Let $\mathbb Z_p$ be the valuation ring, take $|p|_p=p^{-1}$, and
+normalize multiplicative Haar measure $d^\times x$ by
+$\operatorname{vol}(\mathbb Z_p^\times)=1$. The chosen test is
+$\one_{\mathbb Z_p}$. Its support and this measure are essential:
+changing to additive measure changes the normalization.
+
+The occupation space is the complex Hilbert space
+$\mathscr H_p=\ell^2(\mathbb N_0)$ with orthonormal vectors $e_r$.
+The number operator in energy units is
+\[
+ N_pe_r=r\log p\,e_r,\qquad
+ \mathcal D(N_p)=
+ \left\{a:\sum_{r\ge0}r^2(\log p)^2|a_r|^2<\infty\right\}.
+\]
+Here $r$ is occupation number, not cohomological degree. The finite
+sequences form a common algebraic domain. Bounded operators multiply by
+composition; the Hilbert space itself has no specified multiplication.
+The trace of $e^{-sN_p}$ exists exactly for $\operatorname{Re}s>0$.
+The basis vector $e_0$ is the vacuum. At real inverse temperature
+$\beta>0$, the equilibrium density is the normalized positive operator
+$(1-p^{-\beta})e^{-\beta N_p}$.
+
+A third carrier is the one-dimensional complex Hilbert space
+$V_p=\mathbb C e_p$, with bounded operator $K_p(s)e_p=p^{-s}e_p$.
+It is concentrated in degree zero. Its ordinary determinant, normalized
+to one as real $s\to+\infty$, is $\det(1-K_p(s))=1-p^{-s}$.
+Thus the comparison of these three constructions is the scalar identity
+\begin{equation}
+ \int_{\mathbb Q_p^\times}\one_{\mathbb Z_p}(x)|x|_p^s\,d^\times x
+ =\operatorname{Tr}(e^{-sN_p})
+ =\det(1-K_p(s))^{-1}=E_p(s).
+ \label{eq:opening-euler}
+\end{equation}
+The first equality is proved with the local-field and measure
+constructions in Proposition~\ref{prop:local-tate}; the occupation sum
+is the same convergent geometric series. No arrow between algebras or
+complexes has been inferred from this equality.
+
+Multiplication enters separately through effective divisors. Over a
+commutative coefficient ring $R$, let $A_p=R[u_p]$, with unit $1$,
+augmentation $\epsilon(u_p)=0$, discrete coefficients and algebraic
+tensor products. Its elements have homological degree zero and the
+weight grading $\operatorname{wt}(u_p^r)=r$; multiplication adds weights.
+The bar construction is a complex built from this multiplication and
+augmentation. Over $\mathbb C$, completing the monomials to an
+orthonormal basis gives the occupation space above, and multiplication
+by $u_p$ gives the unilateral shift. The square-zero algebra
+$\mathbb C\oplus\bigoplus_{r>0}\mathbb C e_r$, with the same unit,
+augmentation, weights and energy operator, has the same heat trace
+but a different bar homology (Proposition~\ref{prop:two-bars}).
+Consequently the scalar factor does not determine the multiplication
+needed for arithmetic factorization.
+
+An arithmetic cohomology class has a fifth carrier. For a totally
+imaginary number field $F$, set $X=\operatorname{Spec}\mathcal O_F$.
+For a positive integer $n$, assume $F$ contains a chosen primitive
+$n$th root of unity. Ordinary sheaf cohomology on the small \'etale
+site of $X$ has finite discrete coefficient ring $\mathbb Z/n$,
+cohomological grading and cup product. A finite-group torsor on $X$
+pulls a group-cohomology class back to degree three; the chosen root
+normalizes its trace in $\tfrac1n\mathbb Z/\mathbb Z$. Removing a
+nonempty finite set of places containing those above $n$ gives local
+cochains and finite gluing maps. These are arithmetic operations, but
+their coefficients and grading differ from those of the complex
+Euler factor. A determinant comparison would require a realization
+functor, an operator and a trace-compatible map; none is specified by
+the existence of the degree-three class.
+
+The analytic comparison can nevertheless be made exact. On the Hilbert
+space with one basis vector for each prime, the diagonal $K(s)$ has
+singular values $p^{-\operatorname{Re}s}$. Its $m$th regularized
+determinant is defined precisely when $m\operatorname{Re}s>1$.
+Analytic continuation preserves the normalized germ but may make it
+multivalued. The logarithmic derivative defines a period character;
+its kernel determines the smallest pointed surface on which the germ
+is single-valued. For several orders the character is vector-valued.
+On $\operatorname{Re}s>1/5$, orders two and three have individual
+degrees six and twelve, but their joint surface has degree twenty-four.
+This finite example distinguishes simultaneous continuation from
+replacing several degree conditions by their least common multiple.
+
+Write $\zeta(s)=\sum_{n\ge1}n^{-s}$ on $\operatorname{Re}s>1$
+and $\GammaR(s)=\pi^{-s/2}\Gamma(s/2)$, where
+$\Gamma(z)=\int_0^\infty e^{-u}u^{z-1}\,du$ for $\operatorname{Re}z>0$.
+The real Gaussian factor has a different operator explanation.
+An equally spaced additive spectrum gives a reciprocal Gamma
+determinant, with spacing and scale determining its constant. At
+spacing $2$ and scale $2\pi$ the value is $\sqrt2/\GammaR(s)$.
+Together with the order-one prime determinant $1/\zeta(s)$ this
+recovers $2^{-1/2}\GammaR(s)\zeta(s)$. This is an analytic identity
+on specified carriers. Deninger's stronger question asks for
+arithmetically defined cohomology and an operator whose alternating
+determinant has this value. Its degree-one determinant is determined
+conditionally in Theorem~\ref{thm:deninger}; the theorem does not
+construct that operator or its eigenvalue multiplicities.
+
+Two positive constructions clarify what an arithmetic comparison
+could preserve. On a smooth projective curve over a finite field,
+Hall multiplication and its adjoint give an operator exchange with
+the curve zeta function as coefficient, before any trace is taken.
+For the Riemann zeta function, the complete Weil functional has
+infinite-dimensional positive subspaces on sufficiently narrow finite
+unions of intervals. These subspaces retain all polar, prime-power
+and archimedean terms. Their supports are not stable under convolution,
+so they do not supply the full positive representation required by
+Weil's criterion. Arithmetic twisting, full positivity and
+cohomological spectral realization are therefore distinct targets,
+with the comparison maps stated where their carriers are constructed.
+
+The inner-product convention is part of every operator comparison.
+The occupation and oscillator spaces use an inner product linear in
+the first argument. The Hall pairing and the positive Weil pairing use
+one linear in the second.
+If $\langle x,y\rangle_1$ is the first convention, put
+$\langle x,y\rangle_2=\langle y,x\rangle_1$ to pass to the second.
+The adjoint operator is unchanged: conjugating
+$\langle Ax,y\rangle_1=\langle x,A^*y\rangle_1$ gives the
+corresponding identity in the second convention. Rank-one formulas
+must also be transported: $h\mapsto\langle h,g\rangle_1 f$ becomes
+$h\mapsto\langle g,h\rangle_2 f$. This fixes the convention before
+the equilibrium, Hall and finite-rank trace calculations are compared.

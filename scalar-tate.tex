@@ -1,0 +1,839 @@
+\section{The scalar Tate calculation}
+\label{sec:arithmetic-tate}
+
+A local zeta integral separates into valuation shells, each weighted by
+a power of the prime. The resulting geometric series contributes to a
+single integral on the rational ideles. Its continuation comes from
+Fourier summation on a rational lattice. The finite unit balls
+select the integers from that lattice, and the real Gaussian supplies the
+theta transformation. We construct the fields, measures, and lattice before
+making this argument.
+
+All vector spaces of test functions below have complex coefficients,
+pointwise multiplication, and cohomological degree zero. At a finite place,
+the locally constant functions on a fixed compact support with a fixed
+open subgroup of constancy form a finite-dimensional space; their filtered
+union has the locally convex inductive-limit topology. At the real place
+we use the Schwartz topology, defined by the seminorms
+\(\sup_x|x^a f^{(b)}(x)|\), \(a,b\geq0\).
+The adelic test space below is the inductive limit of its finite restricted
+tensor products with these topologies. These test algebras on the
+noncompact fields and on the adeles have no pointwise multiplicative unit. The displayed integrals are scalar
+linear functionals on their stated convergence domains; they are not
+asserted to preserve pointwise products.
+Integrals use positive Borel measures. A complex power of a positive real
+number means \(a^s=\exp(s\log a)\), with the real logarithm.
+We use countable product measures, Tonelli's theorem, dominated convergence,
+and elementary real and complex analysis. The gamma function initially means
+only Euler's integral
+\[
+ \Gamma(z)=\int_0^\infty e^{-u}u^{z-1}\,du,
+ \qquad \operatorname{Re}z>0.
+\]
+No meromorphic continuation of \(\Gamma\) is needed in the proof.
+
+\subsection{The local field and its unit ball}
+\label{sec:adeles-local-field}
+
+Fix a prime integer \(p\). Define the ring
+\[
+ \mathbb Z_p=\varprojlim_{n\geq1}\mathbb Z/p^n\mathbb Z
+ =\{(a_n)_{n\geq1}:a_{n+1}\equiv a_n\pmod{p^n}\}.
+\]
+Addition and multiplication act on each coordinate. An integer maps to its
+compatible residue classes. This map is injective, since an integer divisible
+by every \(p^n\) is zero. Each element has unique digits
+\[
+ a=\sum_{j\geq0}a_jp^j,\qquad a_j\in\{0,\ldots,p-1\}.
+\]
+This notation specifies residues modulo \(p^n\). It does not assert
+convergence in the real numbers.
+
+Give each finite residue ring its discrete topology and \(\mathbb Z_p\) the induced
+product topology. Its basic neighborhoods are the residue classes
+\(a+p^n\mathbb Z_p\). Indeed, multiplication by \(p^n\) identifies \(\mathbb Z_p\)
+with the elements whose first \(n\) digits vanish.
+A diagonal subsequence argument shows compactness: successively fix each
+digit, and then take the diagonal subsequence. The resulting subsequence
+converges in every residue coordinate. This topology is metrizable by the
+distance defined below, so sequential compactness implies compactness.
+Each residue class is both open and closed.
+
+An element \(u\in\mathbb Z_p\) is a unit precisely when its residue modulo \(p\)
+is nonzero. In that case its inverse in each ring \(\mathbb Z/p^n\mathbb Z\)
+exists by Bezout's identity. Uniqueness of the inverse makes these inverses
+compatible, so they define \(u^{-1}\in\mathbb Z_p\).
+For \(a\neq0\), its first nonzero digit therefore gives a unique expression
+\[
+ a=p^r u,\qquad r\in\mathbb N_0,\quad u\in\mathbb Z_p^\times.
+\]
+The product of two such expressions has exponent equal to the sum of their
+exponents. In particular, \(\mathbb Z_p\) has no zero divisors.
+
+Define \(\mathbb Q_p=\mathbb Z_p[1/p]\), the localization of this integral domain.
+Every nonzero element now has a unique expression
+\begin{equation}
+ x=p^r u,\qquad r\in\mathbb Z,\quad u\in\mathbb Z_p^\times.
+ \label{eq:adeles-valuation-decomposition}
+\end{equation}
+It is invertible. Thus \(\mathbb Q_p\) is a field and contains \(\mathbb Q\).
+Put \(v_p(x)=r\), \(|x|_p=p^{-r}\), \(v_p(0)=+\infty\), and
+\(|0|_p=0\). Divisibility gives
+\[
+ |xy|_p=|x|_p|y|_p,\qquad
+ |x+y|_p\leq\max\{|x|_p,|y|_p\}.
+\]
+Consequently \(d_p(x,y)=|x-y|_p\) is a metric. On \(\mathbb Z_p\) it gives the
+residue topology above. Addition and multiplication are continuous.
+Inversion is continuous on \(\mathbb Q_p^\times\), since
+\[
+ |x^{-1}-y^{-1}|_p=\frac{|x-y|_p}{|x|_p|y|_p}
+\]
+and \(|y|_p=|x|_p\) whenever \(|y-x|_p<|x|_p\).
+
+\begin{proposition}[Completion and local compactness]
+\label{prop:adeles-completion}
+The field \(\mathbb Q_p\) is complete for \(d_p\), and \(\mathbb Q\) is dense
+in it. The sets \(a+p^r\mathbb Z_p\), with \(a\in\mathbb Q_p\) and \(r\in\mathbb Z\),
+are compact open balls and form a neighborhood basis.
+Thus \(\mathbb Q_p\) is a locally compact topological field.
+\end{proposition}
+
+\begin{proof}
+A Cauchy sequence is bounded: its tail lies in a ball of radius one around
+one of its terms, and its remaining terms form a finite set.
+Multiplication by a sufficiently large power of \(p\) places the entire
+sequence in \(\mathbb Z_p\). Each residue coordinate is eventually constant.
+These constants are compatible and define its limit. This proves
+completeness after scaling back. Truncated digit expansions approximate
+every element of \(\mathbb Z_p\) by integers. Scaling proves density of
+\(\mathbb Q\) in \(\mathbb Q_p\). The balls are translates and dilates of the
+compact open set \(\mathbb Z_p\). The metric inequalities identify them with the
+stated neighborhood basis.
+\end{proof}
+
+The notation \(\mathbb Q_p\) therefore agrees with the metric completion
+of \(\mathbb Q\) for the usual rational \(p\)-adic absolute value.
+No algebraic extension or choice of a root is involved.
+
+\subsection{Measures, characters, and one Fourier calculation}
+\label{sec:adeles-local-fourier}
+
+On \(\mathbb Z_p\), give the digits independent uniform probability distributions.
+The resulting measure assigns mass \(p^{-n}\) to every residue class modulo
+\(p^n\). Translation and multiplication by a unit permute these residue
+classes. They therefore preserve the measure, first on cylinder sets and
+then on Borel sets by uniqueness of the product measure.
+Also, multiplication by \(p\) scales this measure by \(p^{-1}\).
+
+Extend the measure to \(\mathbb Q_p=\bigcup_{m\geq0}p^{-m}\mathbb Z_p\) by
+\[
+ \mu_p(E)=p^m\mu_p(p^mE),\qquad E\subset p^{-m}\mathbb Z_p.
+\]
+On the right, \(\mu_p\) denotes the probability measure on \(\mathbb Z_p\).
+The scaling identity makes these prescriptions compatible as \(m\)
+increases. They define a Borel measure on the union. Write it as \(dx_p\).
+Translations preserve it, and
+\begin{equation}
+ \operatorname{vol}(a+p^r\mathbb Z_p)=p^{-r},\qquad
+ d(bx)_p=|b|_p\,dx_p\quad(b\neq0).
+ \label{eq:adeles-additive-scaling}
+\end{equation}
+The second identity follows from the unit and power-of-\(p\) cases.
+This is an additive Haar measure: it is translation invariant, finite on
+compact sets, and nonzero on open sets. Regularity follows from the
+countable basis of compact open balls and the regular probability measure
+on each \(p^{-m}\mathbb Z_p\). Its normalization determines it uniquely, since
+the masses of all balls are then forced.
+
+For \(x\in\mathbb Q_p\), its Laurent digit expansion has only finitely many
+negative powers. Define
+\[
+ \{x\}_p=\sum_{r\leq j<0}a_jp^j
+ \in\mathbb Z[1/p]\cap[0,1),\qquad
+ \psi_p(x)=\exp(-2\pi i\{x\}_p).
+\]
+The fractional part is the unique element of this set congruent to \(x\)
+modulo \(\mathbb Z_p\). To see uniqueness, note that
+\(\mathbb Z[1/p]\cap\mathbb Z_p=\mathbb Z\). Two representatives in \([0,1)\)
+cannot differ by a nonzero integer.
+In particular, \(\{x+y\}_p-\{x\}_p-\{y\}_p\) is an integer.
+Thus \(\psi_p:(\mathbb Q_p,+)\to\{z\in\mathbb C:|z|=1\}\) is a continuous
+additive character, with kernel exactly \(\mathbb Z_p\).
+
+For a locally constant, compactly supported function \(f:\mathbb Q_p\to\mathbb C\),
+define its Fourier transform by
+\[
+ \widehat f(y)=\int_{\mathbb Q_p}f(x)\overline{\psi_p(xy)}\,dx_p.
+\]
+Such functions form the Schwartz--Bruhat space \(\mathcal S(\mathbb Q_p)\).
+
+At \(p=2\) and \(y=1/2\), the even and odd residue classes each have
+mass \(1/2\). The Fourier integral of \(\one_{\mathbb Z_2}\) is therefore
+\[
+ \frac12\cdot1+\frac12\cdot(-1)=0.
+\]
+At \(y\in\mathbb Z_2\), the same integral is one. The following identity
+gives the full calculation, including every scale and translate.
+
+\begin{proposition}[Fourier transform of a ball]
+\label{prop:adeles-ball-fourier}
+For \(a,y\in\mathbb Q_p\) and \(r\in\mathbb Z\),
+\begin{equation}
+ \widehat{\one_{a+p^r\mathbb Z_p}}(y)
+ =p^{-r}\overline{\psi_p(ay)}\one_{p^{-r}\mathbb Z_p}(y).
+ \label{eq:adeles-ball-fourier}
+\end{equation}
+In particular, \(\widehat{\one_{\mathbb Z_p}}=\one_{\mathbb Z_p}\).
+Moreover, \(\widehat{\widehat f}(x)=f(-x)\) for every
+\(f\in\mathcal S(\mathbb Q_p)\). Thus the additive measure of unit-ball mass one
+is self-dual for this Fourier convention.
+\end{proposition}
+
+\begin{proof}
+For \(y\in p^{-r}\mathbb Z_p\),
+the character \(z\mapsto\psi_p(zy)\) is trivial on \(p^r\mathbb Z_p\).
+Its integral over that ball is \(p^{-r}\).
+If \(y\notin p^{-r}\mathbb Z_p\), then \(p^ry\notin\mathbb Z_p\).
+Translation by \(p^r\) multiplies the integral by the nontrivial scalar
+\(\overline{\psi_p(p^ry)}\). Translation invariance forces the integral
+to vanish. Translation by \(a\) proves
+\eqref{eq:adeles-ball-fourier}.
+
+Every locally constant compactly supported function is a finite linear
+combination of indicators of balls of one sufficiently small radius.
+Indeed, finitely many neighborhoods of constancy cover its support.
+Their finite refinement by balls of a common radius has this property.
+Applying the Fourier transform twice to a ball indicator gives
+\[
+ p^{-r}\int_{p^{-r}\mathbb Z_p}
+       \overline{\psi_p((a+x)y)}\,dy_p
+ =\one_{a+p^r\mathbb Z_p}(-x).
+\]
+Linearity proves the assertion for the entire test space.
+\end{proof}
+
+Define a measure on \(\mathbb Q_p^\times\) by
+\begin{equation}
+ d^{\times} x_p=(1-p^{-1})^{-1}\frac{dx_p}{|x|_p}.
+ \label{eq:adeles-multiplicative-measure}
+\end{equation}
+The scaling formula \eqref{eq:adeles-additive-scaling} proves multiplicative
+invariance. The shell \(\mathbb Z_p^\times=\mathbb Z_p\setminus p\mathbb Z_p\) has additive
+mass \(1-p^{-1}\). It therefore has multiplicative mass one.
+Every shell \(p^r\mathbb Z_p^\times\) also has multiplicative mass one.
+This is a locally finite regular Haar measure on the multiplicative group.
+
+A quasi-character of a topological group is a continuous homomorphism to
+\(\mathbb C^\times\). For every \(s\in\mathbb C\), the map
+\(x\mapsto|x|_p^s\) is a quasi-character of \(\mathbb Q_p^\times\).
+
+\begin{proposition}[The finite local integral]
+\label{prop:adeles-finite-factor}
+The integral
+\[
+ Z_p(s)=\int_{\mathbb Q_p^\times}\one_{\mathbb Z_p}(x)|x|_p^s\,d^{\times} x_p
+\]
+is absolutely convergent exactly when \(\operatorname{Re}s>0\). In that
+half-plane,
+\[
+ Z_p(s)=\sum_{r\geq0}p^{-rs}=(1-p^{-s})^{-1}.
+\]
+With additive measure instead,
+\[
+ \int_{\mathbb Z_p}|x|_p^{s-1}\,dx_p
+ =\frac{1-p^{-1}}{1-p^{-s}},\qquad\operatorname{Re}s>0.
+\]
+The value assigned to the additive integrand at zero has no effect.
+\end{proposition}
+
+\begin{proof}
+The disjoint valuation decomposition
+\eqref{eq:adeles-valuation-decomposition} reduces the first integral to the
+geometric series. Its absolute integral is \(\sum_{r\geq0}p^{-r\operatorname{Re}s}\).
+The additive shell \(p^r\mathbb Z_p^\times\) has mass
+\((1-p^{-1})p^{-r}\), which gives the second formula.
+The singleton \(\{0\}\) has measure zero since it lies in balls of mass
+\(p^{-n}\) for every \(n\).
+\end{proof}
+
+These measure normalizations are the rational unramified case of Tate's
+conventions \cite{Tate1950}*{\S2.2, pp.~309--311, and \S2.3, pp.~312--313}.
+Tate's additive character is the complex conjugate of the one fixed here.
+Conjugating the character leaves these self-dual measures unchanged.
+The computations above establish the formulas directly, including the prime two.
+
+\subsection{The real Gaussian and Poisson summation}
+\label{sec:adeles-real-poisson}
+
+At the real place, put
+\[
+ \psi_\infty(x)=e^{2\pi ix},\qquad dx_\infty=dx,
+ \qquad d^{\times} x_\infty=\frac{dx}{|x|}.
+\]
+Here \(dx\) is Lebesgue measure, and \(d^{\times} x_\infty\) is a measure on
+\(\mathbb R^\times\). Both signs occur. The real Schwartz space
+\(\mathcal S(\mathbb R)\) consists of smooth functions whose derivatives
+decay faster than every inverse power. Its Fourier transform is
+\[
+ \widehat f(y)=\int_{\mathbb R}f(x)e^{-2\pi ixy}\,dx.
+\]
+Differentiation under the integral and integration by parts show that this
+map preserves \(\mathcal S(\mathbb R)\).
+
+\begin{lemma}[Gaussian Fourier transform and Mellin integral]
+\label{lem:adeles-gaussian}
+For \(t>0\), define \(g_t(x)=e^{-\pi t^2x^2}\). Then
+\[
+ \widehat g_t(y)=t^{-1}e^{-\pi y^2/t^2}.
+\]
+For \(\operatorname{Re}s>0\),
+\[
+ Z_\infty(s)=\int_{\mathbb R^\times}e^{-\pi x^2}|x|^s\,d^{\times} x_\infty
+ =\pi^{-s/2}\Gamma(s/2)=:\GammaR(s).
+\]
+The latter integral is absolutely convergent exactly in this half-plane.
+\end{lemma}
+
+\begin{proof}
+The positive Gaussian integral has value one. Indeed, its square is the
+integral of \(e^{-\pi(x^2+y^2)}\) over the plane. Polar coordinates give
+\(2\pi\int_0^\infty e^{-\pi r^2}r\,dr=1\).
+Set \(G(y)=\widehat g_1(y)\). Differentiation and integration by parts give
+\(G'(y)=-2\pi yG(y)\), with \(G(0)=1\).
+The boundary term vanishes by Gaussian decay. Thus
+\(G(y)=e^{-\pi y^2}\). Substitution \(x\mapsto x/t\) gives the scaled
+identity.
+
+Evenness and the substitution \(u=\pi x^2\) give
+\[
+ 2\int_0^\infty e^{-\pi x^2}x^{s-1}\,dx
+ =\pi^{-s/2}\int_0^\infty e^{-u}u^{s/2-1}\,du.
+\]
+Gaussian decay controls infinity. At zero, absolute convergence is
+equivalent to \(\operatorname{Re}s>0\).
+\end{proof}
+
+\begin{proposition}[The local factors]
+\label{prop:adeles-local-factors}
+\label{prop:local-tate}
+With the specified additive character and multiplicative measures, for
+\(\operatorname{Re}s>0\),
+\[
+ Z_p(\one_{\mathbb Z_p},s)=(1-p^{-s})^{-1},\qquad
+ Z_\infty(e^{-\pi x^2},s)=\GammaR(s)=\pi^{-s/2}\Gamma(s/2).
+\]
+Here \(Z_v(f,s)=\int_{\mathbb Q_v^\times}f(x)|x|_v^s\,d^{\times} x_v\),
+where \(\mathbb Q_\infty=\mathbb R\).
+\end{proposition}
+
+\begin{proof}
+These are Proposition~\ref{prop:adeles-finite-factor} and
+Lemma~\ref{lem:adeles-gaussian} with their test functions displayed.
+\end{proof}
+
+For completeness, the Gaussian also proves real Fourier inversion with
+this measure. If \(f\in\mathcal S(\mathbb R)\) and \(\epsilon>0\), Fubini
+and Lemma~\ref{lem:adeles-gaussian} give
+\[
+ \int_{\mathbb R}\widehat f(y)e^{2\pi ixy}e^{-\pi\epsilon y^2}\,dy
+ =\int_{\mathbb R}f(v)\epsilon^{-1/2}
+       e^{-\pi(x-v)^2/\epsilon}\,dv.
+\]
+The right side tends to \(f(x)\), since the positive kernels have mass one
+and their mass outside every fixed neighborhood of zero tends to zero.
+The left side tends to the unregularized integral by dominated convergence,
+because \(\widehat f\) is integrable. Hence
+\(\widehat{\widehat f}(x)=f(-x)\), which fixes the self-dual normalization.
+
+\begin{proposition}[Real Poisson summation]
+\label{prop:adeles-real-poisson}
+For \(f\in\mathcal S(\mathbb R)\), \(d>0\), and \(r\in\mathbb R\),
+\begin{equation}
+ \sum_{n\in\mathbb Z}f(r+dn)
+ =\frac1d\sum_{m\in\mathbb Z}
+       \widehat f(m/d)e^{2\pi irm/d}.
+ \label{eq:adeles-real-poisson}
+\end{equation}
+Both series converge absolutely. For fixed \(d\), they converge uniformly
+as \(r\) ranges over a compact set.
+\end{proposition}
+
+\begin{proof}
+Periodize \(f\) by \(P(x)=\sum_n f(x+dn)\). Rapid decay of all derivatives
+gives uniform convergence on \([0,d]\), including each differentiated
+series. Thus \(P\) is smooth and \(d\)-periodic.
+Its \(m\)th Fourier coefficient is
+\[
+ \frac1d\int_0^dP(x)e^{-2\pi imx/d}\,dx
+ =\frac1d\int_{\mathbb R}f(x)e^{-2\pi imx/d}\,dx
+ =\frac1d\widehat f(m/d).
+\]
+Absolute integrability justifies the interchange and the partition into
+intervals. The coefficients decay faster than every inverse power, so
+their Fourier series converges absolutely and uniformly.
+
+To verify equality with \(P\), one may use the elementary Fejer kernels
+\[
+ K_N(u)=\frac1N\left|\sum_{j=0}^{N-1}e^{2\pi iju/d}\right|^2.
+\]
+They are nonnegative and satisfy \(d^{-1}\int_0^dK_N(u)\,du=1\).
+Outside a fixed neighborhood of \(d\mathbb Z\), the geometric-series
+formula bounds them by a constant times \(N^{-1}\).
+Uniform continuity therefore makes convolution with \(K_N\), using
+\(du/d\), converge uniformly to any continuous periodic function.
+A function with zero Fourier coefficients has all these convolutions zero.
+Apply this observation to the difference between \(P\) and its uniformly
+convergent Fourier series, then evaluate at \(r\).
+\end{proof}
+
+\subsection{The adele ring and the rational fundamental domain}
+\label{sec:adeles-fundamental-domain}
+
+Define the finite adele ring and the full adele ring by
+\[
+ \mathbb A_f=\prod_p'(\mathbb Q_p,\mathbb Z_p)
+ =\{(x_p)_p:x_p\in\mathbb Z_p\text{ for all but finitely many }p\},
+ \qquad \Adele=\mathbb R\times\mathbb A_f.
+\]
+Ring operations are componentwise. The prime on the product imposes the
+displayed integrality condition. Put \(\widehat{\mathbb Z}=\prod_p\mathbb Z_p\).
+The restricted product topology has basic open sets
+\[
+ \prod_{p\in S}U_p\times\prod_{p\notin S}\mathbb Z_p,
+\]
+where \(S\) is finite and \(U_p\subset\mathbb Q_p\) is open.
+These sets cover \(\mathbb A_f\), and their translates form the same basis.
+In particular, \(\widehat{\mathbb Z}\) is compact and open. Compactness follows from
+the countable product of the compact metrizable spaces \(\mathbb Z_p\), or from
+the same diagonal subsequence argument used for their digits.
+Addition and multiplication are continuous: at the finitely many
+exceptional primes this follows from local continuity, and outside them
+\(\mathbb Z_p\) is closed under both operations. Thus \(\Adele\) is a locally
+compact Hausdorff topological ring.
+
+Every rational number belongs to \(\mathbb Z_p\) at all primes except those
+dividing its denominator. Hence the diagonal embedding
+\(\mathbb Q\hookrightarrow\Adele\) is defined.
+
+Give \(\widehat{\mathbb Z}\) its product probability measure. On each open subring
+\[
+ A_S=\mathbb R\times\prod_{p\in S}\mathbb Q_p\times\prod_{p\notin S}\mathbb Z_p
+\]
+use the product of Lebesgue measure, the finitely many local additive
+measures, and the remaining product probability measure.
+These measures agree on overlaps because \(\operatorname{vol}(\mathbb Z_p)=1\).
+An increasing exhaustion by finite sets of primes defines a measure
+\(dx=dx_\infty\prod_pdx_p\) on \(\Adele\).
+Translation by an adele preserves it: each relevant set and translation
+lies in one sufficiently large \(A_S\), where product invariance applies.
+It is regular and locally finite, as follows on each open \(A_S\) from
+the corresponding product measures. This constructs the additive Haar
+measure without an unspecified constant.
+
+\begin{proposition}[The rational lattice]
+\label{prop:adeles-rational-lattice}
+The diagonal subgroup \(\mathbb Q\subset(\Adele,+)\) is discrete and closed.
+The set
+\begin{equation}
+ \mathcal F=[0,1)\times\widehat{\mathbb Z}
+ \label{eq:adeles-fundamental-domain}
+\end{equation}
+contains exactly one representative of each coset in \(\Adele/\mathbb Q\).
+It has additive measure one, and its closure is compact.
+For every nonnegative Borel function \(H\),
+\[
+ \int_{\Adele}H(x)\,dx
+ =\int_{\mathcal F}\sum_{q\in\mathbb Q}H(x+q)\,dx.
+\]
+The same formula holds for an absolutely integrable complex function.
+\end{proposition}
+
+\begin{proof}
+For \(x\in\Adele\), the sum \(r=\sum_p\{x_p\}_p\) is a finite rational
+sum. At a fixed prime \(p\), each term with another prime in its denominator
+belongs to \(\mathbb Z_p\). Consequently \(x_p-r\in\mathbb Z_p\) for every \(p\).
+Choose the integer \(n=\lfloor x_\infty-r\rfloor\). Then
+\(x-(r+n)\in\mathcal F\).
+
+A rational number integral at every prime is an integer: in a reduced
+fraction, any prime dividing the denominator would violate integrality.
+Two representatives in \(\mathcal F\) that differ by a rational number
+therefore differ by an integer. Their real coordinates force that integer
+to be zero. This proves uniqueness.
+
+The neighborhood \((-1,1)\times\widehat{\mathbb Z}\) meets \(\mathbb Q\) only at zero,
+so the subgroup is discrete. It is also closed. Indeed, choose a smaller
+neighborhood \(V\) with \(V-V\subset(-1,1)\times\widehat{\mathbb Z}\).
+Each translate of \(V\) contains at most one rational point. A point in
+the closure of \(\mathbb Q\) must then equal that point, by the Hausdorff
+property. The product measure gives \(\operatorname{vol}(\mathcal F)=1\),
+and \([0,1]\times\widehat{\mathbb Z}\) is compact. Finally, the countably many sets
+\(\mathcal F+q\) form a disjoint Borel partition. Translation invariance
+and Tonelli's theorem prove the integral formula.
+\end{proof}
+
+Define
+\begin{equation}
+ \psi(x)=\psi_\infty(x_\infty)\prod_p\psi_p(x_p)
+ =\exp\!\left(2\pi i\left(x_\infty-\sum_p\{x_p\}_p\right)\right).
+ \label{eq:adeles-character}
+\end{equation}
+Only finitely many factors differ from one. On each \(A_S\), the character
+is a finite product of continuous characters. It is therefore continuous
+on \(\Adele\). For \(q\in\mathbb Q\), the rational number
+\(q-\sum_p\{q\}_p\) is integral at every prime, hence belongs to
+\(\mathbb Z\). Thus \(\psi(q)=1\), and \(\psi\) descends to
+\(\Adele/\mathbb Q\).
+
+The annihilator of the diagonal \(\mathbb Q\) under the pairing
+\((x,y)\mapsto\psi(xy)\) is exactly the diagonal \(\mathbb Q\).
+Here is a direct verification. Subtract a rational number from an element
+\(y\) of the annihilator to put it in \(\mathcal F\).
+Testing against integers first gives \(y_\infty=0\), since
+\(\psi(ny)=e^{2\pi iny_\infty}\). Testing against \(p^{-k}\), for each
+prime \(p\) and \(k\geq1\), then gives \(y_p\in p^k\mathbb Z_p\).
+All other finite components contribute one. Hence every \(y_p\) is zero.
+Conversely, \(\psi(qr)=1\) for rational \(q,r\).
+The pairing therefore uses the rational lattice with its precise dual and
+covolume. These are the rational cases of Tate's additive global data
+\cite{Tate1950}*{Theorems~4.1.3--4.1.4, pp.~330--331}.
+
+\subsection{Fourier summation on the adeles}
+\label{sec:adeles-poisson}
+
+Define \(\mathcal S(\Adele)\) to be the finite linear span of functions
+\[
+ F(x)=f_\infty(x_\infty)\prod_p f_p(x_p),
+ \qquad f_\infty\in\mathcal S(\mathbb R),\quad
+ f_p\in\mathcal S(\mathbb Q_p),
+\]
+where \(f_p=\one_{\mathbb Z_p}\) for all but finitely many primes.
+This is the Schwartz--Bruhat test space used here.
+Every such function is integrable for the additive Haar measure.
+Fubini and the local ball calculation give the product Fourier transform
+\[
+ \widehat F(y)=\int_{\Adele}F(x)\overline{\psi(xy)}\,dx.
+\]
+For a fixed \(y\), only finitely many local integrals differ from the
+unit-ball integral. The latter vanishes when its frequency is nonintegral.
+The transform preserves the displayed test space, and its square is
+\(F(x)\mapsto F(-x)\), by the proved local inversions.
+
+\begin{lemma}[Elementary finite-adele test functions]
+\label{lem:adeles-elementary-tests}
+Every \(F\in\mathcal S(\Adele)\) is a finite sum of functions
+\[
+ f(x_\infty)\one_{r+d\widehat{\mathbb Z}}(x_f),
+ \qquad f\in\mathcal S(\mathbb R),\quad r\in\mathbb Q,\quad
+ d\in\mathbb Q_{>0}.
+\]
+\end{lemma}
+
+\begin{proof}
+Decompose each of the finitely many exceptional local factors into ball
+indicators, using the proof of Proposition~\ref{prop:adeles-ball-fourier}.
+Each resulting finite factor is a constant times an indicator of a coset
+\(a_f+\prod_p p^{r_p}\mathbb Z_p\), with only finitely many \(r_p\neq0\).
+Set \(d=\prod_p p^{r_p}>0\). Multiplication by the other prime factors
+acts by units on \(\mathbb Z_p\), so this subgroup is \(d\widehat{\mathbb Z}\).
+The proof of Proposition~\ref{prop:adeles-rational-lattice}, applied to
+\(a_f/d\), supplies \(b\in\mathbb Q\) with \(a_f/d-b\in\widehat{\mathbb Z}\).
+Then \(r=db\) is the required rational representative.
+\end{proof}
+
+For a rational \(q\neq0\), prime factorization proves the product formula
+\begin{equation}
+ |q|_\infty\prod_p|q|_p=1.
+ \label{eq:adeles-product-formula}
+\end{equation}
+In particular, the additive finite measure of \(d\widehat{\mathbb Z}\) is \(d^{-1}\)
+for \(d\in\mathbb Q_{>0}\).
+
+\begin{theorem}[Adelic Poisson summation over the rationals]
+\label{thm:adeles-poisson}
+For every \(F\in\mathcal S(\Adele)\),
+\begin{equation}
+ \sum_{q\in\mathbb Q}F(q)=\sum_{q\in\mathbb Q}\widehat F(q).
+ \label{eq:adeles-poisson}
+\end{equation}
+Both series converge absolutely. The measure and character are exactly
+\eqref{eq:adeles-additive-scaling} and \eqref{eq:adeles-character}.
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:adeles-elementary-tests}, it suffices to take
+\(F(x)=f(x_\infty)\one_{r+d\widehat{\mathbb Z}}(x_f)\).
+A rational \(q\) satisfies \(q-r\in d\widehat{\mathbb Z}\) precisely when
+\((q-r)/d\in\mathbb Z\). Thus
+\[
+ \sum_{q\in\mathbb Q}F(q)=\sum_{n\in\mathbb Z}f(r+dn).
+\]
+Put \(\psi_f(x_f)=\prod_p\psi_p(x_p)\).
+The local Fourier formula and the product formula give
+\[
+ \widehat F(y)
+ =d^{-1}\widehat f(y_\infty)
+       \overline{\psi_f(ry_f)}\one_{d^{-1}\widehat{\mathbb Z}}(y_f).
+\]
+For rational \(q\), the finite support condition is \(q=m/d\), with
+\(m\in\mathbb Z\). Since \(rq\) is rational, \(\psi(rq)=1\), whence
+\(\overline{\psi_f(rq)}=e^{2\pi irq}\). Therefore
+\[
+ \sum_{q\in\mathbb Q}\widehat F(q)
+ =d^{-1}\sum_{m\in\mathbb Z}\widehat f(m/d)e^{2\pi irm/d}.
+\]
+Proposition~\ref{prop:adeles-real-poisson} identifies the two sides and
+proves absolute convergence. A finite sum completes the proof.
+\end{proof}
+
+In particular, put
+\[
+ \phi(x)=e^{-\pi x_\infty^2}\one_{\widehat{\mathbb Z}}(x_f).
+\]
+The local formulas prove \(\widehat\phi=\phi\).
+For \(t>0\), let \(a_t=(t,(1)_p)\) be the adele with real coordinate
+\(t\) and all finite coordinates one. Applying
+Theorem~\ref{thm:adeles-poisson} to \(x\mapsto\phi(a_tx)\) gives
+\begin{equation}
+ \Theta(t)=t^{-1}\Theta(t^{-1}),\qquad
+ \Theta(t):=\sum_{n\in\mathbb Z}e^{-\pi n^2t^2}.
+ \label{eq:adeles-theta}
+\end{equation}
+Here the finite unit balls impose \(q\in\mathbb Z\), and the Fourier
+transform is \(t^{-1}\phi(a_{t^{-1}}x)\).
+This proves the needed summation identity with its scaling constant.
+
+\subsection{Ideles and absolute convergence of the Euler integral}
+\label{sec:adeles-ideles}
+
+The idele group is
+\[
+ \Adele^\times=\mathbb R^\times\times\prod_p'(\mathbb Q_p^\times,\mathbb Z_p^\times).
+\]
+It is the group of units of the adele ring as a set: both \(x\) and
+\(x^{-1}\) are adeles precisely when the finite coordinates are units
+at almost every prime. Its topology is the multiplicative restricted
+product topology. In particular,
+\(U=\prod_p\mathbb Z_p^\times\) is a compact open subgroup of the finite ideles.
+This topology matters. It is not being inferred from the subspace topology
+of the adele ring.
+
+On each open product with finitely many exceptional primes, take the
+product of the local multiplicative Haar measures. The remaining unit
+groups carry their probability measures. These products agree on overlaps
+because each \(\mathbb Z_p^\times\) has mass one. They define
+\[
+ d^{\times} x=\frac{dx_\infty}{|x_\infty|}\prod_pd^{\times} x_p.
+\]
+The same exhaustion argument used for additive measure proves local
+finiteness, regularity, and multiplicative invariance.
+For an idele define
+\[
+ |x|_{\Adele}=|x_\infty|\prod_p|x_p|_p\in\mathbb R_{>0}.
+\]
+This finite product is a continuous homomorphism. It is trivial on
+\(\mathbb Q^\times\) by \eqref{eq:adeles-product-formula}.
+Consequently \(x\mapsto|x|_{\Adele}^s\) is a quasi-character of the idele
+group, trivial on \(\mathbb Q^\times\), for every \(s\in\mathbb C\).
+
+Consider the scalar integral
+\begin{equation}
+ Z(\phi,s)=\int_{\Adele^\times}\phi(x)|x|_{\Adele}^s\,d^{\times} x.
+ \label{eq:adeles-global-integral}
+\end{equation}
+It is an integral over the idele group, with \(\phi\) restricted from
+the adele ring.
+
+\begin{proposition}[Absolute Euler product]
+\label{prop:adeles-euler-product}
+The integral \eqref{eq:adeles-global-integral} is absolutely convergent
+exactly when \(\operatorname{Re}s>1\). In this half-plane,
+\begin{equation}
+ Z(\phi,s)=\GammaR(s)\prod_p(1-p^{-s})^{-1}
+ =\GammaR(s)\sum_{n\geq1}n^{-s}.
+ \label{eq:adeles-euler}
+\end{equation}
+The product and series converge locally uniformly there.
+\end{proposition}
+
+\begin{proof}
+Let \(\sigma=\operatorname{Re}s\). On the support of \(\phi\) in the
+ideles, the finite valuations are nonnegative and only finitely many are
+nonzero. For a finite set \(S\) of primes, restrict the valuations outside
+\(S\) to zero. For \(\sigma>0\), Tonelli and the finite local calculation
+give the absolute integral on this set as
+\[
+ \GammaR(\sigma)\prod_{p\in S}(1-p^{-\sigma})^{-1}
+ =\GammaR(\sigma)
+   \sum_{\substack{n\geq1\\p\mid n\Rightarrow p\in S}}n^{-\sigma}.
+\]
+The last identity follows by multiplying finitely many absolutely
+convergent geometric series and using unique factorization.
+An increasing exhaustion of the primes exhausts the support.
+Every positive integer eventually occurs. Monotone convergence therefore
+identifies the full absolute integral with
+\(\GammaR(\sigma)\sum_{n\geq1}n^{-\sigma}\), allowing the value infinity.
+The series converges exactly for \(\sigma>1\), by comparison with
+\(\int_1^\infty u^{-\sigma}\,du\).
+For \(\sigma\leq0\), already the real integral on the finite-unit subset
+diverges at zero.
+
+In the convergent half-plane, dominated convergence justifies the same
+exhaustion for the complex integrand. Finite factorization then proves
+\eqref{eq:adeles-euler}. On a compact subset with
+\(\operatorname{Re}s\geq1+\delta\), the Dirichlet series has majorant
+\(\sum_n n^{-1-\delta}\). The finite Euler products converge uniformly
+by the same majorant and exhaustion. Equivalently, their logarithms have
+the absolutely convergent expansion
+\[
+ \sum_p\sum_{k\geq1}\frac{p^{-ks}}{k},\qquad
+ \sum_p\sum_{k\geq1}\frac{|p^{-ks}|}{k}
+ \leq\frac{1}{1-2^{-1-\delta}}\sum_{n\geq2}n^{-1-\delta}.
+\]
+This also verifies the usual absolute convergence of the Euler product.
+\end{proof}
+
+\begin{proposition}[An explicit idele class domain]
+\label{prop:adeles-idele-domain}
+Every idele has a unique expression
+\begin{equation}
+ x=q\,(t,u),\qquad q\in\mathbb Q^\times,\quad t\in\mathbb R_{>0},
+ \quad u\in U.
+ \label{eq:adeles-idele-domain}
+\end{equation}
+Here \((t,u)\) denotes an idele, and \(t=|x|_{\Adele}\).
+In these coordinates the measure is counting measure on
+\(\mathbb Q^\times\), multiplied by \(dt/t\) and probability measure
+\(du\) on \(U\). Thus
+\[
+ \mathbb Q^\times\backslash\Adele^\times
+ \simeq\mathbb R_{>0}\times U
+\]
+as topological groups, with quotient measure \((dt/t)du\).
+\end{proposition}
+
+\begin{proof}
+Let \(r_p=v_p(x_p)\), with only finitely many nonzero values, and set
+\[
+ q=\operatorname{sgn}(x_\infty)\prod_p p^{r_p}.
+\]
+Then \(u_p=x_p/q\) is a unit at every prime, while
+\(t=x_\infty/q>0\). The product formula gives
+\(t=|x|_{\Adele}\). Conversely, the finite valuations and real sign recover
+\(q\) from any expression of the stated form, so it is unique.
+The subset \(D=\mathbb R_{>0}\times U\) is an open subgroup of the
+idele group, and the sets \(qD\) are its disjoint open cosets.
+Restriction of \(d^{\times} x\) to \(D\) is exactly \((dt/t)du\).
+Multiplicative invariance proves the measure statement on each coset.
+The quotient map restricted to \(D\) is a continuous open group
+isomorphism. This proves the topological assertion as well.
+\end{proof}
+
+In particular, the subgroup of idele classes of norm one has volume one.
+There is no extra factor from the two real signs: the rational factor
+\(q\) in \eqref{eq:adeles-idele-domain} already records that sign.
+
+\subsection{Continuation from the Gaussian theta identity}
+\label{sec:adeles-continuation}
+
+For \(\operatorname{Re}s>1\), the preceding domain and absolute convergence
+allow unfolding over \(\mathbb Q^\times\):
+\begin{align}
+ Z(\phi,s)
+ &=\int_U\int_0^\infty
+      \sum_{q\in\mathbb Q^\times}\phi(q(t,u))t^s\,\frac{dt}{t}\,du
+ \notag\\
+ &=\int_0^\infty(\Theta(t)-1)t^s\,\frac{dt}{t}.
+ \label{eq:adeles-mellin-theta}
+\end{align}
+Indeed, since every \(u_p\) is a unit, the finite factors require
+\(q\in\mathbb Z\setminus\{0\}\). Both positive and negative integers
+occur. The sum is independent of \(u\), whose total measure is one.
+This proves the Mellin identity directly from the idele integral.
+
+For \(t\geq1\), the elementary inequality \(n^2\geq n\) gives
+\begin{equation}
+ 0<\Theta(t)-1
+ =2\sum_{n\geq1}e^{-\pi n^2t^2}
+ \leq\frac{2e^{-\pi t^2}}{1-e^{-\pi t^2}}
+ \leq\frac{2}{1-e^{-\pi}}e^{-\pi t^2}.
+ \label{eq:adeles-theta-bound}
+\end{equation}
+It follows that
+\[
+ E(s)=\int_1^\infty(\Theta(t)-1)t^s\,\frac{dt}{t}
+\]
+is entire. More explicitly, on every compact set of \(s\)-values and for
+every integer \(j\geq0\), the differentiated integrand is bounded by
+a constant times \(e^{-\pi t^2}t^{M-1}(\log t)^j\), for some fixed
+\(M\). This bound is integrable on \([1,\infty)\). Differentiation under
+the integral therefore proves holomorphy and all derivative formulas.
+
+\begin{theorem}[The completed rational zeta integral]
+\label{thm:adeles-tate}
+\label{thm:tate}
+With the character, measures, and test function defined above, the
+absolutely convergent integral on \(\operatorname{Re}s>1\) equals
+\[
+ Z(\phi,s)=\GammaR(s)\zeta(s)=:\Lambda(s),\qquad
+ \zeta(s)=\sum_{n\geq1}n^{-s}.
+\]
+Its unique meromorphic continuation to \(\mathbb C\) is
+\begin{equation}
+ \Lambda(s)=\frac1{s-1}-\frac1s+E(s)+E(1-s).
+ \label{eq:adeles-continuation}
+\end{equation}
+It has precisely two poles, both simple, with
+\[
+ \operatorname*{Res}_{s=1}\Lambda(s)=1,\qquad
+ \operatorname*{Res}_{s=0}\Lambda(s)=-1,
+ \qquad \Lambda(s)=\Lambda(1-s).
+\]
+Consequently,
+\[
+ \xi_{\mathbb R}(s)=\frac12s(s-1)\Lambda(s)
+\]
+is entire and satisfies \(\xi_{\mathbb R}(s)=\xi_{\mathbb R}(1-s)\).
+Its values at both \(0\) and \(1\) are \(1/2\).
+\end{theorem}
+
+\begin{proof}
+Proposition~\ref{prop:adeles-euler-product} proves the identity in the
+initial half-plane. Split \eqref{eq:adeles-mellin-theta} at \(t=1\).
+For \(0<t<1\), the proved theta identity gives
+\[
+ \Theta(t)-1=t^{-1}(\Theta(t^{-1})-1)+t^{-1}-1.
+\]
+When \(\operatorname{Re}s>1\), each of the following integrals converges
+absolutely. Substitution \(v=t^{-1}\) gives
+\begin{align*}
+ \int_0^1(\Theta(t)-1)t^s\,\frac{dt}{t}
+ &=\int_1^\infty(\Theta(v)-1)v^{1-s}\,\frac{dv}{v}
+   +\int_0^1(t^{s-1}-t^s)\,\frac{dt}{t}\\
+ &=E(1-s)+\frac1{s-1}-\frac1s.
+\end{align*}
+This proves \eqref{eq:adeles-continuation} on the original domain.
+Since \(E\) is entire, its right side defines a meromorphic function on
+\(\mathbb C\). The identity theorem gives uniqueness of the continuation.
+The rational part has residues \(1\) and \(-1\), and the remaining terms
+are entire. Thus neither pole cancels, and no other pole occurs.
+
+Replacing \(s\) by \(1-s\) exchanges the two entire terms and preserves
+the rational part. This proves the functional equation. Finally,
+\[
+ \xi_{\mathbb R}(s)
+ =\frac12+\frac12s(s-1)\bigl(E(s)+E(1-s)\bigr)
+\]
+proves the asserted entireness, symmetry, and endpoint values.
+\end{proof}
+
+The transformation in \eqref{eq:adeles-continuation} is the theta-integral
+argument in Riemann's paper \cite{Riemann1859}*{p.~3 of the transcription}.
+Tate's global theorem extends this mechanism to number fields and Hecke
+characters \cite{Tate1950}*{Main Theorem~4.4.1, pp.~339--341}.
+Here every summation and domain formula
+needed for the rational Gaussian integral has been proved explicitly.
+The continuation is a meromorphic scalar function. An operator family or
+cohomological determinant requires additional constructions on its own
+carrier.

@@ -1,0 +1,277 @@
+Write \(U=\{a\in\mathbb C:\operatorname{Re}a>0\}\).
+On this half-plane, \(\operatorname{Log}\) denotes the principal logarithm,
+which is real on the positive axis. All powers of \(a+x\), for \(x\geq0\),
+use this logarithm. For \(\operatorname{Re}w>1\), define
+\[
+ \zeta_H(w,a)=\sum_{r=0}^{\infty}(a+r)^{-w},\qquad a\in U.
+\]
+On every compact subset of this domain, the summands are bounded by
+\(C(1+r)^{-1-\varepsilon}\) for some \(C,\varepsilon>0\).
+Thus the sum is jointly holomorphic in \((w,a)\).
+
+\begin{lemma}[A summation formula with a controlled remainder]
+\label{lem:osc-summation}
+For real \(t\), let \(\{t\}=t-\lfloor t\rfloor\) and set
+\(q(t)=\{t\}(1-\{t\})/2\). For every integer \(N\geq0\),
+\begin{align}
+ \zeta_H(w,a)
+ &=\sum_{r=0}^{N-1}(a+r)^{-w}
+   +\frac{(N+a)^{1-w}}{w-1}+\frac12(N+a)^{-w}
+   +R_N(w,a),                                      \label{eq:osc-cutoff}\\
+ R_N(w,a)
+ &=w(w+1)\int_N^\infty q(t)(t+a)^{-w-2}\,dt.       \label{eq:osc-remainder}
+\end{align}
+The integral is jointly holomorphic for \(\operatorname{Re}w>-1\),
+\(a\in U\). Formula~\eqref{eq:osc-cutoff} gives a meromorphic continuation
+there, with only a simple pole at \(w=1\), of residue \(1\).
+In particular,
+\begin{equation}
+ \zeta_H(0,a)=\frac12-a,\qquad a\in U.              \label{eq:osc-zeta-zero}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+On \([n,n+1]\), the polynomial \(q(t)=(t-n)(n+1-t)/2\)
+vanishes at both endpoints. Its endpoint derivatives are \(1/2\) and
+\(-1/2\), and its second derivative is \(-1\).
+For any twice continuously differentiable complex function \(f\),
+two integrations by parts give
+\[
+ \int_n^{n+1}q(t)f''(t)\,dt
+ =\frac{f(n)+f(n+1)}2-\int_n^{n+1}f(t)\,dt.
+\]
+Sum this identity from \(n=N\) to \(n=M-1\). The endpoints give
+\[
+ \sum_{r=N}^{M-1}f(r)
+ =\int_N^M f(t)\,dt+\frac{f(N)-f(M)}2
+   +\int_N^M q(t)f''(t)\,dt.
+\]
+Take \(f(t)=(t+a)^{-w}\) and first assume \(\operatorname{Re}w>1\).
+Then \(f''(t)=w(w+1)(t+a)^{-w-2}\).
+The terms at \(M\) vanish as \(M\to\infty\), while
+\(\int_N^\infty f(t)\,dt=(N+a)^{1-w}/(w-1)\).
+This proves~\eqref{eq:osc-cutoff} in the initial domain.
+
+For joint continuation, fix compact sets \(K\subset U\) and
+\(W\subset\{\operatorname{Re}w>-1\}\).
+Put \(\delta=\min_K\operatorname{Re}a>0\) and
+\(\sigma=\min_W\operatorname{Re}w>-1\).
+The bounds \(0\leq q\leq1/8\) and
+\(t+\delta\leq|t+a|\leq t+\max_K|a|\) imply
+\[
+ |q(t)(t+a)^{-w-2}|
+ \leq C_{K,W}(1+t)^{-\sigma-2}.
+\]
+Indeed, \(|\arg(t+a)|<\pi/2\), and \(\operatorname{Im}w\) is bounded
+on \(W\). The same bound for any fixed parameter derivatives acquires
+only powers of \(\log(2+t)\) and additional nonpositive powers of \(1+t\).
+These bounds remain integrable. Differentiation under the integral is
+therefore valid locally in both variables. They also give
+\[
+ |R_N(w,a)|\leq C_{K,W}|w(w+1)|(1+N)^{-\sigma-1}.
+\]
+All other terms in~\eqref{eq:osc-cutoff} are holomorphic except the displayed
+pole at \(w=1\). Its residue is \((N+a)^0=1\).
+The continued formulas for different \(N\) agree, since they agree for
+\(\operatorname{Re}w>1\). At zero, the remainder vanishes, and the
+remaining terms give \(N-(N+a)+1/2\).
+\end{proof}
+
+The derivative at zero involves logarithms of finite products.
+The normalization is that of the Gamma integral already used in the
+local real factor:
+\begin{equation}
+ \Gamma(a)=\int_0^\infty e^{-x}x^{a-1}\,dx,
+ \qquad a\in U,                                   \label{eq:osc-gamma-integral}
+\end{equation}
+where \(x^{a-1}=\exp((a-1)\log x)\) uses the real logarithm.
+
+\begin{lemma}[The gamma logarithm and its reciprocal]
+\label{lem:osc-gamma}
+The integral~\eqref{eq:osc-gamma-integral} is holomorphic and nonzero on
+\(U\). There is a unique holomorphic logarithm \(L\) of \(\Gamma\)
+which is real on the positive axis. It satisfies, locally uniformly on \(U\),
+\begin{equation}
+ L(a)=\lim_{N\to\infty}
+ \left\{\log((N-1)!)+a\log N
+              -\sum_{r=0}^{N-1}\operatorname{Log}(a+r)\right\}.
+ \label{eq:osc-gamma-log-limit}
+\end{equation}
+The reciprocal of \(\Gamma\) extends to the entire function
+\begin{equation}
+ E(a)=a e^{\gamma a}\prod_{n=1}^{\infty}(1+a/n)e^{-a/n},
+ \qquad
+ \gamma=\lim_{N\to\infty}\left(\sum_{n=1}^N\frac1n-\log N\right).
+ \label{eq:osc-gamma-product}
+\end{equation}
+Its zeros are simple and occur exactly at \(0,-1,-2,\ldots\).
+Moreover, \(\Gamma(1)=1\) and \(\Gamma(a+1)=a\Gamma(a)\) on \(U\).
+\end{lemma}
+
+\begin{proof}
+On a compact set with \(0<\delta\leq\operatorname{Re}a\leq A\),
+the integral and each fixed derivative have an integrable majorant
+\[
+ e^{-x}(x^{\delta-1}+x^{A-1})(1+|\log x|^k).
+\]
+This proves holomorphy. Direct integration gives \(\Gamma(1)=1\).
+Integration by parts, with vanishing endpoints, gives the recurrence.
+
+For \(N\geq1\), repeated integration by parts on \([0,1]\) gives
+\[
+ \int_0^1 t^{a-1}(1-t)^N\,dt
+ =\frac{N!}{a(a+1)\cdots(a+N)}.
+\]
+At each step, integrate \(t^{a+j-1}\) and differentiate the remaining
+integer power of \(1-t\). The last integral is \(1/(a+N)\).
+The substitution \(x=Nt\) yields
+\[
+ \frac{N!N^a}{a(a+1)\cdots(a+N)}
+ =\int_0^N x^{a-1}(1-x/N)^N\,dx
+ \longrightarrow\Gamma(a).
+\]
+For \(0\leq x<N\), one has \((1-x/N)^N\leq e^{-x}\).
+Extend the integrand by zero for \(x\geq N\).
+The preceding majorants prove convergence locally uniformly in \(a\),
+including any fixed number of derivatives.
+
+Let \(H_N=\sum_{n=1}^N1/n\).
+The inequality \(\log(1+1/N)>1/(N+1)\) shows that \(H_N-\log N\)
+decreases. Integral comparison gives \(H_N\geq\log(N+1)\), so the
+sequence has a finite limit \(\gamma\).
+The reciprocals of the finite expressions above are
+\[
+ aN^{-a}\prod_{n=1}^N(1+a/n)
+ =a\exp\bigl(a(H_N-\log N)\bigr)
+       \prod_{n=1}^N(1+a/n)e^{-a/n}.
+\]
+For \(|u|\leq1/2\), the logarithm series gives
+\( |\operatorname{Log}(1+u)-u|\leq |u|^2\).
+Thus the logarithms of the product tails converge uniformly on each
+compact subset of \(\mathbb C\). Each tail is the exponential of a
+holomorphic sum and is nonzero. The finite initial factors prove that
+\(E\) is entire and identify every zero and its order.
+Multiplying the two finite expressions and passing to their locally
+uniform limits gives \(\Gamma E=1\) on \(U\).
+
+On \(U\), define explicitly
+\[
+ L(a)=-\operatorname{Log}a-\gamma a
+       -\sum_{n=1}^{\infty}
+        \bigl(\operatorname{Log}(1+a/n)-a/n\bigr).
+\]
+The locally uniform convergence proves holomorphy, and
+\(\exp L=1/E=\Gamma\). Every term is real for \(a>0\).
+Two holomorphic logarithms differ by a constant in \(2\pi i\mathbb Z\),
+so the stated real condition proves uniqueness.
+Finally, the expression in braces in~\eqref{eq:osc-gamma-log-limit} equals
+\[
+ -\operatorname{Log}a+a(\log N-H_{N-1})
+ -\sum_{n=1}^{N-1}
+        \bigl(\operatorname{Log}(1+a/n)-a/n\bigr).
+\]
+Here \(H_{N-1}-\log N\to\gamma\), which proves the limit with its
+specified branch.
+\end{proof}
+
+\begin{lemma}[The factorial constant]
+\label{lem:osc-stirling}
+As positive integers \(N\) tend to infinity,
+\begin{equation}
+ \log((N-1)!)
+ =\left(N-\frac12\right)\log N-N
+      +\frac12\log(2\pi)+o(1).                    \label{eq:osc-stirling}
+\end{equation}
+Also \(\Gamma(1/2)=\sqrt\pi\).
+\end{lemma}
+
+\begin{proof}
+Let \(J=\int_{\mathbb R}e^{-u^2/2}\,du\), which is finite and positive.
+The product integral in polar coordinates gives
+\[
+ J^2=\int_{\mathbb R^2}e^{-(u^2+v^2)/2}\,du\,dv
+ =2\pi\int_0^\infty e^{-r^2/2}r\,dr=2\pi.
+\]
+Positivity gives \(J=\sqrt{2\pi}\).
+Substitution \(x=u^2\) in~\eqref{eq:osc-gamma-integral}, followed by
+rescaling this Gaussian integral, gives \(\Gamma(1/2)=\sqrt\pi\).
+
+The recurrence for \(\Gamma\) gives \(n!=\int_0^\infty x^n e^{-x}\,dx\).
+Set \(x=n+\sqrt n\,u\). Then
+\begin{equation}
+ \frac{n!}{n^n e^{-n}\sqrt n}
+ =\int_{-\sqrt n}^{\infty}
+   \exp\left(n\left[\log(1+u/\sqrt n)-u/\sqrt n\right]\right)du.
+ \label{eq:osc-laplace}
+\end{equation}
+For each fixed \(u\), the exponent tends to \(-u^2/2\).
+We give bounds that justify integrating this limit.
+For \(-1<x\leq0\), differentiation shows
+\(\log(1+x)-x\leq-x^2/2\).
+For \(x\geq0\), integration of \(t/(1+t)\) gives
+\[
+ x-\log(1+x)=\int_0^x\frac{t}{1+t}\,dt
+ \geq\frac{x^2}{2(1+x)}.
+\]
+Consequently the integrand in~\eqref{eq:osc-laplace} is bounded by
+\(e^{-u^2/2}\) on \((-\sqrt n,0]\), and by \(e^{-u^2/4}\) on
+\([0,\sqrt n]\). Extend these portions by zero to apply dominated
+convergence on the two half-lines.
+
+For the remaining tail, \(\log(1+x)/x\) decreases for \(x>0\).
+Its derivative has the sign of
+\(x/(1+x)-\log(1+x)<0\), as integration of \(1/(1+t)\) shows.
+Thus, for \(x\geq1\),
+\(\log(1+x)-x\leq-\kappa x\), where \(\kappa=1-\log2>0\).
+The tail in~\eqref{eq:osc-laplace} is at most
+\[
+ \int_{\sqrt n}^{\infty}e^{-\kappa\sqrt n\,u}\,du
+ =\frac{e^{-\kappa n}}{\kappa\sqrt n}\longrightarrow0.
+\]
+It follows that \(n!/(n^n e^{-n}\sqrt n)\to\sqrt{2\pi}\).
+Take real logarithms, then use \((N-1)!=N!/N\), to obtain
+\eqref{eq:osc-stirling}.
+\end{proof}
+
+\begin{proposition}[The two Hurwitz values]
+\label{prop:osc-hurwitz-values}
+The continuation in Lemma~\ref{lem:osc-summation} is holomorphic near
+\(\{0\}\times U\), and
+\begin{equation}
+ \zeta_H(0,a)=\frac12-a,\qquad
+ \partial_w\zeta_H(0,a)=L(a)-\frac12\log(2\pi).
+ \label{eq:osc-hurwitz-values}
+\end{equation}
+Here \(L=\log\Gamma\) is exactly the holomorphic branch constructed in
+Lemma~\ref{lem:osc-gamma}.
+\end{proposition}
+
+\begin{proof}
+The first identity and joint holomorphy were proved in
+Lemma~\ref{lem:osc-summation}. Differentiating its exact formula at zero
+gives, with \(A=N+a\),
+\begin{align*}
+ \partial_w\zeta_H(0,a)
+ ={}&-\sum_{r=0}^{N-1}\operatorname{Log}(a+r)
+       +(A-\tfrac12)\operatorname{Log}A-A\\
+    &+\int_N^\infty\frac{q(t)}{(t+a)^2}\,dt.
+\end{align*}
+The last integral has absolute value at most \(1/(8(N+\delta))\)
+when \(\operatorname{Re}a\geq\delta>0\).
+It therefore tends to zero locally uniformly on \(U\).
+Use~\eqref{eq:osc-gamma-log-limit} to rewrite the remaining expression
+as the convergent approximation to \(L(a)\), plus
+\[
+ -\log((N-1)!)-a\log N
+ +(N+a-\tfrac12)\operatorname{Log}(N+a)-(N+a).
+\]
+By~\eqref{eq:osc-stirling}, this equals
+\[
+ -\frac12\log(2\pi)
+ +(N+a-\tfrac12)\operatorname{Log}(1+a/N)-a+o(1).
+\]
+For \(a\) in a fixed compact set,
+\(\operatorname{Log}(1+a/N)=a/N+O(N^{-2})\) uniformly.
+The last two terms therefore tend to zero locally uniformly.
+This proves the derivative identity for complex \(a\in U\) directly.
+\end{proof}

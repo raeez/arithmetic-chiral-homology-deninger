@@ -1,0 +1,142 @@
+\section{Deninger's determinant package}
+
+The oscillator and prime diagonal give the scalar identity of
+Corollary~\ref{cor:completed-euler}. An arithmetic cohomological
+realization must produce its operators independently, with the same
+normalization. The determinant prescription extends to the following
+algebraic spectral setting; the required continuation is an explicit
+hypothesis.
+
+\begin{definition}[Zeta-regularized determinant]
+\label{def:det}
+Let \(V=\bigoplus_\alpha V_\alpha\) be a countable algebraic direct sum of
+finite-dimensional \(T\)-invariant complex vector spaces.  Eigenvalues are
+counted with algebraic multiplicity.  Use
+\[
+ \lambda^{-z}=\exp\!\bigl(-z(\log|\lambda|+i\arg\lambda)\bigr),
+ \qquad -\pi<\arg\lambda\leq\pi.
+\]
+If \(0\) is an eigenvalue, set \(\det_\infty(T\mid V)=0\).  Otherwise
+suppose
+\[
+ \zeta_T(z)=\sum_{\lambda\in\operatorname{Spec}_{\mathrm{alg}}T}
+ m_T(\lambda)\lambda^{-z}
+\]
+converges absolutely in a right half-plane, extends meromorphically to
+\(\operatorname{Re}z>-\varepsilon\) for some \(\varepsilon>0\), and is
+holomorphic at zero.  Then
+\[
+ \det_\infty(T\mid V)=\exp(-\zeta_T'(0)).
+\]
+For a real space, this definition is applied after complexification.
+\end{definition}
+
+When zero is not an eigenvalue and the spectral zeta hypotheses hold,
+for \(c>0\) compatible branches give
+\[
+ \det_\infty(cT)=c^{\zeta_T(0)}\det_\infty(T).
+\]
+Thus a factor such as \(2\pi\) has a scale anomaly and cannot be suppressed
+without computing \(\zeta_T(0)\).
+
+\begin{theorem}[Conditional Deninger determinant formula]
+\label{thm:deninger}
+Assume that real vector spaces \(H^i\), concentrated in degrees
+\(i=0,1,2\), and endomorphisms \(\Theta_i\) are given, and that each
+complexification is a countable algebraic direct sum of finite-dimensional
+\(\Theta_i\)-invariant subspaces as in Definition~\ref{def:det}.  For
+\(s\notin\operatorname{Spec}_{\mathrm{alg}}(\Theta_i)\), apply
+Definition~\ref{def:det} to the pencil
+\[
+ D_i(s)=\det_\infty\left(
+ \frac{s-\Theta_i}{2\pi}\,\middle|\,H^i\right).
+\]
+Assume that each locally defined determinant is the restriction of a
+single-valued meromorphic function \(D_i\) on \(\mathbb C\), with the zero
+value of Definition~\ref{def:det} at spectral parameters, and that
+\[
+ (H^0,\Theta_0)=(\mathbb R,0),
+ \qquad (H^2,\Theta_2)=(\mathbb R,1),
+\]
+and that Deninger's cohomological identity holds in his normalization:
+\[
+ \widehat\zeta_D(s)=\frac{D_1(s)}{D_0(s)D_2(s)},
+ \qquad \widehat\zeta_D(s)=2^{-1/2}\Lambda(s).
+\]
+Then
+\[
+ D_0(s)=\frac{s}{2\pi},\qquad
+ D_2(s)=\frac{s-1}{2\pi},
+\]
+and
+\[
+ \Lambda(s)=\sqrt2\,\frac{D_1(s)}{D_0(s)D_2(s)},
+ \qquad
+ \xi_{\mathbb R}(s)=2\sqrt2\,\pi^2D_1(s).
+\]
+\end{theorem}
+
+\begin{proof}
+The determinants in degrees zero and two are ordinary one-dimensional
+determinants.  Substitution into the assumed alternating determinant formula
+gives
+\[
+ D_1(s)=2^{-1/2}\Lambda(s)\frac{s(s-1)}{4\pi^2}
+ =\frac{\xi_{\mathbb R}(s)}{2\sqrt2\,\pi^2}.
+\]
+The assumed factor $2^{-1/2}$ is the normalization in
+\cite[\S3, equation~(3)]{Deninger1998}, and it agrees with
+Corollary~\ref{cor:completed-euler}.
+\end{proof}
+
+The theorem is an implication from the displayed package.  It does not
+construct \(H^1\), \(\Theta_1\), or their determinant.  In particular,
+\(\det_\infty(\Theta_1)\) is a scalar, whereas
+\(\xi_{\mathbb R}(s)\) is a function; the parameter belongs in the pencil
+\((s-\Theta_1)/(2\pi)\).
+
+\begin{corollary}[Conditional Hilbert--P\'olya consequence]
+\label{cor:hp}
+In addition to Theorem~\ref{thm:deninger}, suppose \(H^1_{\mathbb C}\) has a
+Hilbert completion \(\mathscr H^1\) on which \(\Theta_1\) has a densely
+defined closed extension with compact resolvent.  Assume, with algebraic
+multiplicities, the exact multiset equality
+\[
+ \operatorname{Spec}(\Theta_1)
+ =\{\rho:\xi_{\mathbb R}(\rho)=0\},
+ \qquad
+ m_{\mathrm{alg}}(\rho,\Theta_1)
+ =\operatorname{ord}_{s=\rho}\xi_{\mathbb R}(s),
+\]
+and assume that there is no additional point, continuous, or residual
+spectrum.  Then
+\[
+ \operatorname{Spec}(\Theta_1)\subset\tfrac12+i\mathbb R
+\]
+is equivalent to the Riemann Hypothesis.
+
+If, for a positive-definite Hilbert inner product,
+\[
+ \mathcal D(\Theta_1^*)=\mathcal D(\Theta_1),
+ \qquad \Theta_1^*=1-\Theta_1,
+\]
+then \(H_{\mathrm{HP}}=-i(\Theta_1-\tfrac12)\) is self-adjoint.  Under the
+same exact spectral comparison, this adjoint identity implies the Riemann
+Hypothesis.
+\end{corollary}
+
+\begin{proof}
+The first equivalence is the stated equality of multisets rewritten in
+spectral language.  For the last assertion, put
+\(A=\Theta_1-\tfrac12\).  The domain equality and adjoint identity say
+\(A^*=-A\), so \(-iA\) is self-adjoint and
+\(\operatorname{Spec}(A)\subset i\mathbb R\).
+\end{proof}
+
+For an unbounded operator, a formal adjoint formula checked only on a common
+dense invariant domain proves only skew-symmetry unless essential
+skew-adjointness is also shown. A compatible nondegenerate indefinite
+pairing can yield reflected spectral symmetry without critical-line
+confinement. In multiplicative language the eigenvalues
+of \(e^{\Theta_1}\), not of \(\Theta_1\), would have modulus
+\(e^{1/2}\) under the conclusion of Corollary~\ref{cor:hp}.

@@ -1,0 +1,177 @@
+\section{Arithmetic comparison maps}
+\label{sec:arithmetic-comparison}
+
+Proposition~\ref{prop:divisor-bar} uses the multiplication of effective
+divisors and its augmentation module. To compare it with arithmetic cochains,
+one must specify the coefficient category and the boundary modules there.  Let \((\mathcal C,\widehat\otimes,\one)\) be a stable, closed,
+\(\mathbb C\)-linear symmetric monoidal category with a dg model.  Assume
+that it admits geometric realizations and filtered colimits and that
+tensoring preserves them separately in each variable. Here $E_1$ means
+associative multiplication with its coherent higher homotopies. For an
+\(E_1\)-algebra \(A\), a right \(A\)-module \(M\), and a left
+\(A\)-module \(N\), the simplicial two-sided bar has
+\[
+ \operatorname{Bar}_A(M,N)_n
+ =M\widehat\otimes A^{\widehat\otimes n}\widehat\otimes N.
+\]
+Its faces use the multiplication and module actions, while its degeneracies
+use the unit.  Its realization computes \(M\widehat\otimes_A N\) under the
+stated hypotheses
+\cite[Construction~4.4.2.7 and Theorem~4.4.2.8]{LurieHA}.  An augmentation
+\(\epsilon:A\to\one\) makes \(\one\) into both boundary modules and hence
+defines the reduced bar \(B(A)=\operatorname{Bar}_A(\one,\one)\).
+
+An associative chiral duality must compare this multiplication
+and its bar with another associative object in a specified category of
+factorization data. A Lie--commutative chiral duality has different input
+and output operations and supplies no such comparison without an
+additional functor and compatibility maps.
+
+\begin{proposition}[One heat trace, inequivalent bars]
+\label{prop:two-bars}
+Fix \(p\) and let
+\(V_p=\bigoplus_{r\geq0}\mathbb C e_r\), with
+\(N_pe_r=r\log p\,e_r\).  Give $e_r$ weight $r$ and put every $e_r$ in homological degree zero.
+The same pointed weight-graded vector space carries the
+two augmented associative algebra structures
+\[
+ A_p^{\mathrm{pol}}=\mathbb C[u],\quad e_r=u^r,
+ \qquad
+ A_p^{\mathrm{sq}}=\mathbb C\oplus I,\quad
+ I=\bigoplus_{r\geq1}\mathbb C e_r,\quad I^2=0,
+\]
+with unit \(e_0\) and augmentation \(e_0\mapsto1\),
+\(e_r\mapsto0\) for \(r>0\).  In both cases \(N_p\) is a derivation, and
+on the common Hilbert completion both algebras give the heat trace
+\[
+ \operatorname{Tr}(e^{-sN_p})=(1-p^{-s})^{-1},
+ \qquad \operatorname{Re}s>0.
+\]
+Nevertheless, their reduced bars are not quasi-isomorphic.  For the
+augmentation module \(\mathbb C\),
+\[
+ \operatorname{Tor}^{A_p^{\mathrm{pol}}}_n(\mathbb C,\mathbb C)
+ =\begin{cases}
+   \mathbb C,&n=0,\\
+   \mathbb C\eta_p,&n=1,\\
+   0,&n\geq2,
+  \end{cases}
+ \qquad
+ \operatorname{Tor}^{A_p^{\mathrm{sq}}}_n(\mathbb C,\mathbb C)
+ =I^{\otimes n}\quad(n\geq0).
+\]
+Thus the energy spectrum and its trace do not select an \(E_1\)-algebra or
+a bar construction.
+\end{proposition}
+
+\begin{proof}
+The two-term Koszul resolution of \(\mathbb C\) over \(\mathbb C[u]\)
+gives the first calculation.  In the normalized bar of
+\(\mathbb C\oplus I\), every multiplication face on the augmentation ideal
+vanishes because \(I^2=0\), so the reduced bar differential is zero and its
+degree-\(n\) term is \(I^{\otimes n}\).  The derivation identity is immediate
+for the polynomial product and is still valid when two positive-weight
+elements have zero product.  The heat trace depends only on the common
+diagonal operator.
+\end{proof}
+
+\begin{remark}
+The Toeplitz algebra does not remove this ambiguity.  It has no augmentation
+sending \(S_p\) to zero, since \(S_p^*S_p=1\).  Every character sends
+\(S_p\) to a scalar of modulus one, and no such character is invariant under
+\(S_p\mapsto p^{it}S_p\).  A Toeplitz bar therefore requires explicitly
+chosen boundary modules; it cannot silently inherit the polynomial
+augmentation.
+\end{remark}
+
+\begin{openproblem}[Arithmetic-chiral realization]
+\label{problem:bar}
+Extend the divisor construction of Section~\ref{sec:divisor-bar} to
+arithmetic local coefficients by constructing the following data and
+compatibilities.  In particular, identify the maps from the divisor
+algebras or their bars to the proposed arithmetic objects.
+
+\begin{enumerate}
+\item Fix one category
+\((\mathcal C,\widehat\otimes,\one)\) as above, including the completion
+functor or tensor topology.  For every place \(v\), give an augmented
+\(E_1\)-algebra \((A_v,\eta_v,\epsilon_v)\), or give explicit right and
+left boundary modules when no augmentation is intended.  At infinity,
+also give the realization functor from the chosen chiral or factorization
+algebra to \(\mathcal C\).
+
+\item Construct each local bar through simplicial length three, with its
+grading and signs.  For a finite set \(S\) of places containing infinity,
+form the declared completed tensor product \(B_S\) of the local bars.
+
+\item Use cohomological indexing for this twisting construction, so the
+homological bar above is reindexed as \(B^{-n}=B_n\), with the same
+differential.  Give a coaugmented conilpotent dg coalgebra
+\[
+ P_S\in\operatorname{CoAlg}_{\mathrm{conil}}(\mathcal C),
+ \qquad \eta_{P_S}:\one\longrightarrow P_S,
+\]
+set
+\(E_S=\underline{\operatorname{End}}_{\mathcal C}(B_S)\), and construct a
+continuous degree-one map
+\[
+ \tau_S:P_S\longrightarrow E_S.
+\]
+Require the normalization \(\tau_S\circ\eta_{P_S}=0\).  Equip these
+objects with complete separated descending filtrations for which the
+differentials, coproduct, composition, and action on \(B_S\) are continuous.
+Require the resulting twisting summand \(T_{\tau_S}\) either to be locally
+nilpotent before completion or to satisfy
+\(T_{\tau_S}(F^r)\subseteq F^{r+1}\), so that every iterated expression in
+the completed tensor product converges.
+For homogeneous maps use the declared convolution product and Hom
+differential
+\[
+ (f\star g)(c)=
+ \sum(-1)^{|g||c_{(1)}|}f(c_{(1)})g(c_{(2)}),
+ \qquad
+ d_{\mathrm{Hom}}f=d_Ef-(-1)^{|f|}f d_P.
+\]
+Prove the Maurer--Cartan equation
+\[
+ d_{\mathrm{Hom}}\tau_S+\tau_S\star\tau_S=0,
+\]
+write the induced twisted differential on
+\(P_S\widehat\otimes B_S\) with all Koszul signs, and verify its square
+directly.
+
+\item If \(\tau_S\) is to come from tame symbols, construct its
+chain-level factorization through a specified residue-unit group algebra
+and an action of that algebra on \(B_S\).  A multiplicative reciprocity
+identity alone is not a Maurer--Cartan proof.
+
+\item For every inclusion \(S\subset T\), construct a chain map
+\[
+ j_{S,T}:(P_S\widehat\otimes B_S,D_{\tau_S})
+ \longrightarrow(P_T\widehat\otimes B_T,D_{\tau_T})
+\]
+with strict or specified homotopy-coherent composition.  Prove that it
+intertwines the twisting operators.  Only then form the filtered colimit
+and its cohomology.  Any claimed concentration in degrees \(0,1,2\) must
+be proved; three untwisted polynomial prime factors already have the
+nonzero class \(\eta_p\wedge\eta_q\wedge\eta_r\) in degree three.
+
+\item Relate a finite-place algebra to the Toeplitz carrier by an actual
+representation on the dense space \(\bigoplus_{r\geq0}\mathbb C e_{p,r}\)
+and an Euler derivation \(E_p\) satisfying
+\[
+ [N_p,\pi_p(a)]=\pi_p(E_pa)
+\]
+on a common invariant domain.  For the divisor algebra this part is
+already supplied by \(\pi_p(u_p)=S_p\) and
+\(E_p(u_p^r)=r\log p\,u_p^r\): direct evaluation on the finite basis span
+gives \([N_p,S_p^r]=r\log p\,S_p^r\).
+The additional arithmetic coefficient algebra must carry its own such
+representation and comparison with this divisor model.
+\end{enumerate}
+
+No system with the stated arithmetic, archimedean-chiral, tame-symbol, and
+transition properties is constructed here.  Until one is constructed, its
+colimit and cohomology are specifications rather than arithmetic-chiral
+invariants.
+\end{openproblem}

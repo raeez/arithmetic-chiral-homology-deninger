@@ -1,0 +1,361 @@
+\section{Finite covers and domain restrictions}
+\label{sec:finite-covers}
+
+The continuation of a determinant depends on the permitted paths.
+A germ may have finitely many branches under paths in one domain even
+when paths that leave the domain produce infinitely many additional values.
+We determine the least cover for the first choice and the components
+created by the second.  The definitions of \(\Delta_m,c_m,\omega_m,\alpha_m\)
+and their local charts are those of Section~\ref{sec:prime-continuation},
+including \(m=1\).  Write \(\mathcal G_m=\operatorname{im}\chi_m\).
+A finite branched cover of degree \(d\) is a proper surjective holomorphic
+map of connected Riemann surfaces with discrete branch values and total
+local degree \(d\) over every point.  Proper means that inverse images
+of compact sets are compact; the total local degree is the sum of the
+ramification indices in a fibre.
+
+\subsection{An exact criterion for a finite cover}
+
+Let \(D\subset\Hp\) be a connected open set, and put
+\(D^\circ=D\setminus S_m\).
+Choose \(b\in D^\circ\) and a path in \(\Omega_m\) from \(2\) to \(b\).
+It fixes a nonzero continued germ \(f_b\).
+Restrict the differential and define
+\[
+ \mathcal G_m(D)=\left\{\exp\int_\gamma\omega_m:
+       \gamma\text{ is a loop in }D^\circ\text{ based at }b\right\}.
+\]
+Changing the initial path changes \(f_b\) by a constant in \(\mathcal G_m\),
+but it leaves this subgroup unchanged.
+Let \(\mathcal M(D)\) denote the field of single-valued meromorphic
+functions on \(D\).
+A germ is algebraic over \(\mathcal M(D)\) if it satisfies a nonzero
+polynomial with coefficients in that field.
+Its algebraic degree is the least degree of such a polynomial.
+A polynomial is irreducible if it has no factorization into polynomials
+of smaller positive degrees over the same field.
+
+\begin{theorem}[Finite-cover criterion]
+\label{mono:thm:criterion}
+The following conditions are equivalent.
+\begin{enumerate}
+\item The group \(\mathcal G_m(D)\) is finite.
+\item There is an integer \(k\geq1\) such that
+\(k\int_\gamma\omega_m\in2\pi i\mathbb Z\) for every loop in \(D^\circ\).
+\item Some positive integer power of \(f_b\) extends meromorphically to \(D\).
+\item A connected finite branched cover of \(D\) carries a meromorphic
+function agreeing with the continued germ near a point over \(b\).
+\item The germ \(f_b\) is algebraic over \(\mathcal M(D)\).
+\end{enumerate}
+When these conditions hold, let \(k=|\mathcal G_m(D)|\).
+Then \(k\) is the least possible power in condition (iii), the least
+cover degree in condition (iv), and the algebraic degree in condition (v).
+There is \(A_D\in\mathcal M(D)\) such that the minimal cover is the
+branched filling of \(y^k=A_D(s)\), with \(y(b)=f_b(b)\).
+The polynomial \(X^k-A_D\) is irreducible over \(\mathcal M(D)\).
+\end{theorem}
+
+\begin{proof}
+A finite subgroup of \(\mathbb C^*\) of size \(k\) equals the group
+\(\mu_k\) of \(k\)-th roots of unity.
+Indeed, multiplying all its elements before and after multiplication
+by one element \(g\) gives \(g^k=1\).
+There are exactly \(k\) roots, so the inclusion is equality.
+Conversely a subgroup annihilated by \(k\) has at most \(k\) elements.
+This proves the equivalence of (i) and (ii).
+
+Under (ii), define on \(D^\circ\)
+\[
+ A_D(s)=f_b(b)^k\exp\left(k\int_b^s\omega_m\right).
+\]
+The period condition makes it path independent and holomorphic.
+At a puncture \(a\in D\cap S_m\), a small positive loop gives
+\(k\alpha_m(a)\in\mathbb Z\).
+Theorem~\ref{mono:prop:local} consequently makes \(A_D\) meromorphic there.
+This proves (iii).  Conversely, continuing a meromorphic power around a
+loop gives \(g^k=1\), so (iii) implies (ii).
+
+For \(k=|\mathcal G_m(D)|\), the equation \(y^k=A_D\) over \(D^\circ\)
+is a connected \(k\)-sheeted cover.
+Local roots give its sheets, and continuation realizes every element
+of \(\mu_k\), so every sheet is reached from the specified one.
+For completeness, at a zero or pole write
+\(A_D(s)=(s-a)^v u(s)\) and choose \(h^k=u\).
+If \(d=\gcd(k,|v|)\), its local charts are
+\[
+ s=a+t^{k/d},\qquad
+ y=\xi\,t^{v/d}h(a+t^{k/d}),\qquad \xi^k=1.
+\]
+There are \(d\) distinct charts: changing \(t\) by a \((k/d)\)-th
+root identifies exactly \(k/d\) choices of \(\xi\).
+They fill all punctured sheets and give a meromorphic \(y\).
+When \(v=0\), use \(d=k\) and ordinary unramified charts.
+These local changes glue to the given cover on \(D^\circ\).
+Above a sufficiently small closed disk there are finitely many compact
+coordinate disks.  A finite covering of a compact subset of \(D\)
+by such disks proves properness.  This proves (iv).
+The polynomial equation also proves (v).
+
+Suppose (iv) holds on a cover \(\pi:X\to D\) of degree \(d\),
+with meromorphic function \(F\) and possibly additional branch values
+in \(D^\circ\).
+Move the base point slightly to avoid them.
+Every loop in \(D^\circ\) can be perturbed to avoid the discrete extra
+branch values without changing its period.
+Lifting such a loop sends the initial sheet to one of at most \(d\) sheets.
+The continued value is multiplied by its monodromy factor.
+Distinct factors give distinct nonzero values at that point.
+Thus \(|\mathcal G_m(D)|\leq d\), proving (i) and the lower bound for cover degree.
+The identity \(dF/F=\pi^*\omega_m\), initially valid near the chosen
+point, extends as a meromorphic identity on the connected cover.
+Thus \(F\) has no zero or pole above \(D^\circ\), and its agreement
+with the continued germ persists along the lifted paths.
+
+Finally suppose a polynomial of degree \(d\) vanishes on the germ.
+Choose a point in \(D^\circ\) where its leading coefficient is nonzero
+and all coefficients are finite.  Such points exist because the leading
+coefficient is not identically zero and its exceptional sets are discrete.
+Analytic continuation of the polynomial identity shows that all monodromy
+values at that point are its roots.
+Again these values are distinct, so \(|\mathcal G_m(D)|\leq d\).
+This proves (v) implies (i), and every annihilating polynomial has degree
+at least \(k\).
+The polynomial \(X^k-A_D\) attains that degree and is irreducible:
+otherwise one of its smaller-degree factors would vanish on the germ.
+A power is single-valued exactly when it annihilates \(\mu_k\), which
+requires divisibility by \(k\).  All three minimality claims follow.
+\end{proof}
+
+The criterion uses periods of loops in \(D\), not only residues at
+points inside \(D\).
+For example, choose a small disk about \(a=1/p\) containing no other
+point of \(S_m\), where \(p\geq m\geq2\) is prime.
+An annulus \(r<|s-a|<R\) inside this disk has no divisor points.
+Nevertheless its central loop has residue integral \(2\pi i/p\),
+so its minimal cover has degree \(p\).
+Deleting the center has removed the local pole from the domain but
+has retained the loop around it.
+
+\subsection{Order one, higher orders, and finite restrictions}
+
+For \(m=1\), divisor cancellation gives
+\(c_1(1)=1\) and \(c_1(n)=0\) for \(n>1\).
+Consequently
+\[
+ \Delta_1=\zeta^{-1},\qquad
+ \omega_1=-\frac{\zeta'}{\zeta}\,ds,\qquad
+ \alpha_1(a)=-\ord_a\zeta.
+\]
+The inverse zeta function is meromorphic on \(\Hp\), and the
+scalar continuation of Theorem~\ref{thm:tate} extends it meromorphically
+to \(\mathbb C\).
+Every residue is an integer and \(\mathcal G_1(D)=\{1\}\) for every connected
+\(D\subset\Hp\).  All three degrees in Theorem~\ref{mono:thm:criterion}
+are one.  In particular, \(\alpha_1(1/p)=0\) for every prime \(p\).
+At \(1\) it has a simple zero, and at a zeta zero of multiplicity \(v\)
+it has a pole of order \(v\).
+
+\begin{corollary}[Algebraic obstruction for higher orders]
+\label{mono:thm:global}
+For \(m\geq2\), the determinant germ is transcendental over
+\(\mathcal M(\Hp)\).  No connected finite branched cover of \(\Hp\)
+carries its coherent continuation as a meromorphic function, and no
+nonzero single-valued meromorphic multiplier changes this conclusion.
+\end{corollary}
+
+\begin{proof}
+Theorem~\ref{thm:infinite-degree} gives monodromy of order \(p\) at
+\(1/p\) for every prime \(p\geq m\).  The image is therefore infinite,
+and Theorem~\ref{mono:thm:criterion} excludes both algebraicity and a
+finite branched realization.  A meromorphic multiplier adds integer
+local orders and integral multiples of \(2\pi i\) to the periods,
+so its continuation character is trivial.
+\end{proof}
+
+For a reduced rational number \(x\), let \(\operatorname{den}(x)\) be
+its positive denominator, with \(\operatorname{den}(0)=1\).
+For \(\epsilon>0\), define the finite integer
+\[
+ M_m(\epsilon)=\operatorname{lcm}
+ \{\operatorname{den}(c_m(n)):n\geq1,\ n\epsilon<1\},
+\]
+where the least common multiple of an empty set is one.
+
+\begin{theorem}[Exact degree on a smaller half-plane]
+\label{mono:thm:halfplane}
+For continuation along paths in \(\Hp_\epsilon\setminus S_m\),
+\[
+ \mathcal G_m(\Hp_\epsilon)=\mu_{M_m(\epsilon)}.
+\]
+Hence the least cover degree and algebraic degree on \(\Hp_\epsilon\)
+are exactly \(M_m(\epsilon)\).
+Every relatively compact connected domain \(D\subset\Hp\) admits a
+finite branched realization of its chosen continued germ.
+Its degree divides \(M_m(\epsilon)\) whenever \(D\subset\Hp_\epsilon\).
+\end{theorem}
+
+\begin{proof}
+Choose \(N\geq m\) with \(1/(N+1)\leq\epsilon\).
+For every \(n\leq N\) satisfying \(n\epsilon\geq1\),
+\(\zeta(ns)=e^{Z(ns)}\) is holomorphic and nonzero on \(\Hp_\epsilon\).
+Its logarithm can be absorbed into the holomorphic remainder.
+The only logarithmic factors left have \(n\epsilon<1\).
+Every residue is therefore an integer combination of the corresponding
+\(c_m(n)\).
+The residue-period formula on this convex half-plane puts the monodromy
+inside \(\mu_{M_m(\epsilon)}\).
+Conversely, the point \(1/n\) lies inside precisely when \(n\epsilon<1\).
+Its loop gives \(e^{2\pi i c_m(n)}\).
+The subgroup generated by these finitely many roots has order equal to
+the least common multiple of their orders: an integer annihilates all
+of them precisely when every reduced denominator divides it.
+This proves equality.
+
+A compact subset of \(\Hp\) has positive minimum real part.
+Thus the closure of a relatively compact \(D\) lies in some
+\(\Hp_\epsilon\).  Each loop in \(D\setminus S_m\) is also a loop
+in that half-plane, so \(\mathcal G_m(D)\) is a subgroup of the finite cyclic group.
+Its order divides \(M_m(\epsilon)\).
+Apply Theorem~\ref{mono:thm:criterion}.
+\end{proof}
+
+For \(m=2\), the coefficients begin
+\[
+ c_2(2)=\tfrac12,\quad c_2(3)=\tfrac13,\quad c_2(4)=0,
+ \quad c_2(5)=\tfrac15,\quad c_2(6)=-\tfrac16.
+\]
+Thus the exact half-plane degrees are
+\[
+ \begin{array}{c|ccccc}
+ \epsilon&1/3&1/4&1/5&1/6&1/7\\\hline
+ M_2(\epsilon)&2&6&6&30&30
+ \end{array}
+\]
+The strict inequality excludes \(n=3\) at \(\epsilon=1/3\).
+The zero coefficient at four contributes no ramification.
+At \(1/6\), the exponent \(-1/6\) gives a simple pole after the
+sixfold local substitution.
+These examples exhibit boundary exclusion, cancellation, and a pole
+within the same determinant.
+
+\subsection{Restricting every globally continued branch}
+
+Let \(D\subset\Hp\) be connected, with the path and base point chosen
+as in Theorem~\ref{mono:thm:criterion}.
+The preimage \(\pi^{-1}(D^\circ)\subset\mathcal E_m\) includes every
+branch obtained by paths in the full \(\Omega_m\).
+It can have more than one component.  The component containing the
+chosen point uses only paths in \(D^\circ\).
+
+\begin{theorem}[Components after restriction]
+\label{mono:thm:restriction}
+The connected components of \(\pi^{-1}(D^\circ)\) are indexed by the
+cosets \(\mathcal G_m/\mathcal G_m(D)\).
+Each component is a copy of the minimal pointed continuation cover for
+paths in \(D^\circ\), with degree \(|\mathcal G_m(D)|\).
+On a component indexed by a representative \(g\in \mathcal G_m\), the determinant
+is the chosen component's function multiplied by \(g\).
+These identifications extend over the local branched fillings in \(D\).
+
+If \(m\geq2\) and \(D\) is relatively compact, there are infinitely many
+components, each of finite degree.
+A finite cover carrying a single meromorphic function cannot encode all
+globally obtained branch values over \(D\).
+Nevertheless the minimal finite cover of \(D\) supports, as separate
+functions, all the multiples \(g f\), \(g\in \mathcal G_m\).
+\end{theorem}
+
+\begin{proof}
+At \(b\), identify the fiber with \(\mathcal G_m\) using the chosen initial path.
+Lifting loops in \(D^\circ\) moves a point exactly through its coset
+of \(\mathcal G_m(D)\).
+Points in the same coset are connected by these lifts.
+A path in the preimage connecting two fiber points projects to a loop
+in \(D^\circ\), so points in different cosets cannot be connected.
+Every component meets that fiber by lifting a path to \(b\).
+This proves the component classification.
+
+Prepending a loop with character \(g\) defines a holomorphic map between
+the chosen component and its translate.
+It has the inverse obtained from \(g^{-1}\), commutes with the projection,
+and multiplies the determinant by \(g\).
+This proves the stated identification of functions and covers.
+At a puncture their exponents are the same \(\alpha_m(a)\).
+Multiplication by \(g\) changes only the nonzero constant in
+Theorem~\ref{mono:prop:local}, so the maps extend across its local charts.
+A local cycle stays within its component, because its loop belongs to
+\(\mathcal G_m(D)\).  Filling cannot merge different components.
+
+For relatively compact \(D\), Theorem~\ref{mono:thm:halfplane} makes
+\(\mathcal G_m(D)\) finite, whereas Corollary~\ref{mono:thm:global} makes \(\mathcal G_m\) infinite.
+The coset set is therefore infinite.
+At any ordinary point there are infinitely many distinct global branch
+values, all nonzero scalar multiples indexed by \(\mathcal G_m\).
+One meromorphic function on a degree-\(d\) cover has at most \(d\)
+values above an ordinary point.  It cannot contain that entire set.
+On the other hand, each separately specified function \(g f\) is
+meromorphic on the same finite cover as \(f\).
+This proves both assertions without identifying the two meanings of
+carrying all branches.
+\end{proof}
+
+For example, on a small disk about \(2\), the group \(\mathcal G_m(D)\) is
+trivial and a single local function suffices for paths confined to the disk.
+For \(m\geq2\), the global surface restricts to infinitely many disjoint
+copies of that disk, with the functions \(g\Delta_m\), \(g\in \mathcal G_m\).
+Going around a distant reciprocal-prime point and returning to the disk
+changes which copy contains the endpoint.
+
+Theorem~\ref{thm:infinite-degree} also excludes a finite-degree cover
+of a neighborhood of zero carrying the specified germs at all sufficiently
+small positive reciprocal-prime points.  That conclusion uses their
+unbounded local indices.  It gives no natural-boundary statement at any
+other point of the imaginary axis.
+
+\subsection{Compatibility with the finite root equations}
+
+The finite degree can also be read directly from the equations
+\(y^{M_N}=A_{m,N}(s)\) in Section~\ref{sec:prime-continuation}.
+The comparison depends on the initial branch as well as the domain.
+
+\begin{proposition}[The pointed component on a finite half-plane]
+\label{prop:finite-root-comparison}
+Fix \(m\geq2\), \(N\geq m\), and \(D=U_N=\Hp_{1/(N+1)}\).
+Choose \(b=2\) and the initial value \(f_b(2)=\Delta_m(2)\).
+Then
+\[
+ M_m(1/(N+1))=M_N,\qquad A_D=A_{m,N}.
+\]
+The minimal cover of Theorem~\ref{mono:thm:criterion} identifies with the
+finite root surface by \((s,y)\mapsto(s,y)\), including its branched filling.
+Inside the global surface, this is the component containing the initial
+point.  The components over \(U_N\) are indexed by
+\(\mathcal G_m/\mu_{M_N}\).
+Changing the initial germ by a factor \(g\in\mathcal G_m\) changes
+\(A_D\) by \(g^{M_N}\).
+\end{proposition}
+
+\begin{proof}
+The strict condition \(n/(N+1)<1\) is exactly \(n\leq N\).
+Coefficients below \(m\) vanish, so the two least common multiples agree.
+The finite product is the explicitly defined meromorphic function
+\[
+ A_{m,N}(s)=\exp(M_NT_{m,N}(s))
+       \prod_{n=m}^N\zeta(ns)^{-M_Nc_m(n)}.
+\]
+Both \(A_D\) and \(A_{m,N}\) have logarithmic derivative \(M_N\omega_m\)
+on \(U_N\setminus S_m\).
+At \(2\), both equal \(\Delta_m(2)^{M_N}\), by the initial extraction
+formula.  Their ratio has derivative zero on this connected domain and
+value one at \(2\), proving equality there and meromorphically on \(U_N\).
+The root equations and initial roots coincide, and their local charts use
+the same reduced residue.  The identity map therefore extends over all
+filled points.
+Theorem~\ref{mono:thm:halfplane} identifies the subgroup with \(\mu_{M_N}\),
+and Theorem~\ref{mono:thm:restriction} gives the component set.
+Finally the definition of \(A_D\) contains the factor \(f_b(2)^{M_N}\).
+Replacing that value by \(g f_b(2)\) multiplies \(A_D\) by \(g^{M_N}\).
+Thus paths leaving \(U_N\) can select another component, while paths
+confined to \(U_N\) retain the pointed one.
+\end{proof}
+

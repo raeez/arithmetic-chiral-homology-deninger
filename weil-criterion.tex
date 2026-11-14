@@ -1,0 +1,175 @@
+\section{Weil's full criterion}
+\label{sec:weil-full}
+
+A positive realization of the zeros must recover a full arithmetic
+quadratic form. The criterion used below is the classical explicit
+formula and positivity theorem of Weil; its general contour and
+zero-separation theorem are imported in the stated test class. The
+normalization calculation records every local term. The subsequent
+narrow-window estimates are direct inequalities for this full form.
+
+\begin{definition}[Weil test class]
+\label{def:weil-class}
+Let \(\mathcal W\) consist of complex-valued functions
+\(f:\mathbb R\to\mathbb C\) which are continuously differentiable away
+from finitely many points, have finite one-sided limits there for both
+\(f\) and \(f'\), and satisfy the convention
+\[
+ f(a)=\tfrac12\bigl(f(a+)+f(a-)\bigr)
+\]
+at every exceptional point \(a\).  Suppose also that, for some \(b>0\),
+\[
+ f(u),f'(u)=O(e^{-(1/2+b)|u|}).
+\]
+These hypotheses are Weil's conditions (A)--(B)
+\cite[p.~259]{Weil1952}.
+For \(f\in\mathcal W\), set
+\[
+ \widetilde f(u)=\overline{f(-u)},\qquad g=f*\widetilde f,
+\]
+and fix the Fourier convention
+\[
+ h(t)=\widehat g(t)=\int_{\mathbb R}g(u)e^{itu}\,du,
+ \qquad
+ g(u)=\frac1{2\pi}\int_{\mathbb R}h(t)e^{-itu}\,dt.
+\]
+\end{definition}
+
+For every \(0<b'<b\), the convolution \(g\) satisfies the same conditions
+with \(b'\) in place of \(b\).  Piecewise integration by parts, uniformly
+for \(|\eta|\leq\tfrac12\), gives
+\[
+ \widehat f(t+i\eta)=O((1+|t|)^{-1}).
+\]
+The Fourier transform extends to the strip needed below, and
+\[
+ h(z)=\widehat f(z)\overline{\widehat f(\overline z)},
+ \qquad h(t)=|\widehat f(t)|^2\quad(t\in\mathbb R).
+\]
+Equivalently, for the centered Mellin transform
+\[
+ \Phi_f(s)=\int_{\mathbb R}f(u)e^{(s-1/2)u}\,du,
+\]
+one has
+\[
+ h\!\left(-i(s-\tfrac12)\right)
+ =\Phi_f(s)\overline{\Phi_f(1-\overline s)}.
+\]
+
+Write $\psiGamma=\Gamma'/\Gamma$ for the digamma function.
+The von Mangoldt function is $\vmLambda(n)=\log p$ when $n=p^a$
+with $a\ge1$, and zero otherwise.
+
+\begin{theorem}[Weil explicit formula and positivity criterion]
+\label{thm:weil}
+Let \(f\in\mathcal W\), \(g=f*\widetilde f\), and
+\(h=\widehat g\).  Write a nontrivial zero as
+\(\rho=\beta_\rho+i\gamma_\rho\), with multiplicity \(m(\rho)\), and set
+\[
+ \sum_\rho^{*}h\!\left(-i(\rho-\tfrac12)\right)
+ :=\lim_{\substack{T\to\infty\\
+                    T\notin\{|\gamma_\rho|\}}}
+ \sum_{|\gamma_\rho|<T}m(\rho)
+ h\!\left(-i(\rho-\tfrac12)\right).
+\]
+This limit is in fact absolute for the stated convolution-square class.
+Then
+\[
+\begin{aligned}
+ \sum_\rho^{*}h\!\left(-i(\rho-\tfrac12)\right)
+ ={}&h(i/2)+h(-i/2)\\
+ &+\frac1{2\pi}\int_{\mathbb R}h(t)
+ \left[\operatorname{Re}\psiGamma\!\left(\frac14+\frac{it}{2}\right)
+ -\log\pi\right]dt\\
+ &-\sum_{n\geq2}\frac{\vmLambda(n)}{\sqrt n}
+ \bigl(g(\log n)+g(-\log n)\bigr),
+\end{aligned}
+\]
+The Riemann Hypothesis
+holds if and only if this full common value is nonnegative for every
+\(f\in\mathcal W\).
+\end{theorem}
+
+\begin{proof}[Normalization and consequences of the classical theorem]
+Moving the logarithmic-derivative contour across the two poles of
+\(\Lambda(s)\) gives \(h(i/2)+h(-i/2)\).  Fourier inversion applied to
+\[
+ -\frac{\zeta'}{\zeta}(s)
+ =\sum_{n\geq2}\frac{\vmLambda(n)}{n^s}
+\]
+gives the two prime-power terms.  Finally,
+\[
+ \frac{\GammaR'}{\GammaR}(s)
+ =-\frac12\log\pi+\frac12\psiGamma(s/2),
+\]
+so the two sides of the critical line give the kernel
+\[
+ 2\operatorname{Re}\frac{\GammaR'}{\GammaR}
+ \left(\frac12+it\right)
+ =\operatorname{Re}\psiGamma\!\left(\frac14+\frac{it}{2}\right)-\log\pi.
+\]
+The decay in Definition~\ref{def:weil-class} justifies the contour passage,
+the prime sum, and the archimedean integral.  The estimate preceding the
+theorem gives
+\(h(-i(\rho-\tfrac12))=O((1+|\gamma_\rho|)^{-2})\); together with
+the standard bound \(N(T)=O(T\log T)\), it also proves the asserted absolute
+convergence.  This is Weil's formula~(11)
+in the present Fourier normalization
+\cite[p.~262, formula~(11)]{Weil1952}.
+
+If the Riemann Hypothesis holds, write
+\(\rho=\tfrac12+i\gamma\); every zero contributes
+\(h(\gamma)=|\widehat f(\gamma)|^2\geq0\).  Conversely, Weil's
+Gaussian-polynomial construction associated with an off-line zero produces
+an \(f\in\mathcal W\) for which the zero-side sum is negative
+\cite[pp.~262--263, unnumbered lemma immediately following
+formula~(11)]{Weil1952}.
+\end{proof}
+
+When \(g\) is real and even, the last line of the formula becomes
+\[
+ -2\sum_p\sum_{m\geq1}\frac{\log p}{p^{m/2}}g(m\log p).
+\]
+Both the polar terms and this prime sum are essential to the criterion.
+
+\begin{proposition}[The gamma term is not positive by itself]
+\label{prop:gamma-negative}
+Set
+\[
+ k(t)=\operatorname{Re}\psiGamma\!\left(\frac14+\frac{it}{2}\right)-\log\pi.
+\]
+There are functions \(f\in C_c^\infty(\mathbb R)\subset\mathcal W\) for
+which
+\[
+ \frac1{2\pi}\int_{\mathbb R}|\widehat f(t)|^2k(t)\,dt<0.
+\]
+\end{proposition}
+
+\begin{proof}
+The special value
+\[
+ k(0)=-\gamma-\frac\pi2-3\log2-\log\pi
+\]
+is negative.  Choose nonzero \(\varphi\in C_c^\infty(\mathbb R)\) and put
+\(f_R(u)=R^{-1/2}\varphi(u/R)\).  Then
+\[
+ |\widehat f_R(t)|^2=R|\widehat\varphi(Rt)|^2
+\]
+and therefore
+\[
+ \frac1{2\pi}\int_{\mathbb R}|\widehat f_R(t)|^2k(t)\,dt
+ =\frac1{2\pi}\int_{\mathbb R}|\widehat\varphi(v)|^2k(v/R)\,dv.
+\]
+Since \(k(t)=O(\log(2+|t|))\) and \(\widehat\varphi\) is rapidly
+decreasing, dominated convergence makes the last expression tend to
+\[
+ \frac{k(0)}{2\pi}
+ \int_{\mathbb R}|\widehat\varphi(v)|^2\,dv<0.
+\]
+It is therefore negative for all sufficiently large \(R\).
+\end{proof}
+
+Proposition~\ref{prop:gamma-negative} shows that the isolated gamma term is
+not nonnegative on all Weil convolution squares and therefore cannot replace
+the full form in Theorem~\ref{thm:weil}.  The theorem-level criterion uses
+the entire test class and every local term.

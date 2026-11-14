@@ -1,0 +1,1003 @@
+\section{Equilibrium states and prime occupation spaces}
+\label{sec:equilibrium}
+
+The local integral gives a geometric series because the valuation takes
+nonnegative integer values on the unit ball. A Hilbert space with one
+basis vector for each such value gives the same series as a heat trace.
+This second construction also has an observable algebra and a time
+evolution. We first determine its equilibrium state, then add the phase
+observables that distinguish the full arithmetic system.
+
+All Hilbert spaces in this section are complex, with inner products linear
+in the first variable. Their operator algebras use composition as product,
+the Hilbert adjoint as involution, and the operator-norm topology.
+They have cohomological degree zero; their frequency decomposition under
+time evolution is an additional grading, not a cochain differential.
+
+\subsection{The equilibrium condition}
+
+Let \(A\) be a unital complex \(C^*\)-algebra and
+\(\tau:\mathbb R\to\operatorname{Aut}(A)\) a strongly continuous group.
+A state is a positive complex-linear functional \(\varphi:A\to\mathbb C\)
+with \(\varphi(1)=1\). An eigenvector of frequency \(\omega\in\mathbb R\)
+satisfies \(\tau_t(a)=e^{it\omega}a\). An element is entire analytic if
+\(t\mapsto\tau_t(a)\) extends to an entire norm-holomorphic function.
+
+\begin{definition}[KMS condition]\label{bc:def:kms}
+For \(\beta>0\), a state \(\varphi\) is KMS\(_\beta\) if, for all
+\(a,b\in A\), there is a bounded continuous function on the strip
+\(0\leq\operatorname{Im}z\leq\beta\), holomorphic in its interior, such that
+\[
+ F_{a,b}(t)=\varphi(a\tau_t(b)),\qquad
+ F_{a,b}(t+i\beta)=\varphi(\tau_t(b)a).
+\]
+For entire analytic elements the corresponding algebraic identity is
+\begin{equation}\label{bc:eq:kms}
+ \varphi(ab)=\varphi(b\tau_{i\beta}(a)).
+\end{equation}
+\end{definition}
+
+\begin{lemma}[The analytic criterion]\label{bc:lem:analytic}
+Suppose \(\mathcal B_\tau\) is a norm-dense star subalgebra of \(A\)
+spanned by eigenvectors of \(\tau\). A state is KMS\(_\beta\) exactly when
+\eqref{bc:eq:kms} holds for \(a,b\in\mathcal B_\tau\).
+\end{lemma}
+
+\begin{proof}
+For \(a,b\in\mathcal B_\tau\), the function
+\(\varphi(a\tau_z(b))\) is a finite sum of exponentials and is bounded
+on the closed strip. The difference between this function and a KMS
+strip function has zero lower boundary. Schwarz reflection across that
+boundary, followed by the identity theorem, makes the difference zero.
+Its upper boundary then gives \eqref{bc:eq:kms} after interchanging
+\(a\) and \(b\).
+
+Conversely, the identity gives both required boundaries for the finite
+exponential sum. Their absolute values are at most \(\|a\|\|b\|\).
+The bounded-strip maximum principle gives the same bound in the strip.
+Approximate arbitrary \(a,b\) in norm by elements of \(\mathcal B_\tau\).
+The same estimate applied to differences makes the strip functions
+uniformly Cauchy. Their limit is continuous on the closed strip,
+holomorphic in its interior, and has the required boundaries.
+\end{proof}
+
+\subsection{A prime oscillator}
+
+Fix a prime \(p\).  Let \(\mathscr H_p=\ell^2(\mathbb N_0)\) with
+orthonormal basis \((e_{p,r})_{r\geq0}\), and set
+\[
+ S_pe_{p,r}=e_{p,r+1},\qquad \mathcal T_p=C^*(S_p)
+ \subset\mathcal B(\mathscr H_p).
+\]
+Thus \(S_p^*S_p=1\) but \(S_pS_p^*\ne1\).  Define the positive operator
+\[
+ N_pe_{p,r}=r\log p\,e_{p,r}
+\]
+on its maximal domain
+\[
+ \mathcal D(N_p)=
+ \left\{\sum_{r\geq0}a_re_{p,r}:
+ \sum_{r\geq0}r^2(\log p)^2|a_r|^2<\infty\right\}.
+\]
+Testing its adjoint against each basis vector gives exactly the same
+maximal domain, so the diagonal operator is self-adjoint. Truncation of
+the coordinate sequence converges in its graph norm; hence finite-support
+vectors form a core.
+
+\begin{proposition}[Prime heat trace and Toeplitz KMS state]
+\label{prop:prime-kms}
+The unitaries \(U_{p,t}=e^{itN_p}\) define a strongly continuous dynamics
+\[
+ \alpha_{p,t}(a)=U_{p,t}aU_{p,t}^*,\qquad
+ \alpha_{p,t}(S_p)=p^{it}S_p
+\]
+on \(\mathcal T_p\).  For \(s\in\mathbb C\),
+\(e^{-sN_p}\) is trace class exactly when \(\operatorname{Re}s>0\), and
+then
+\[
+ \operatorname{Tr}_{\mathscr H_p}(e^{-sN_p})=(1-p^{-s})^{-1}.
+\]
+For every real \(\beta>0\), \((\mathcal T_p,\alpha_p)\) has the unique
+KMS\(_\beta\) state
+\[
+ \varphi_{\beta,p}(a)
+ =(1-p^{-\beta})
+ \operatorname{Tr}_{\mathscr H_p}(e^{-\beta N_p}a).
+\]
+On the dense analytic star algebra
+\(\mathcal P_p=\operatorname{span}\{S_p^mS_p^{*n}:m,n\geq0\}\),
+\[
+ \varphi_{\beta,p}(S_p^mS_p^{*n})
+ =\delta_{m,n}p^{-\beta m}.
+\]
+\end{proposition}
+
+\begin{proof}
+The formula for the dynamics follows on the basis vectors and extends by
+norm density from \(\mathcal P_p\).  The singular values of
+\(e^{-sN_p}\) are \(p^{-r\operatorname{Re}s}\), so their sum is finite
+exactly when \(\operatorname{Re}s>0\); summing the diagonal entries gives
+the trace formula.
+
+For \(q=p^{-\beta}\), the operator
+\((1-q)e^{-\beta N_p}\) is positive and has trace one.  Every monomial in
+\(\mathcal P_p\) is entire analytic, and
+\[
+ e^{-\beta N_p}a=\alpha_{p,i\beta}(a)e^{-\beta N_p}.
+\]
+Cyclicity of the trace gives
+\(\varphi_{\beta,p}(ab)=
+\varphi_{\beta,p}(b\alpha_{p,i\beta}(a))\), the KMS identity in this
+convention.  Direct evaluation gives the monomial formula.
+
+Conversely, applying \eqref{bc:eq:kms} with \(b=1\) makes every
+nonzero-frequency monomial have expectation zero.  For the remaining monomials,
+the KMS identity gives
+\[
+ \varphi(S_p^mS_p^{*m})
+ =p^{-\beta m}\varphi(S_p^{*m}S_p^m)=p^{-\beta m}.
+\]
+Lemma~\ref{bc:lem:analytic} proves the strip condition, and density of
+\(\mathcal P_p\) proves uniqueness.  These formulas agree with
+the prime system of Bost and Connes
+\cite[\S2, Propositions~7--8]{BostConnes1995}.
+\end{proof}
+
+\begin{remark}[Heat flow is not observable dynamics]
+For \(t>0\), the assignment \(S_p\mapsto p^{-t}S_p\) cannot be a unital
+star-homomorphism because
+\[
+ (p^{-t}S_p)^*(p^{-t}S_p)=p^{-2t}1\ne1.
+\]
+The observable evolution is the automorphism group
+\(S_p\mapsto p^{it}S_p\).  The unnormalized partition trace is not a
+state, since its value at the identity is \((1-p^{-\beta})^{-1}\).
+\end{remark}
+
+\subsection{The tensor product over the primes}
+
+Write \(\mathbb N^\times=\{1,2,\ldots\}\). For a finite set \(F\) of
+primes, put
+\[
+ \mathcal T_F=\bigotimes_{p\in F}^{\min}\mathcal T_p,
+ \qquad
+ \mathcal T_{\mathrm{fin}}=\varinjlim_F\mathcal T_F,
+\]
+where the transition maps are \(a\mapsto a\otimes1\), and use the product
+dynamics.  Relative to the vacuum vectors \(e_{p,0}\), unique
+factorization gives
+\[
+ \bigotimes_p^{e_{p,0}}\mathscr H_p\simeq\ell^2(\mathbb N^\times).
+\]
+The compatible tensor-product representations define
+\[
+ \pi_{\mathrm{fin}}:\mathcal T_{\mathrm{fin}}
+ \longrightarrow\mathcal B(\ell^2(\mathbb N^\times)),
+ \qquad \pi_{\mathrm{fin}}(S_p)e_n=e_{pn}.
+\]
+On the latter space define
+\[
+ He_n=(\log n)e_n,\qquad
+ \mathcal D(H)=
+ \left\{\sum_{n\geq1}a_ne_n:
+ \sum_{n\geq1}(\log n)^2|a_n|^2<\infty\right\}.
+\]
+
+\begin{proposition}[The noninteracting prime subsystem]
+\label{prop:prime-product}
+For every \(\beta>0\), \((\mathcal T_{\mathrm{fin}},\alpha)\) has one
+KMS\(_\beta\) state \(\Phi_\beta\), characterized by
+\[
+ \Phi_\beta|_{\mathcal T_F}
+ =\bigotimes_{p\in F}\varphi_{\beta,p}.
+\]
+The operator \(H\) is positive and self-adjoint on the displayed domain,
+with finite-support vectors as a core, and implements the dynamics in the precise sense
+\[
+ \pi_{\mathrm{fin}}(\alpha_t(a))
+ =e^{itH}\pi_{\mathrm{fin}}(a)e^{-itH}
+ \qquad(a\in\mathcal T_{\mathrm{fin}}).
+\]
+It satisfies
+\[
+ e^{-sH}\text{ is trace class}
+ \quad\Longleftrightarrow\quad \operatorname{Re}s>1.
+\]
+In that half-plane,
+\begin{equation}
+ \operatorname{Tr}(e^{-sH})=\sum_{n\geq1}n^{-s}=\zeta(s).
+\label{bc:eq:trace}
+\end{equation}
+For \(\beta>1\), but not for \(0<\beta\leq1\), the product state is the
+normal Gibbs state
+\[
+ \Phi_\beta(a)=\zeta(\beta)^{-1}
+ \operatorname{Tr}(\pi_{\mathrm{fin}}(a)e^{-\beta H}).
+\]
+\end{proposition}
+
+\begin{proof}
+On a finite tensor product, \eqref{bc:eq:kms} with \(b=1\) kills every
+monomial except those with zero total frequency.  Unique factorization of integers makes zero
+total frequency equivalent to zero frequency at every prime.  Repeated use
+of the KMS identity then forces the product of the local values in
+Proposition~\ref{prop:prime-kms}. Conversely, the tensor product of the
+local states satisfies the KMS identity on products of local analytic
+monomials, by applying the local identity in each factor.
+Lemma~\ref{bc:lem:analytic} proves existence at each finite stage.
+The states are compatible under \(a\mapsto a\otimes1\); they therefore
+define a state on the norm-completed inductive limit, where the same
+analytic criterion applies. This proves existence and uniqueness there.
+
+Under the displayed unitary, the sum of the local energies is \(\log n\).
+Testing the adjoint on the basis identifies its domain with
+\(\mathcal D(H)\), and truncating a sequence converges in the graph norm.
+The singular values of \(e^{-sH}\) are \(n^{-\operatorname{Re}s}\).  Their
+sum is finite exactly for \(\operatorname{Re}s>1\).  Normalizing by this
+sum gives the Gibbs formula in that half-plane.  Below it, the abstract
+product KMS state still exists, but no trace-class density
+\(e^{-\beta H}\) exists in this representation.
+\end{proof}
+
+\subsection{The universal phase algebra}
+
+The prime shifts remember divisibility but do not distinguish the phases
+of roots of unity. To retain these phases, adjoin the continuous characters
+of the profinite integers. The resulting algebra has the same occupation
+Hamiltonian, but a larger space of equilibrium states.
+
+Let \(\bcN=\{1,2,\ldots\}\), and let \(\bcZhat=\varprojlim_N\mathbb Z/N\mathbb Z\)
+with its compact inverse-limit topology. The Chinese remainder theorem
+identifies this ring with the product \(\prod_p\mathbb Z_p\) used in the
+adelic construction: compatible residues modulo every positive integer
+are equivalent to compatible residues modulo every prime power.
+Its unit group is
+\(\bcUnits=\varprojlim_N(\mathbb Z/N\mathbb Z)^\times\).
+For \(r=a/N\in\mathbb Q/\mathbb Z\) and \(x\in\bcZhat\), set
+\[
+ \bcphase_r(x)=\exp(2\pi i a x_N/N),
+\]
+where \(x_N\) is the residue of \(x\) modulo \(N\).
+This definition is independent of the chosen presentation of \(r\).
+The functions \(\bcphase_r\) separate points. Their complex linear span is
+therefore uniformly dense in \(C(\bcZhat)\).
+
+The universal unital complex \(C^*\)-algebra \(\bcA\) has isometries
+\(\mu_n\), \(n\in\bcN\), and unitaries \(e(r)\),
+\(r\in\mathbb Q/\mathbb Z\), with relations
+\begin{equation}\label{bc:eq:relations}
+\begin{gathered}
+ \mu_n^*\mu_n=1,\qquad \mu_n\mu_m=\mu_{nm},\qquad
+ \mu_n\mu_m^*=\mu_m^*\mu_n\quad(\gcd(n,m)=1),\\
+ e(0)=1,\qquad e(r)^*=e(-r),\qquad e(r)e(s)=e(r+s),\\
+ e(r)\mu_n=\mu_ne(nr),\qquad
+ \mu_ne(r)\mu_n^*=\frac1n\sum_{n\delta=r}e(\delta).
+\end{gathered}
+\end{equation}
+The sum in the last relation has exactly \(n\) terms. Concretely, take
+the free unital star algebra on these symbols, impose the displayed
+relations, and use the supremum of the operator norms over all star
+representations by isometries and unitaries. Each polynomial has finite
+supremum norm, bounded by the sum of the absolute values of its
+coefficients. Quotient by the zero seminorm ideal and complete.
+The representations below prove that this completion is nonzero.
+The dynamics is
+\begin{equation}\label{bc:eq:dynamics}
+ \sigma_t(\mu_n)=n^{it}\mu_n,
+ \qquad \sigma_t(e(r))=e(r),\qquad t\in\mathbb R.
+\end{equation}
+These are the presentation and time convention of
+Bost--Connes \cite{BostConnes1995}*{Proposition~18 and \S5}.
+The relations also imply \(\mu_1=1\): multiply
+\(\mu_1^2=\mu_1\) on the left by \(\mu_1^*\).
+
+\begin{proposition}[The phase representation]\label{bc:prop:representation}
+For every \(u\in\bcUnits\), the formulas
+\begin{equation}\label{bc:eq:representation}
+ \pi_u(\mu_m)\varepsilon_k=\varepsilon_{mk},\qquad
+ \pi_u(e(r))\varepsilon_k=\bcphase_r(ku)\varepsilon_k
+\end{equation}
+define a unital star representation of \(\bcA\) on
+\(\mathscr H=\ell^2(\bcN)\). Its inner product is linear in the first variable.
+The phase subalgebra
+\(D=C^*(e(r):r\in\mathbb Q/\mathbb Z)\) is canonically \(C(\bcZhat)\),
+with \(e(r)=\bcphase_r\).
+
+For the operator \(H\) and its closed diagonal domain in
+Proposition~\ref{prop:prime-product},
+\[
+ \pi_u(\sigma_t(a))=e^{itH}\pi_u(a)e^{-itH}.
+\]
+Its occupation trace is \eqref{bc:eq:trace}, with the exact domain
+\(\operatorname{Re}s>1\).
+\end{proposition}
+
+\begin{proof}
+The adjoint of the shift by \(m\) sends \(\varepsilon_k\) to
+\(\varepsilon_{k/m}\) if \(m\mid k\), and to zero otherwise.
+This proves the isometry and semigroup relations. If \(\gcd(m,n)=1\),
+then \(m\mid nk\) if and only if \(m\mid k\). This proves the mixed
+commutation relation. The phase multiplication and its covariance with
+the shifts follow by evaluation on \(\varepsilon_k\).
+
+For the last relation in \eqref{bc:eq:relations}, choose \(\delta_0\) with
+\(n\delta_0=r\). Character orthogonality gives
+\[
+ \frac1n\sum_{n\delta=r}\bcphase_\delta(ku)
+ =\bcphase_{\delta_0}(ku)\frac1n
+      \sum_{j=0}^{n-1}\exp(2\pi i jku/n)
+ =\begin{cases}
+   \bcphase_r((k/n)u),&n\mid k,\\
+   0,&n\nmid k.
+  \end{cases}
+\]
+Here the finite sum uses the residue of \(u\) modulo \(n\).
+Its invertibility makes its vanishing condition precisely \(n\mid k\).
+This verifies all relations and also proves that the universal algebra
+is nonzero. Its universal norm exists because every generator has norm
+one in every representation.
+
+The dual of the discrete group \(\mathbb Q/\mathbb Z\) is \(\bcZhat\).
+Indeed, a character is specified by compatible values on \(1/N\),
+which are precisely the residues \(x_N\). Thus \(D\) is a quotient
+of \(C(\bcZhat)\). In \(\pi_1\), an element \(f\in C(\bcZhat)\) has
+diagonal values \(f(k)\). The positive integers are dense in \(\bcZhat\),
+so this representation is faithful on \(C(\bcZhat)\). The quotient has
+zero kernel.
+
+The implementation of \(\sigma\) holds on generators by evaluation on
+basis vectors and then on the algebra by norm continuity. The diagonal
+domain, core, and trace statement are those already proved in
+Proposition~\ref{prop:prime-product}.
+\end{proof}
+
+At a finite set \(F\) of primes, the vectors indexed by
+\(n=\prod_{p\in F}p^{k_p}\) have energies \(\sum_{p\in F}k_p\log p\).
+Hence
+\begin{equation}\label{bc:eq:finite-trace}
+ \sum_{n\in\bcN_F}n^{-\beta}
+   =\prod_{p\in F}(1-p^{-\beta})^{-1},\qquad \beta>0,
+\end{equation}
+where \(\bcN_F\) consists of positive integers with prime factors in \(F\).
+For \(F=\{2,3\}\) and \(\beta=1\), this trace is \(3\).
+The full trace diverges at the same inverse temperature. Classifying
+equilibrium states therefore requires a construction beyond that trace.
+
+\subsection{From the universal algebra to scaling measures}
+
+For \(f\in C(\bcZhat)\) and \(n\in\bcN\), define
+\begin{equation}\label{bc:eq:alpha}
+ L_nf(x)=f(nx),\qquad
+ \alpha_n(f)(x)=
+ \begin{cases}f(x/n),&x\in n\bcZhat,\\0,&x\notin n\bcZhat.
+ \end{cases}
+\end{equation}
+Multiplication by \(n\) is a homeomorphism from \(\bcZhat\) onto the
+clopen subset \(n\bcZhat\). In particular, \(\alpha_n(f)\) is continuous.
+The relations imply
+\begin{equation}\label{bc:eq:covariance}
+ f\mu_n=\mu_nL_nf,\qquad
+ \mu_n^*f=(L_nf)\mu_n^*,\qquad
+ \mu_nf\mu_n^*=\alpha_n(f).
+\end{equation}
+The last identity follows first for characters from the finite sum in
+\eqref{bc:eq:relations}, and then for every continuous function by density.
+
+\begin{lemma}[Normal forms and expectation]\label{bc:lem:expectation}
+The linear span of \(\mu_mf\mu_n^*\), with \(m,n\in\bcN\) and
+\(f\in D\), is a dense star subalgebra of \(\bcA\). It admits a
+positive unital conditional expectation \(E:\bcA\longrightarrow D\)
+with
+\begin{equation}\label{bc:eq:expectation}
+ E(\mu_mf\mu_n^*)=\begin{cases}\alpha_n(f),&m=n,\\0,&m\ne n.
+ \end{cases}
+\end{equation}
+Every monomial can be written with coprime \(m,n\), after replacing
+its coefficient in \(D\).
+\end{lemma}
+
+\begin{proof}
+If \(d=\gcd(n,k)\), the isometry and coprime relations give
+\(\mu_n^*\mu_k=\mu_{k/d}\mu_{n/d}^*\). Thus
+\[
+ (\mu_mf\mu_n^*)(\mu_kg\mu_l^*)
+ =\mu_{mk/d}\big((L_{k/d}f)(L_{n/d}g)\big)\mu_{ln/d}^*.
+\]
+This proves closure under products. Adjoints and all generators also
+belong to the span. If \(d=\gcd(m,n)\), then
+\[
+ \mu_mf\mu_n^*=\mu_{m/d}\alpha_d(f)\mu_{n/d}^*,
+\]
+which proves reduction to coprime indices.
+
+The compact group \(K=\prod_{p\ \mathrm{prime}}\mathbb T\) acts by
+\[
+ \kappa_z(\mu_n)=z(n)\mu_n,\qquad
+ z(n)=\prod_pz_p^{v_p(n)},\qquad \kappa_z(f)=f.
+\]
+All relations are preserved. The inverse is \(\kappa_{z^{-1}}\).
+Norm continuity follows first on monomials and then by density.
+Integrating this action against probability Haar measure on \(K\)
+defines a positive unital map \(E\). Orthogonality of its characters
+gives \eqref{bc:eq:expectation}. Its range is exactly \(D\), and the
+identity \(E(fag)=fE(a)g\), for \(f,g\in D\), gives the conditional
+expectation property.
+\end{proof}
+
+\begin{proposition}[Faithfulness and the prime subalgebra]
+\label{bc:prop:faithful}
+Each representation \(\pi_u\), \(u\in\bcUnits\), is faithful.
+Its restriction identifies \(C^*(\mu_p:p\text{ prime})\) with
+\(\mathcal T_{\mathrm{fin}}\), sending \(\mu_p\) to the prime shift.
+\end{proposition}
+
+\begin{proof}
+The expectation \(E\) is faithful. Indeed, if \(a\geq0\) and \(E(a)=0\),
+then for every state \(\omega\) the nonnegative continuous function
+\(z\mapsto\omega(\kappa_z(a))\) has Haar integral zero. Haar measure has
+full support, so its value at the identity is zero. States separate
+positive elements, and hence \(a=0\).
+
+On \(\ell^2(\bcN)\) let \(V_z\varepsilon_k=z(k)\varepsilon_k\).
+The formula on generators gives
+\(\pi_u(\kappa_z(a))=V_z\pi_u(a)V_z^*\).
+If \(\pi_u(a)=0\), integration implies \(\pi_u(E(a^*a))=0\).
+The set \(\{ku:k\geq1\}\) is dense in \(\bcZhat\), because the
+positive integers are dense and multiplication by \(u\) is a
+homeomorphism. Thus \(\pi_u\) is faithful on \(D\), so
+\(E(a^*a)=0\), and faithfulness of \(E\) gives \(a=0\).
+
+The shifts \(\pi_u(\mu_p)\) do not depend on \(u\).
+For a finite set \(F\), unique factorization decomposes
+\(\ell^2(\bcN)\) into the tensor product of the occupation spaces at
+\(p\in F\) and the space indexed by integers with no prime factor in
+\(F\). The shifts act on the first factor and as the identity on the
+second. This is precisely the faithful spatial representation of
+\(\bigotimes_{p\in F}^{\min}\mathcal T_p\).
+Taking the norm closure of the increasing finite prime subalgebras
+proves the claimed identification.
+\end{proof}
+
+The same normal forms with coefficients in \(\operatorname{span}\{e(r)\}\)
+give a dense entire analytic star algebra \(\mathcal B\). Its monomials
+have frequency \(\log(m/n)\). Preservation of the defining relations
+also proves that \eqref{bc:eq:dynamics} extends to automorphisms, with
+inverse \(\sigma_{-t}\). The dynamics is strongly continuous by density.
+
+Lemma~\ref{bc:lem:analytic} applies to this algebra with \(\tau=\sigma\).
+
+\begin{theorem}[The measure correspondence]\label{bc:thm:measures}
+Fix \(\beta>0\). Restriction to \(D=C(\bcZhat)\) gives an affine bijection
+between the KMS\(_\beta\) states on \(\bcA\) and the probability
+Borel measures \(\nu\) on \(\bcZhat\) satisfying
+\begin{equation}\label{bc:eq:scaling}
+ \nu(nB)=n^{-\beta}\nu(B)
+ \quad(n\in\bcN,\ B\subset\bcZhat\text{ Borel}).
+\end{equation}
+The inverse sends \(\nu\) to
+\(\varphi_\nu(a)=\int_{\bcZhat}E(a)\,d\nu\).
+\end{theorem}
+
+\begin{proof}
+For a monomial \(a\) of frequency \(\omega\), the KMS identity with
+\(b=1\) gives \(\varphi(a)=e^{-\beta\omega}\varphi(a)\).
+Thus \(\varphi\) vanishes on every nonzero frequency and
+\(\varphi=\varphi|_D\circ E\). Riesz representation identifies
+\(\varphi|_D\) with a probability measure \(\nu\).
+The KMS identity applied to \(a=\mu_n\) and \(b=f\mu_n^*\) gives
+\[
+ \int\alpha_n(f)\,d\nu=n^{-\beta}\int f\,d\nu.
+\]
+This holds for continuous \(f\) by norm density. Uniqueness of regular
+Borel measures and the homeomorphism \(x\mapsto nx\) identify it
+with \eqref{bc:eq:scaling}.
+
+Conversely, \(\varphi_\nu\) is a state because \(E\) is positive and
+unital. It remains to verify \eqref{bc:eq:kms} on monomials.
+Products of two monomials have zero expectation unless the sum of
+their frequencies is zero. In that case, reduction to
+coprime indices writes the two monomials as
+\(a=\mu_mf\mu_n^*\) and \(b=\mu_ng\mu_m^*\). Consequently,
+\[
+ \varphi_\nu(ab)=m^{-\beta}\int fg\,d\nu,
+ \qquad
+ \varphi_\nu(ba)=n^{-\beta}\int gf\,d\nu.
+\]
+Since \(\sigma_{i\beta}(a)=(m/n)^{-\beta}a\), these equations are
+exactly \eqref{bc:eq:kms}. In the other cases both sides vanish.
+Lemma~\ref{bc:lem:analytic} completes the proof.
+\end{proof}
+
+\subsection{Finite-prime partitions}
+
+For a finite set \(F\) of primes, put
+\[
+ W_F=\bcZhat\setminus\bigcup_{p\in F}p\bcZhat,
+ \qquad c_F(\beta)=\prod_{p\in F}(1-p^{-\beta}).
+\]
+
+\begin{lemma}[Valuations and reconstruction]\label{bc:lem:finite}
+Let \(\nu\) satisfy \eqref{bc:eq:scaling}. Then
+\begin{equation}\label{bc:eq:valuations}
+ \nu\{v_p(x)=k_p\text{ for all }p\in F\}
+  =\prod_{p\in F}(1-p^{-\beta})p^{-k_p\beta}
+   \quad(k_p\in\mathbb N_0).
+\end{equation}
+In particular, \(\nu(W_F)=c_F(\beta)>0\).
+With \(\theta_F=c_F(\beta)^{-1}\nu|_{W_F}\), one has
+\begin{equation}\label{bc:eq:finite-reconstruction}
+ \int f\,d\nu=c_F(\beta)
+   \sum_{n\in\bcN_F}n^{-\beta}\int_{W_F}f(nx)\,d\theta_F(x)
+   \quad(f\in C(\bcZhat)).
+\end{equation}
+The series is absolutely convergent.
+\end{lemma}
+
+\begin{proof}
+The intersection of \(p^{k_p}\bcZhat\), for \(p\in F\), is
+\((\prod_{p\in F}p^{k_p})\bcZhat\). Its measure is
+\(\prod_{p\in F}p^{-k_p\beta}\) by scaling.
+Finite inclusion-exclusion proves \eqref{bc:eq:valuations}.
+For each prime \(p\), the set with zero \(p\)-component has measure
+\(\lim_kp^{-k\beta}=0\). Outside this null set for \(p\in F\),
+every \(x\) lies in exactly one set \(nW_F\), \(n\in\bcN_F\).
+Scaling on each set gives \eqref{bc:eq:finite-reconstruction}.
+The total weights sum to one by \eqref{bc:eq:finite-trace}.
+\end{proof}
+
+\begin{proposition}[Existence and the invariant measure]\label{bc:prop:radial}
+For every \(\beta>0\), there is a unique \(\bcUnits\)-invariant
+probability measure \(\nu_\beta\) satisfying \eqref{bc:eq:scaling}.
+Under \(\bcZhat=\prod_p\mathbb Z_p\), it is the product of the local measures
+\begin{equation}\label{bc:eq:radial}
+ \nu_{\beta,p}=(1-p^{-\beta})
+       \sum_{k\geq0}p^{-k\beta}(u\mapsto p^ku)_*h_p,
+\end{equation}
+where \(h_p\) is probability Haar measure on \(\mathbb Z_p^\times\).
+\end{proposition}
+
+\begin{proof}
+Each local series has total mass one, is invariant under multiplication
+by a local unit, and satisfies
+\(\nu_{\beta,p}(pB)=p^{-\beta}\nu_{\beta,p}(B)\).
+It gives zero mass to zero. Consistent finite products define a positive
+norm-one functional on the algebra of continuous cylinder functions.
+Uniform extension and Riesz representation produce the product measure.
+For an integer \(n\), multiplication by \(n\) is a local unit action
+times multiplication by \(p^{v_p(n)}\) at each prime. Only finitely many
+of these valuations are nonzero. This proves \eqref{bc:eq:scaling} first
+on cylinders and then on all Borel sets by uniqueness of measures.
+
+For uniqueness, fix \(N=\prod_{p\mid N}p^{a_p}\). The action of
+\((\mathbb Z/N\mathbb Z)^\times\) on \(\mathbb Z/N\mathbb Z\) has
+orbits determined by the truncated valuations
+\(\min(v_p(x),a_p)\). The Chinese remainder theorem proves this
+description and the surjectivity of \(\bcUnits\) onto the finite unit group.
+Invariance makes the measure uniform within each orbit.
+Equation~\eqref{bc:eq:valuations} and its tail sums determine every orbit
+mass. Therefore every residue class modulo \(N\) has a fixed measure.
+These cylinders determine a Borel probability measure on \(\bcZhat\).
+\end{proof}
+
+For reference, if a residue \(a\bmod p^j\) has valuation \(k<j\), then
+\begin{equation}\label{bc:eq:cylinder}
+ \nu_{\beta,p}(a+p^j\mathbb Z_p)
+ =\frac{(1-p^{-\beta})p^{-k\beta}}{(p-1)p^{j-k-1}},
+ \qquad
+ \nu_{\beta,p}(p^j\mathbb Z_p)=p^{-j\beta}.
+\end{equation}
+These are local marginal probabilities. Products of them give the
+probabilities for arbitrary moduli.
+
+\subsection{Uniqueness at and above the critical temperature}
+
+The arithmetic input is a divergence statement for characters of a
+finite unit group. The argument only uses Euler products where their
+series converge absolutely.
+
+\begin{lemma}[Character divergence]\label{bc:lem:divergence}
+Let \(\chi\) be a nontrivial complex character of
+\((\mathbb Z/N\mathbb Z)^\times\). Then
+\begin{equation}\label{bc:eq:divergence}
+ \sum_{p\nmid N}\frac{1-\operatorname{Re}\chi(p)}p=\infty.
+\end{equation}
+Consequently the same sum with \(p^{-\beta}\) in place of \(p^{-1}\)
+diverges whenever \(0<\beta\leq1\).
+\end{lemma}
+
+\begin{proof}
+Extend \(\chi\) to the integers by zero on nonunits modulo \(N\).
+Its sum over a period is zero: multiplication by a unit with nontrivial
+character value permutes that sum and multiplies it by that value.
+Hence \(A(t)=\sum_{n\leq t}\chi(n)\) satisfies \(|A(t)|\leq N\).
+For real \(s>1\), summation by parts gives
+\[
+ L(s,\chi)=\sum_{n\geq1}\chi(n)n^{-s}
+   =s\int_1^\infty A(t)t^{-s-1}\,dt,
+ \qquad |L(s,\chi)|\leq N.
+\]
+The principal character has series
+\[
+ L_0(s)=\zeta(s)\prod_{p\mid N}(1-p^{-s})\longrightarrow\infty
+ \quad(s\downarrow1).
+\]
+Here \(\zeta(s)\geq\int_1^\infty t^{-s}\,dt=(s-1)^{-1}\),
+and the finite product is bounded below by a positive constant.
+Thus \(|L(s,\chi)/L_0(s)|\to0\).
+
+Unique factorization and absolute convergence give Euler products for
+both series when \(s>1\). Their logarithms satisfy
+\begin{equation}\label{bc:eq:log-ratio}
+ \log\left|\frac{L(s,\chi)}{L_0(s)}\right|
+ =-\sum_{p\nmid N}\frac{1-\operatorname{Re}\chi(p)}{p^s}
+  +\sum_{p\nmid N}\sum_{j\geq2}
+     \frac{\operatorname{Re}(\chi(p)^j)-1}{jp^{js}}.
+\end{equation}
+The second sum is bounded in absolute value uniformly for \(s>1\),
+because it is at most
+\(2\sum_p\sum_{j\geq2}p^{-j}\leq2\sum_{n\geq2}[n(n-1)]^{-1}\).
+If \eqref{bc:eq:divergence} failed, the first sum would also be uniformly
+bounded. The ratio could then never tend to zero. This contradiction
+proves \eqref{bc:eq:divergence}. Comparison of nonnegative terms proves
+the assertion for smaller positive \(\beta\).
+\end{proof}
+
+\begin{lemma}[Finite-prime contraction]\label{bc:lem:contraction}
+Let \(\nu\) satisfy \eqref{bc:eq:scaling}. Suppose that \(f\) factors
+through \(\mathbb Z/N\mathbb Z\) and obeys
+\(f(vx)=\chi(v)f(x)\) for every unit \(v\) modulo \(N\).
+For every finite set \(F\) of primes not dividing \(N\),
+\begin{equation}\label{bc:eq:contraction}
+ \left|\int f\,d\nu\right|
+ \leq\|f\|_\infty
+       \prod_{p\in F}\left|\frac{1-p^{-\beta}}
+                              {1-\chi(p)p^{-\beta}}\right|
+ \leq\|f\|_\infty
+       \exp\left(-\sum_{p\in F}(1-\operatorname{Re}\chi(p))p^{-\beta}\right).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+All \(n\in\bcN_F\) are units modulo \(N\), so
+\(f(nx)=\chi(n)f(x)\). Substitute this equality in
+\eqref{bc:eq:finite-reconstruction} and sum the absolutely convergent
+geometric series. The normalized measure \(\theta_F\) has mass one,
+which proves the first inequality. For \(|z|=1\) and \(0<t<1\),
+\[
+ \log\left|\frac{1-t}{1-zt}\right|
+   =\sum_{j\geq1}\frac{\operatorname{Re}(z^j)-1}{j}t^j
+   \leq-(1-\operatorname{Re}z)t.
+\]
+Every summand is nonpositive. Apply this inequality at
+\(z=\chi(p)\), \(t=p^{-\beta}\), and exponentiate.
+\end{proof}
+
+\begin{theorem}[Uniqueness for \(0<\beta\leq1\)]\label{bc:thm:high}
+For every real \(0<\beta\leq1\), the system \((\bcA,\sigma)\) has
+exactly one KMS\(_\beta\) state. It is
+\(\varphi_\beta=\nu_\beta\circ E\), with \(\nu_\beta\) given by
+\eqref{bc:eq:radial}.
+\end{theorem}
+
+\begin{proof}
+Let \(\nu\) be any scaling measure and fix a modulus \(N\).
+The space of complex functions on \(\mathbb Z/N\mathbb Z\) decomposes
+into isotypic subspaces for its finite unit group \(G_N\).
+Explicitly, its character projections are
+\[
+ (P_\chi f)(x)=\frac1{|G_N|}\sum_{v\in G_N}
+                         \overline{\chi(v)}f(vx),
+ \qquad f=\sum_\chi P_\chi f.
+\]
+Character orthogonality proves the second identity, and
+\((P_\chi f)(vx)=\chi(v)(P_\chi f)(x)\).
+For nontrivial \(\chi\), Lemmas~\ref{bc:lem:divergence}
+and~\ref{bc:lem:contraction} imply \(\nu(P_\chi f)=0\), by exhausting
+the primes outside \(N\). Only the trivial character survives.
+Thus \(\nu\) is invariant under multiplication by units on every
+finite quotient. Locally constant functions are uniformly dense in
+\(C(\bcZhat)\), so \(\nu\) is \(\bcUnits\)-invariant.
+Proposition~\ref{bc:prop:radial} gives \(\nu=\nu_\beta\).
+Theorem~\ref{bc:thm:measures} supplies existence and uniqueness of the state.
+\end{proof}
+
+At \(\beta=1\), formula~\eqref{bc:eq:cylinder} assigns mass \(p^{-j}\)
+to every residue modulo \(p^j\). Hence \(\nu_1\) is additive Haar
+measure on \(\bcZhat\). In particular,
+\begin{equation}\label{bc:eq:critical-phase}
+ \varphi_1(e(r))=0\quad(r\ne0),\qquad \varphi_1(1)=1.
+\end{equation}
+The contraction proof establishes the endpoint directly. It requires
+neither nonvanishing of \(L(1,\chi)\) nor a factor classification.
+
+\subsection{Every low-temperature state is a Gibbs mixture}
+
+\begin{theorem}[Classification for \(\beta>1\)]\label{bc:thm:low}
+Fix \(\beta>1\). For \(\lambda\in\bcProb(\bcUnits)\), define
+\begin{equation}\label{bc:eq:gibbs-measure}
+ \nu_{\beta,\lambda}
+  =\frac1{\zeta(\beta)}\sum_{n\geq1}n^{-\beta}(u\mapsto nu)_*\lambda,
+ \qquad \varphi_{\beta,\lambda}=\nu_{\beta,\lambda}\circ E.
+\end{equation}
+This is an affine homeomorphism from \(\bcProb(\bcUnits)\), with its weak
+topology, onto all KMS\(_\beta\) states, with their weak-star topology.
+Consequently these states form a simplex. Its extreme points are
+\(\varphi_{\beta,u}=\varphi_{\beta,\delta_u}\), \(u\in\bcUnits\), and
+\begin{equation}\label{bc:eq:gibbs-state}
+ \varphi_{\beta,u}(a)
+   =\zeta(\beta)^{-1}\bcTr\big(\pi_u(a)e^{-\beta H}\big).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Let \(\nu\) be any scaling measure. Since
+\(\bcUnits=\bigcap_p(\bcZhat\setminus p\bcZhat)\), continuity from above and
+Lemma~\ref{bc:lem:finite} give
+\[
+ \nu(\bcUnits)=\prod_p(1-p^{-\beta})=\zeta(\beta)^{-1}.
+\]
+The Euler product equality follows by expanding each finite product and
+then exhausting the positive integers. Absolute convergence holds for
+\(\beta>1\). The sets \(n\bcUnits\), \(n\geq1\), are pairwise disjoint:
+their valuation vectors determine \(n\). By scaling,
+\[
+ \sum_{n\geq1}\nu(n\bcUnits)
+ =\nu(\bcUnits)\sum_{n\geq1}n^{-\beta}=1.
+\]
+Their union therefore has full measure. Define
+\(\lambda=\zeta(\beta)\nu|_{\bcUnits}\), a probability measure on the
+compact set \(\bcUnits\). Applying scaling to every Borel subset of
+\(\bcUnits\) proves \eqref{bc:eq:gibbs-measure}. This also proves uniqueness
+of the parameter measure.
+
+Conversely, the series in \eqref{bc:eq:gibbs-measure} defines a probability
+measure. The point \(nu\) lies in \(m\bcZhat\) exactly when \(m\mid n\),
+because \(u\) is a unit at every prime. Thus its mass on \(mB\) is
+\[
+ \frac1{\zeta(\beta)}\sum_{k\geq1}(mk)^{-\beta}
+          \lambda\{u:ku\in B\}
+ =m^{-\beta}\nu_{\beta,\lambda}(B).
+\]
+Theorem~\ref{bc:thm:measures} now gives all the claimed states.
+
+For each \(f\in C(\bcZhat)\), the series
+\(\zeta(\beta)^{-1}\sum_n n^{-\beta}f(nu)\) converges uniformly in
+\(u\). It is continuous, which proves continuity of the affine map
+on parameter measures. A continuous bijection from a compact space to
+a Hausdorff space is a homeomorphism. The extreme points of
+\(\bcProb(\bcUnits)\) are precisely its point masses: a measure that is not
+a point mass has a Borel set of mass strictly between zero and one,
+which gives a nontrivial convex decomposition. Every measure has the
+unique decomposition \(\lambda=\int\delta_u\,d\lambda(u)\).
+This proves the simplex assertion without invoking a general KMS
+decomposition theorem.
+
+Finally, on \(f\in D\) the normalized trace in
+\eqref{bc:eq:gibbs-state} has value
+\(\zeta(\beta)^{-1}\sum_nn^{-\beta}f(nu)\).
+On \(\mu_mf\mu_n^*\) with \(m\ne n\), every diagonal matrix
+coefficient is zero: a nonzero coefficient sends index \(k\) to
+\(mk/n\), which differs from \(k\). For \(m=n\), the element is
+\(\alpha_n(f)\in D\). The trace state and \(\varphi_{\beta,u}\)
+therefore agree on a dense algebra and hence everywhere.
+\end{proof}
+
+\subsection{The cyclotomic carrier and the symmetry action}
+
+Let \(\mathbb Q^{\mathrm{cycl}}\subset\mathbb C\) be the union of all
+fields \(\mathbb Q(\zeta_N)\), with \(\zeta_N=\exp(2\pi i/N)\).
+The group \(G=\bcGal(\mathbb Q^{\mathrm{cycl}}/\mathbb Q)\) carries
+the inverse-limit topology of its finite cyclotomic Galois groups.
+
+\begin{lemma}[Cyclotomic identification]\label{bc:lem:galois}
+The map \(u\mapsto\gamma_u\), specified by
+\begin{equation}\label{bc:eq:galois}
+ \gamma_u(\zeta_N)=\zeta_N^{u_N},
+\end{equation}
+is a topological group isomorphism \(\bcUnits\longrightarrow G\).
+\end{lemma}
+
+\begin{proof}
+The cyclotomic polynomial \(\Phi_N\) is monic with integer coefficients,
+as follows inductively from \(X^N-1=\prod_{d\mid N}\Phi_d(X)\).
+We recall the irreducibility argument to check the full parameter space.
+Let \(f\in\mathbb Z[X]\) be the monic irreducible polynomial of a
+primitive root \(\zeta_N\). It divides \(\Phi_N\), by Gauss's lemma.
+If a prime \(p\nmid N\) sent this root to a root of a different
+irreducible factor \(g\) of \(\Phi_N\), then
+\(f(X)\mid g(X^p)\). Reduction modulo \(p\) gives
+\(\overline f\mid\overline g^p\), so \(\overline f\) and
+\(\overline g\) have a common irreducible factor.
+It would occur twice in \(\overline\Phi_N\) and thus in \(X^N-1\)
+over \(\mathbb F_p\). This is impossible because the derivative
+\(NX^{N-1}\) is coprime to \(X^N-1\).
+
+The same argument applies to each root of \(f\). Consequently every
+map \(\zeta_N\mapsto\zeta_N^p\), \(p\nmid N\), preserves its roots.
+Every positive integer coprime to \(N\)
+is a product of such primes. Thus all primitive roots are roots of
+\(f\), and \(\Phi_N=f\). It follows that each unit modulo \(N\)
+defines a field automorphism by \eqref{bc:eq:galois}.
+Compatible residues define compatible automorphisms, hence an
+automorphism of their union. Conversely, every automorphism preserves
+root orders and determines these compatible units. This proves the
+bijection and the group law. The finite-quotient definitions of the
+two topologies prove continuity in both directions.
+\end{proof}
+
+Under this identification, \eqref{bc:eq:representation} becomes
+\[
+ \pi_\gamma(\mu_m)\varepsilon_n=\varepsilon_{mn},\qquad
+ \pi_\gamma(e(r))\varepsilon_n
+      =\gamma(e^{2\pi i nr})\varepsilon_n.
+\]
+Theorem~\ref{bc:thm:low} therefore has exactly the cyclotomic Galois
+carrier in the Bost--Connes classification
+\cite{BostConnes1995}*{Propositions~23--24 and Theorem~25}.
+
+\begin{theorem}[Bost--Connes equilibrium classification]
+\label{thm:bc}
+The full system \((\bcA,\sigma)\) has a unique KMS\(_\beta\) state for
+\(0<\beta\leq1\). For \(\beta>1\), its KMS simplex is affinely
+homeomorphic to \(\bcProb(\bcUnits)\), and its extreme states are the
+normalized Gibbs states \eqref{bc:eq:gibbs-state}.
+Via \eqref{bc:eq:galois}, their parameters are exactly
+\(\operatorname{Gal}(\mathbb Q^{\mathrm{cycl}}/\mathbb Q)\).
+\end{theorem}
+
+\begin{proof}
+Theorems~\ref{bc:thm:measures}, \ref{bc:thm:high}, and~\ref{bc:thm:low}
+construct and classify the states. Lemma~\ref{bc:lem:galois} identifies
+the parameter group. In particular, no normalization of a divergent
+occupation trace is used at or below \(\beta=1\).
+\end{proof}
+
+\begin{proposition}[Symmetry and the Toeplitz restriction]\label{bc:prop:symmetry}
+For \(v\in\bcUnits\), the formulas
+\[
+ \theta_v(\mu_n)=\mu_n,\qquad \theta_v(e(r))=e(vr)
+\]
+define an action of \(\bcUnits\) on \(\bcA\) by automorphisms that commute
+with \(\sigma\). Here \(vr\) uses the residue of \(v\) modulo the
+order of \(r\). Its action on the low-temperature extreme states is
+\begin{equation}\label{bc:eq:symmetry}
+ \varphi_{\beta,u}\circ\theta_v=\varphi_{\beta,vu},
+ \qquad \beta>1.
+\end{equation}
+It is free and transitive on those states. For \(0<\beta\leq1\),
+the unique KMS state is fixed by every \(\theta_v\).
+
+For every \(\beta>0\), all KMS\(_\beta\) states have the same
+restriction to \(\mathcal T=C^*(\mu_n:n\in\bcN)\). On its dense
+monomials this restriction is
+\begin{equation}\label{bc:eq:toeplitz}
+ \varphi(\mu_m\mu_n^*)=\delta_{m,n}n^{-\beta}.
+\end{equation}
+On any finite set of primes it is the product of the geometric
+Toeplitz states with weights \((1-p^{-\beta})p^{-k\beta}\).
+\end{proposition}
+
+\begin{proof}
+Multiplication by a profinite unit permutes \(\mathbb Q/\mathbb Z\)
+and each fiber of multiplication by \(n\). Hence \(\theta_v\)
+preserves all the defining relations. Its inverse is
+\(\theta_{v^{-1}}\), and it commutes with the dynamics on generators.
+The identity \(\pi_u\circ\theta_v=\pi_{vu}\) gives
+\eqref{bc:eq:symmetry}. The parameterization in
+Theorem~\ref{bc:thm:low} proves freeness and transitivity.
+At \(0<\beta\leq1\), invariance also follows from
+Theorem~\ref{bc:thm:high} or from the invariant measure.
+
+The KMS identity gives zero at unequal indices and \(n^{-\beta}\)
+at equal indices. The monomials \(\mu_m\mu_n^*\) span a dense star
+algebra in \(\mathcal T\), by the product calculation in
+Lemma~\ref{bc:lem:expectation}. Thus \eqref{bc:eq:toeplitz} determines the
+restriction. For finitely many primes, unique factorization identifies
+the diagonal powers and gives the product of their local values.
+Those local values are the geometric-state expectations, since
+\(\sum_{k\geq j}(1-p^{-\beta})p^{-k\beta}=p^{-j\beta}\).
+\end{proof}
+
+There is exactly one symmetry-invariant KMS state for each \(\beta>0\).
+For \(\beta>1\), it is the mixture in \eqref{bc:eq:gibbs-measure} with
+probability Haar measure on \(\bcUnits\). It agrees with
+\(\nu_\beta\circ E\) by Proposition~\ref{bc:prop:radial}.
+For a nonzero \(r=a/b\) in lowest terms, its phase value is
+\begin{equation}\label{bc:eq:phase-value}
+ \varphi_\beta(e(r))
+   =\prod_{p^j\Vert b}
+         p^{-j\beta}\frac{1-p^{\beta-1}}{1-p^{-1}}.
+\end{equation}
+Indeed, the average of a primitive additive character of conductor
+\(p^j\) on \(p^k\mathbb Z_p^\times\) is zero for \(k<j-1\),
+is \(-1/(p-1)\) for \(k=j-1\), and is one for \(k\geq j\).
+The first assertion follows by subtracting the complete additive sum
+on multiples of \(p\) from the complete sum modulo \(p^j\).
+Inserting these three values in \eqref{bc:eq:radial} gives the local factor.
+For example, \(\varphi_\beta(e(1/2))=2^{1-\beta}-1\).
+
+\subsection{Critical and zero-temperature limits}
+
+\begin{proposition}[Limits of the equilibrium states]\label{bc:prop:limits}
+For every \(a\in\bcA\),
+\begin{equation}\label{bc:eq:critical-limit}
+ \sup_{\lambda\in\bcProb(\bcUnits)}
+       |\varphi_{\beta,\lambda}(a)-\varphi_1(a)|\longrightarrow0
+       \quad(\beta\downarrow1).
+\end{equation}
+At zero temperature, define
+\[
+ \varphi_{\infty,u}(a)
+  =\langle\pi_u(a)\varepsilon_1,\varepsilon_1\rangle,
+ \qquad
+ \varphi_{\infty,\lambda}=\int_{\bcUnits}\varphi_{\infty,u}\,d\lambda(u).
+\]
+These are states, and
+\begin{equation}\label{bc:eq:zero-limit}
+ \|\varphi_{\beta,\lambda}-\varphi_{\infty,\lambda}\|
+       \leq2\bigl(1-\zeta(\beta)^{-1}\bigr)\longrightarrow0
+       \quad(\beta\to\infty),
+\end{equation}
+uniformly in \(\lambda\). The weak-star limits of KMS states as
+\(\beta\to\infty\) are exactly these mixtures. Their extreme points
+are indexed by \(\bcUnits\), or equivalently by \(G\), and
+\(\varphi_{\infty,u}(e(r))=\bcphase_r(u)\).
+\end{proposition}
+
+\begin{proof}
+Suppose \eqref{bc:eq:critical-limit} fails. There are \(\beta_j\downarrow1\)
+and parameter measures \(\lambda_j\) whose state values stay a fixed
+positive distance from \(\varphi_1(a)\). The state space is weak-star
+compact, so a subnet converges to a state \(\psi\). For
+\(b,c\in\mathcal B\), the KMS identity passes to the limit because
+\(\sigma_{i\beta_j}(b)\to\sigma_i(b)\) in norm. Therefore \(\psi\)
+is KMS\(_1\) by Lemma~\ref{bc:lem:analytic}, and
+Theorem~\ref{bc:thm:high} gives \(\psi=\varphi_1\). This contradicts
+the choice of the subnet.
+
+For the other limit, the Gibbs formula writes each state as a convex
+sum of vector states at \(\varepsilon_n\). The weight at
+\(\varepsilon_1\) is \(\zeta(\beta)^{-1}\). The remaining weights
+have total mass \(1-\zeta(\beta)^{-1}\). Two states are at norm distance
+at most two, which proves \eqref{bc:eq:zero-limit} and its integrated form.
+The zeta series tends to one by dominated convergence, using any fixed
+exponent greater than one as a summable majorant.
+
+The map \(u\mapsto\varphi_{\infty,u}(a)\) is continuous first on
+monomials and then on all \(a\) by uniform approximation. Thus mixtures
+depend continuously on \(\lambda\). Compactness of \(\bcProb(\bcUnits)\)
+and \eqref{bc:eq:zero-limit} identify every weak-star limit with such a
+mixture. Conversely, keeping \(\lambda\) fixed produces every mixture.
+The phase algebra separates measures on \(\bcUnits\), since its restricted
+characters are uniformly dense in \(C(\bcUnits)\). Hence the mixture map
+is injective and its extreme points are precisely the point measures.
+\end{proof}
+
+The zero-temperature assertion concerns limits of finite-temperature
+KMS states; it does not classify all ground states of the dynamics.
+The normalization in \eqref{bc:eq:gibbs-state} always uses the
+trace-class half-plane \(\operatorname{Re}s>1\). The state at the
+critical point is instead constructed by the scaling measure, and
+\eqref{bc:eq:critical-limit} specifies its relation to the Gibbs family.
+
+
+\subsection{Vacua and augmentations}
+
+The occupation vacuum is the vector \(\varepsilon_1\), of energy zero.
+Its vector state \(\varphi_{\infty,u}\) is a zero-temperature limit,
+whereas a KMS\(_\beta\) state with finite \(\beta>0\) obeys
+\(\varphi(\mu_n\mu_n^*)=n^{-\beta}\).
+An algebra augmentation means a unital multiplicative map to the
+coefficient field. Here the formulas
+\[
+ \epsilon(e(r))=1,\qquad \epsilon(\mu_n)=1
+\]
+preserve every defining relation and give a star augmentation
+\(\epsilon:\bcA\to\mathbb C\). It has
+\(\epsilon(\mu_n\mu_n^*)=1\), so it is not KMS\(_\beta\) for
+\(\beta>0\). The vacuum state is not multiplicative either: for
+\(n>1\), its value on \(\mu_n\) is zero, while its value on
+\(\mu_n^*\mu_n\) is one. Thus the equal scalar Euler factor in the
+local integral and occupation trace specifies none of these three
+additional choices. A chiral differential or arithmetic cohomological
+comparison must be constructed on further data.

@@ -1,0 +1,677 @@
+\section{The arithmetic orientation and finite torsors}
+\label{sec:do26-orientation}
+
+The finite arithmetic Chern--Simons invariant uses two maps.  A torsor
+pulls a group-cohomology class to an arithmetic curve.  An arithmetic trace
+then evaluates that class.  The first map is a construction in the category
+of sheaves.  The second uses class field theory.  We separate these maps
+and keep the primes dividing the coefficient order in the base scheme.
+
+Let \(F\) be a totally imaginary number field, fix \(n\geq1\),
+and put \(X=\operatorname{Spec}\mathcal O_F\).  Throughout this section,
+\(H^q(X,-)\) means ordinary sheaf cohomology on the small \'etale site
+\(X_{\mathrm{et}}\).  Its objects are schemes \'etale over \(X\), and
+its coverings are jointly surjective \'etale families.  Coefficients are
+sheaves of abelian groups, with cohomological grading.  In particular,
+\(\mathbb G_m(U)=\Gamma(U,\mathcal O_U)^\times\), and
+\(\underline{\mathbb Z/n}\) is the constant sheaf.  No completion or
+inverse limit of coefficient sheaves occurs.  We impose no compact-support
+condition and use no compactified site in this construction.
+
+\subsection{Roots of unity and the power-map defect}
+
+For a field \(L\) of characteristic zero, put
+\(\mu_n(L)=\{u\in L^\times:u^n=1\}\).
+Suppose \(\mu_n(\overline F)\subset F\), and choose
+\(\zeta\in F\) of exact order \(n\).  For \(n=1\), this means
+\(\zeta=1\).  The corresponding group isomorphism is
+\[
+ \zeta_n:\tfrac1n\mathbb Z/\mathbb Z\longrightarrow\mu_n(F),
+ \qquad k/n\longmapsto\zeta^k.
+\]
+Write \(\mu_{n,X}=\ker([n]:\mathbb G_m\to\mathbb G_m)\), where
+\([n](u)=u^n\).  This is a sheaf on the specified small site.
+
+\begin{lemma}[The coefficient map at every finite prime]
+\label{lem:do26-roots}
+The map
+\[
+ e_\zeta:\underline{\mathbb Z/n}\longrightarrow\mu_{n,X},
+ \qquad k\longmapsto\zeta^k,
+\]
+is an isomorphism.  Moreover,
+\[
+ \operatorname{Hom}_{X_{\mathrm{et}}}
+   (\underline{\mathbb Z/n},\mathbb G_m)=\mu_n(F).
+\]
+\end{lemma}
+
+\begin{proof}
+A root of unity is an algebraic integer, and its inverse is an algebraic
+integer.  Thus \(\zeta\in\mathcal O_F^\times\), so the displayed map
+is defined on all of \(X\).  At a geometric point over a finite prime,
+the stalk of \(\mathbb G_m\) is
+\((\mathcal O_{X,\bar x}^{\mathrm{sh}})^\times\).
+The strict henselization is a discrete valuation domain of characteristic
+zero.  Its fraction field contains \(F\), and
+\[
+ T^n-1=\prod_{k=0}^{n-1}(T-\zeta^k)
+\]
+has exactly those \(n\) distinct roots in that field.  The same argument
+applies to the geometric generic stalk.  Therefore \(e_\zeta\) is
+bijective on every geometric stalk, which proves the first assertion.
+A homomorphism from the constant sheaf \(\underline{\mathbb Z}\) to
+any abelian sheaf is determined by the image of its global section \(1\).
+Factoring through \(\underline{\mathbb Z/n}\) requires that image to be
+killed by \(n\).  For \(\mathbb G_m\), these sections are precisely
+\(\mu_n(\mathcal O_F)=\mu_n(F)\).
+\end{proof}
+
+The stalk in this proof is a strict henselian local ring.  It is not the
+geometric special fiber of the group scheme \(\mu_n\).  At a prime
+dividing \(n\), that group scheme need not be \'etale.
+
+For example, take \(F=\mathbb Q(i)\), \(n=2\), and the prime
+\((1-i)\).  In the strict henselian local ring, normalize the valuation
+by \(v(1-i)=1\).  The unit \(i\) has no square root there.  Indeed,
+\(u^2=i\) would imply \(\bar u=1\) in the residue field of
+characteristic two.  Both \(u-1\) and \(u+1\) would have positive
+valuation, whereas
+\[
+  v\bigl((u-1)(u+1)\bigr)=v(i-1)=1.
+\]
+This is impossible.  Thus the \'etale power map can fail to be surjective,
+even under the root-of-unity hypothesis.
+
+Define its image and cokernel in the category of abelian sheaves:
+\[
+ K_n=\operatorname{im}([n]:\mathbb G_m\to\mathbb G_m),
+ \qquad Q_n=\operatorname{coker}([n]:\mathbb G_m\to\mathbb G_m).
+\]
+The cokernel is a sheaf cokernel.  Its sections need not equal the quotient
+of the groups of sections.
+
+\begin{lemma}[Nonzero defect at every coefficient prime]
+\label{lem:coefficient-prime-defect}
+Let \(v\) be a finite prime of residue characteristic \(p\mid n\).
+The stalk of \(Q_n\) at a geometric point over \(v\) is nonzero.
+This assertion holds for every number field, without a root-of-unity
+hypothesis.
+\end{lemma}
+
+\begin{proof}
+Let \(R\) be the strict henselization at that point and choose a
+uniformizer \(\varpi\), with valuation \(v(\varpi)=1\).
+The unit \(1+\varpi\) is not a \(p\)-th power in \(R\).
+Indeed, if \(x^p=1+\varpi\), reduction to the residue field gives
+\(\bar x=1\), so \(x=1+a\) with \(v(a)\geq1\). In
+\[
+ (1+a)^p-1=\sum_{k=1}^{p-1}\binom pk a^k+a^p,
+\]
+every summand has valuation at least two: \(p\) divides each
+intermediate binomial coefficient and \(p\geq2\).
+This contradicts \(v(\varpi)=1\). An \(n\)-th power is a
+\(p\)-th power, so \(1+\varpi\) represents a nonzero class in
+\(R^\times/(R^\times)^n\), the stalk of \(Q_n\).
+\end{proof}
+
+\begin{lemma}[Unramified norms on units]
+\label{lem:do26-norm}
+Let \(R\) be a henselian discrete valuation ring with finite residue
+field \(k\).  Let \(R'/R\) be its unramified extension of degree
+\(d\geq1\).  Then
+\(N_{R'/R}:R'^\times\to R^\times\) is surjective.
+\end{lemma}
+
+\begin{proof}
+Write \(|k|=q\).  The norm on residue fields sends
+\(x\in\mathbb F_{q^d}^\times\) to
+\(x^{(q^d-1)/(q-1)}\).  Since that multiplicative group is cyclic,
+the image has order \(q-1\).  It is therefore all of \(k^\times\).
+
+Choose an \(R\)-basis of the free module \(R'\).  In those coordinates,
+the norm is the determinant of multiplication and hence a polynomial.
+Fix \(a\in R^\times\), and choose a residue unit \(\bar b\) with
+norm \(\bar a\).  The derivative of the norm at \(\bar b\) is
+\[
+ h\longmapsto N(\bar b)
+       \operatorname{Tr}_{\mathbb F_{q^d}/\mathbb F_q}(h/\bar b).
+\]
+The trace is a nonzero linear functional because the finite-field
+extension is separable.  Some coordinate derivative is therefore nonzero.
+Lift all coordinates of \(\bar b\) to \(R\), and hold all but that
+coordinate fixed.  Hensel's lemma solves the resulting one-variable norm
+equation with the prescribed residue.  The solution is a unit of \(R'\)
+with norm \(a\).
+\end{proof}
+
+\begin{lemma}[Cohomology of the power-map defect]
+\label{lem:do26-defect}
+For every number field \(F\) and every \(n\geq1\),
+\[
+ \operatorname{supp}(Q_n)=\{v:v\mid n\},
+ \qquad H^q(X,Q_n)=0\quad(q\geq1).
+\]
+These conclusions do not require roots of unity in \(F\).
+\end{lemma}
+
+\begin{proof}
+If \(n\) is invertible at a geometric point, the equation
+\(T^n-u=0\) for a unit \(u\) has a simple root after a finite
+separable residue extension.  Hensel's lemma lifts that root.  Thus the
+stalk of \(Q_n\) vanishes away from the finite set \(V(n)\).
+Lemma~\ref{lem:coefficient-prime-defect} proves nonvanishing at
+each point of that set; for \(n=1\), both sides are empty.
+For its reduced closed immersion \(i:V(n)\hookrightarrow X\), the
+adjunction map \(Q_n\to i_*i^*Q_n\) is an isomorphism on every stalk.
+Closed direct image is exact on the \'etale site and preserves injectives,
+since its inverse-image left adjoint is exact.  Consequently it suffices
+to compute cohomology over each finite residue field.
+
+Fix a prime \(v\mid n\).  Put \(R=\mathcal O_{X,v}^{\mathrm h}\)
+and let \(R^{\mathrm{sh}}\) be a strict henselization with residue
+field \(\bar k\).  The relevant discrete
+\(G_k=\operatorname{Gal}(\bar k/k)\)-module is
+\[
+ M=(R^{\mathrm{sh}})^\times/
+                \bigl((R^{\mathrm{sh}})^\times\bigr)^n.
+\]
+It is killed by \(n\).  Write \(\phi\) for arithmetic Frobenius,
+which generates the dense cyclic subgroup of \(G_k\cong\widehat{\mathbb Z}\).
+For a discrete torsion module over this group,
+\[
+ H^1(G_k,M)=M/(\phi-1)M,\qquad H^q(G_k,M)=0\quad(q\geq2).
+\]
+Here cochains are continuous.  The first formula follows by evaluating
+a cocycle on \(\phi\).  An element with orbit length \(r\) and order
+dividing \(e\) gives a cocycle on the cyclic quotient of order \(re\).
+For the second formula, use the two-periodic cyclic resolution and take
+the limit over finite quotients.  If the action factors through a cyclic
+quotient of order \(r\), inflation to the quotient of order \(rs\)
+has a factor \(s^{\lfloor q/2\rfloor}\) in degree \(q\).
+Choosing \(s\) divisible by the exponent kills each class with
+\(q\geq2\).  Every continuous cochain has finite image and lies in
+such a finite torsion submodule.
+
+We prove \((\phi-1)M=M\).  Represent \(m\in M\) by a unit
+\(u\in R_r^\times\), where \(R_r/R\) is finite unramified of
+degree \(r\).  Choose the unramified extension \(R_{rn}/R_r\)
+of degree \(n\), and put \(\sigma=\phi^r\) on it.  By
+Lemma~\ref{lem:do26-norm}, there is a unit \(b\) with
+\(N(b)=u\).  Therefore
+\[
+ z=u b^{-n}\quad\text{satisfies}\quad N(z)=1.
+\]
+The elementary cyclic form of Hilbert's theorem 90 gives
+\(z=\sigma(w)/w\) in the fraction field of \(R_{rn}\).
+For completeness, choose \(t\) for which
+\[
+ w=\sum_{j=0}^{n-1}
+    \left(\prod_{\ell=0}^{j-1}\sigma^\ell(z^{-1})\right)\sigma^j(t)
+ \ne0.
+\]
+Such a \(t\) exists by the linear independence of distinct field
+automorphisms.  The equation \(N(z)=1\) makes
+\(\sigma(w)=zw\) by cyclic reindexing.  Since the extension is
+unramified, a uniformizer of \(R_r\) has valuation one upstairs.
+Multiplying \(w\) by a suitable power of that uniformizer makes it a
+unit and does not change \(\sigma(w)/w\).
+In the additive notation of \(M\), we obtain
+\[
+ [u]=(\phi^r-1)[w]
+     =(\phi-1)(1+\phi+\cdots+\phi^{r-1})[w].
+\]
+This proves the required surjectivity and all higher-cohomology vanishings.
+\end{proof}
+
+\subsection{The global trace and its normalization}
+
+\begin{lemma}[The unramified local invariant]
+\label{lem:do26-local-invariant}
+Let \(R\) be a henselian discrete valuation ring with finite residue
+field \(k\), fraction field \(L\), and normalized valuation \(v\).
+Let \(L^{\mathrm{nr}}=\operatorname{Frac}(R^{\mathrm{sh}})\) and
+\(G_k=\operatorname{Gal}(L^{\mathrm{nr}}/L)\).
+Valuation, the inverse Bockstein, and evaluation at arithmetic Frobenius
+\(\phi\) give an isomorphism
+\[
+ H^2(G_k,(L^{\mathrm{nr}})^\times)
+ \xrightarrow{v_*}H^2(G_k,\mathbb Z)
+ \xrightarrow{\beta^{-1}}H^1(G_k,\mathbb Q/\mathbb Z)
+ \xrightarrow{\operatorname{ev}_{\phi}}\mathbb Q/\mathbb Z.
+\]
+Here \(\beta\) is the boundary for
+\(0\to\mathbb Z\to\mathbb Q\to\mathbb Q/\mathbb Z\to0\).
+\end{lemma}
+
+\begin{proof}
+Put \(U=(R^{\mathrm{sh}})^\times\).  On a finite unramified cyclic
+extension, the odd positive cohomology of its units is zero by Hilbert's
+theorem 90.  Its proof for units follows from the explicit formula and
+valuation adjustment in Lemma~\ref{lem:do26-defect}.  The even positive
+cohomology is zero by the cyclic resolution and
+Lemma~\ref{lem:do26-norm}.  Taking the limit over finite unramified
+extensions gives \(H^q(G_k,U)=0\) for every \(q>0\).
+The valuation sequence
+\(0\to U\to(L^{\mathrm{nr}})^\times\xrightarrow{v}\mathbb Z\to0\)
+therefore makes \(v_*\) an isomorphism in degree two.
+Positive-degree cohomology of the trivial module \(\mathbb Q\)
+vanishes by averaging over finite quotients.  Thus \(\beta\) is an
+isomorphism.  Finally, every continuous character of
+\(\widehat{\mathbb Z}\) is determined by its value on \(\phi\),
+and every element of \(\mathbb Q/\mathbb Z\) occurs.
+\end{proof}
+
+The preceding local calculation isolates the global arithmetic input.
+We use the following class-field trace theorem on the ordinary small site:
+\begin{equation}
+\label{eq:do26-trace-input}
+ H^2(X,\mathbb G_m)=0,\qquad
+ \operatorname{tr}_F:H^3(X,\mathbb G_m)
+                   \xrightarrow{\sim}\mathbb Q/\mathbb Z.
+\end{equation}
+The field is totally imaginary in this statement.  These are the
+class-field computations in Mazur~\cite[\S2,
+(2.1)--(2.3), pp.~537--538]{Mazur1973}.  We specify how their normalization enters.
+
+Write \(\operatorname{Br}(L)=H^2(L,\mathbb G_m)\) for the
+cohomological Brauer group of a field \(L\).
+Let \(j:\operatorname{Spec}F\to X\) be the generic-point morphism and
+let \(i_v:\operatorname{Spec}k_v\to X\) run through the finite primes.
+The divisor sequence is
+\[
+ 0\longrightarrow\mathbb G_m\longrightarrow j_*\mathbb G_{m,F}
+   \xrightarrow{(v)_v}\bigoplus_v i_{v*}\underline{\mathbb Z}
+   \longrightarrow0,
+\]
+where \(v\) takes a local uniformizer to \(+1\).
+Local class field theory gives \(R^qj_*\mathbb G_{m,F}=0\) for
+\(q>0\).  The resulting cohomology sequence contains
+\begin{equation}
+\label{eq:do26-residue}
+\begin{split}
+0\longrightarrow H^2(X,\mathbb G_m)&\longrightarrow\operatorname{Br}(F)
+ \xrightarrow{\partial}\bigoplus_v\mathbb Q/\mathbb Z\\
+ &\xrightarrow{\delta}H^3(X,\mathbb G_m)
+ \longrightarrow H^3(F,\mathbb G_m)\longrightarrow0.
+\end{split}
+\end{equation}
+The copy of \(\mathbb Q/\mathbb Z\) at \(v\) is
+\(H^2(k_v,\underline{\mathbb Z})\), identified using arithmetic
+Frobenius and the boundary of
+\(0\to\mathbb Z\to\mathbb Q\to\mathbb Q/\mathbb Z\to0\).
+The invariant on unramified Brauer classes is
+the map of Lemma~\ref{lem:do26-local-invariant}.  Its sign can be
+computed without a convention for central simple algebras.  For an
+unramified cyclic extension of degree \(d\), with arithmetic Frobenius
+generator \(\sigma\) and uniformizer \(\varpi\), the cocycle
+\[
+ \alpha(\sigma^i,\sigma^j)=
+          \varpi^{\lfloor(i+j)/d\rfloor},\qquad 0\leq i,j<d,
+\]
+has invariant \(1/d\).  Indeed, its valuation is the Bockstein of the
+character \(\sigma\mapsto1/d\), using the lift
+\(\sigma^i\mapsto i/d\) to \(\mathbb Q\).
+
+The substantive class-field assertions are that \(\partial\) agrees
+with these local invariants, that
+\[
+ 0\longrightarrow\operatorname{Br}(F)
+  \xrightarrow{\partial}\bigoplus_v\mathbb Q/\mathbb Z
+  \xrightarrow{\sum_v}\mathbb Q/\mathbb Z\longrightarrow0
+\]
+is exact, and that \(H^3(F,\mathbb G_m)=0\).
+They imply~\eqref{eq:do26-trace-input}, with the normalization
+\begin{equation}
+\label{eq:do26-trace-normalization}
+ \operatorname{tr}_F\bigl(\delta((a_v)_v)\bigr)=\sum_v a_v.
+\end{equation}
+The connecting homomorphism in~\eqref{eq:do26-residue} uses the usual
+cochain differential: lift a cocycle, apply the differential, and take its
+class in the kernel.  Formula~\eqref{eq:do26-trace-normalization} fixes
+the sign.  The local unit argument does not prove these global class-field
+assertions.  They remain the arithmetic hypotheses whenever the trace
+theorem is not invoked.
+
+\begin{proposition}[The degree-three orientation]
+\label{prop:do26-orientation}
+Assume the trace theorem~\eqref{eq:do26-trace-input}, with
+normalization~\eqref{eq:do26-trace-normalization}.  Inclusion of roots of
+unity induces an isomorphism
+\[
+ H^3(X,\mu_{n,X})\xrightarrow{\sim}
+       H^3(X,\mathbb G_m)[n].
+\]
+Consequently
+\begin{equation}
+\label{eq:do26-orientation}
+ \operatorname{inv}_{F,n,\zeta}
+ =\operatorname{tr}_F\circ H^3(\mu_{n,X}\hookrightarrow\mathbb G_m)
+                 \circ H^3(e_\zeta)
+ :H^3(X,\underline{\mathbb Z/n})
+       \xrightarrow{\sim}\tfrac1n\mathbb Z/\mathbb Z.
+\end{equation}
+If \(u\in(\mathbb Z/n)^\times\), then
+\(\operatorname{inv}_{F,n,\zeta^u}
+   =u\operatorname{inv}_{F,n,\zeta}\).
+\end{proposition}
+
+\begin{proof}
+The definition of \(K_n\) gives two short exact sequences:
+\[
+ 0\to\mu_{n,X}\to\mathbb G_m\xrightarrow{[n]}K_n\to0,
+ \qquad
+ 0\to K_n\xrightarrow{\iota}\mathbb G_m\to Q_n\to0.
+\]
+Lemma~\ref{lem:do26-defect} and the second sequence show that
+\(H^r(\iota)\) is an isomorphism for \(r\geq2\).  In particular,
+\(H^2(X,K_n)=0\).  The first sequence therefore identifies
+\(H^3(X,\mu_{n,X})\) with the kernel of
+\(H^3(X,\mathbb G_m)\to H^3(X,K_n)\).
+After composing with \(H^3(\iota)\), this map is multiplication by
+\(n\).  The trace identifies its kernel with
+\((\mathbb Q/\mathbb Z)[n]=\tfrac1n\mathbb Z/\mathbb Z\).
+Lemma~\ref{lem:do26-roots} supplies the remaining isomorphism.
+Finally, \(e_{\zeta^u}=e_\zeta\circ[u]\).  Functoriality of
+cohomology gives the stated multiplier, with no inversion of \(u\).
+\end{proof}
+
+\begin{corollary}[The top-degree duality pairing]
+\label{cor:do26-duality}
+Under the same trace hypothesis, the Yoneda evaluation pairing
+\[
+ H^3(X,\underline{\mathbb Z/n})\times
+ \operatorname{Hom}_X(\underline{\mathbb Z/n},\mathbb G_m)
+ \longrightarrow\mathbb Q/\mathbb Z,
+ \qquad(x,f)\longmapsto\operatorname{tr}_F(f_*x),
+\]
+is perfect.  If \(f(1)=\zeta^a\), its value is
+\(a\operatorname{inv}_{F,n,\zeta}(x)\).
+\end{corollary}
+
+\begin{proof}
+The formula follows from \(f=(\mu_{n,X}\hookrightarrow\mathbb G_m)
+\circ e_\zeta\circ[a]\).  Proposition~\ref{prop:do26-orientation}
+identifies the first factor with \(\tfrac1n\mathbb Z/\mathbb Z\).
+Lemma~\ref{lem:do26-roots} identifies the second with the cyclic group
+generated by \(\zeta\).  The resulting pairing \((t,a)\mapsto at\)
+identifies each finite group with the full character group of the other.
+For \(n=1\), both groups are zero and this remains valid.
+\end{proof}
+
+This proves the required degree-three part from the trace theorem.  It
+does not assume perfectness of the full Artin--Verdier pairing in every
+degree.  Such perfectness is the stronger theorem in
+Mazur~\cite[\S2, (2.4), pp.~538--539]{Mazur1973}.
+
+\subsection{The classifying pullback}
+
+Let \(A\) be a finite discrete group.  A right \(A\)-torsor on
+\(X_{\mathrm{et}}\) is a sheaf \(P\) with a right action, locally
+isomorphic to \(\underline A\) acting on itself.  For a finite constant
+group it is represented by a finite \'etale scheme over \(X\).
+Fix a geometric generic point \(b:\operatorname{Spec}\overline F\to X\)
+and put \(\pi=\pi_1^{\mathrm{et}}(X,b)\).
+The finite-cover equivalence identifies finite \'etale schemes with finite
+continuous left \(\pi\)-sets
+\cite[Theorem 58.6.2]{do26-StacksFundamental}.
+
+Given a continuous homomorphism \(\rho:\pi\to A\), give the set
+\(A\) the action \(\gamma\cdot a=\rho(\gamma)a\).
+This action commutes with right multiplication.  The finite-cover
+equivalence therefore produces a right torsor \(P_\rho\).
+Conversely, a point \(p\in P_b\) determines \(\rho\) by
+\(\gamma p=p\rho(\gamma)\).  Replacing \(p\) by \(pa\) replaces
+\(\rho\) by \(a^{-1}\rho a\).  The equivalence preserves morphisms,
+so it also identifies torsor isomorphisms with these changes of point.
+Thus
+\[
+ \{\text{finite \'etale right }A\text{-torsors on }X\}/\cong
+ =\operatorname{Hom}_{\mathrm{cont}}(\pi,A)/A.
+\]
+No surjectivity of \(\rho\) is required.  A torsor need not be connected.
+
+Let \(BA\) denote the classifying topos of left \(A\)-sets.
+For a left \(A\)-set \(M\), define the associated sheaf
+\[
+ T_P(M)=P\times^A\underline M,
+ \qquad (pa,m)\sim(p,am),
+\]
+where the quotient is formed as a sheaf quotient.  Locally on a cover
+trivializing \(P\), this is the constant-sheaf functor on the underlying
+set of \(M\).  It preserves finite limits and all colimits.  Its right
+adjoint sends a sheaf \(\mathcal F\) to
+\(\operatorname{Hom}_X(P,\mathcal F)\), with action
+\((a\cdot f)(p)=f(pa)\).  Hence \(T_P\) is the inverse image of a
+geometric morphism \(f_P:X_{\mathrm{et}}\to BA\).
+
+\begin{proposition}[Cohomology pulled back by a torsor]
+\label{prop:do26-pullback}
+Let \(M\) be a discrete abelian group with trivial \(A\)-action.
+For each \(q\geq0\), a right \(A\)-torsor \(P\) determines a
+homomorphism
+\[
+ f_P^*:H^q(A,M)\longrightarrow H^q(X,\underline M).
+\]
+It depends only on the isomorphism class of \(P\).
+\end{proposition}
+
+\begin{proof}
+On abelian group objects the associated-sheaf functor
+\[
+ T_P:\mathbb Z[A]\text{-}\mathrm{Mod}
+       \longrightarrow\mathrm{Ab}(X_{\mathrm{et}})
+\]
+is exact.  Exactness can be checked after trivializing \(P\), where
+it is the exact constant-sheaf functor.  Since the action on \(M\) is
+trivial, \([p,m]\mapsto m\) identifies \(T_P(M)\) canonically with
+\(\underline M\).  Also \(T_P(\mathbb Z)=\underline{\mathbb Z}\).
+
+Use the Yoneda descriptions
+\[
+ H^q(A,M)=\operatorname{Ext}^q_{\mathbb Z[A]}(\mathbb Z,M),
+ \qquad
+ H^q(X,\underline M)=
+ \operatorname{Ext}^q_{X}(\underline{\mathbb Z},\underline M).
+\]
+Apply \(T_P\) to an exact sequence representing a Yoneda extension.
+Exactness gives an extension on \(X\) with the stated endpoints.
+The functor preserves equivalences of extensions and their Baer sums.
+It therefore gives the displayed homomorphism.  In degree zero it sends
+an invariant element to its constant section.
+A torsor isomorphism \(P\to P'\) induces the natural isomorphism
+\([p,m]\mapsto[p',m]\) of these exact functors.  On the trivial
+endpoints this is the identity, so the resulting extension classes agree.
+\end{proof}
+
+For \(P=P_\rho\), write this homomorphism as \(\rho^*\).
+The notation includes the passage from group cohomology to sheaf
+cohomology.  It asserts no isomorphism
+\(H^q(\pi,M)\cong H^q(X,\underline M)\), and requires no
+\(K(\pi,1)\) property for \(X\).
+
+\subsection{Conjugation, cocycles, and the invariant}
+
+We make the conjugation identity explicit.  For trivial coefficients,
+inhomogeneous cochains have differential
+\[
+\begin{split}
+ (dc)(g_1,\ldots,g_{q+1})={}&c(g_2,\ldots,g_{q+1})\\
+ &+\sum_{i=1}^{q}(-1)^i
+       c(g_1,\ldots,g_i g_{i+1},\ldots,g_{q+1})\\
+ &+(-1)^{q+1}c(g_1,\ldots,g_q).
+\end{split}
+\]
+For a profinite group and a finite coefficient group, cochains are
+continuous maps to the discrete coefficient group.  For finite \(A\),
+all maps are continuous.
+
+\begin{lemma}[An explicit conjugation homotopy]
+\label{lem:do26-conjugation}
+Let \(c\in Z^3(A,M)\), with trivial \(A\)-action on \(M\), and
+let \(a\in A\).  Set \(\operatorname{Ad}_a(g)=aga^{-1}\) and
+\[
+\begin{split}
+ h_a(c)(g,h)={}&c(a^{-1},\operatorname{Ad}_a g,
+                         \operatorname{Ad}_a h)\\
+              &-c(g,a^{-1},\operatorname{Ad}_a h)
+                +c(g,h,a^{-1}).
+\end{split}
+\]
+Then \(d h_a(c)=c\circ\operatorname{Ad}_a-c\).
+\end{lemma}
+
+\begin{proof}
+Use homogeneous bar chains, with differential
+\[
+ \partial(g_0,\ldots,g_q)=
+ \sum_{j=0}^{q}(-1)^j(g_0,\ldots,\widehat g_j,\ldots,g_q).
+\]
+Here \(q\geq1\), and \(\partial_0=0\).
+The chains carry the diagonal left \(A\)-action.  Right translation
+\(R(g_0,\ldots,g_q)=(g_0a^{-1},\ldots,g_qa^{-1})\) commutes
+with this action.  Define
+\[
+ K_q(g_0,\ldots,g_q)=
+ \sum_{i=0}^{q}(-1)^i
+ (g_0,\ldots,g_i,g_i a^{-1},\ldots,g_q a^{-1}).
+\]
+Deleting a vertex away from the repeated index cancels against the
+corresponding term of \(K_{q-1}\partial\).  At the repeated index,
+successive terms cancel.  The two endpoints give
+\[
+ \partial K_q+K_{q-1}\partial=R-\operatorname{id}.
+\]
+The convention in degree zero has \(K_{-1}=0\).
+
+Let \(\widetilde c\) be the homogeneous cochain associated to \(c\):
+\[
+ \widetilde c(g_0,\ldots,g_q)=
+ c(g_0^{-1}g_1,\ldots,g_{q-1}^{-1}g_q).
+\]
+It is left invariant.  This invariance identifies \(R^*\widetilde c\)
+with the homogeneous cochain of \(c\circ\operatorname{Ad}_a\).
+Dualizing the chain identity gives
+\(d(\widetilde c K_2)=R^*\widetilde c-\widetilde c\), since
+\(d\widetilde c=0\).  Evaluating \(K_2\) at \((1,g,gh)\)
+gives exactly the three displayed terms of \(h_a(c)\).
+\end{proof}
+
+\begin{theorem}[The finite arithmetic Chern--Simons function]
+\label{thm:do26-kim}\label{thm:kim}
+Let \(F\), \(X\), \(n\), and \(\zeta\) satisfy the hypotheses of
+Lemma~\ref{lem:do26-roots}.  Use the class-field trace
+\eqref{eq:do26-trace-input} with normalization
+\eqref{eq:do26-trace-normalization}.  For a finite group \(A\) and a
+class \(c\in H^3(A,\mathbb Z/n)\) with trivial coefficient action,
+\[
+ \operatorname{CS}_{c,\zeta}:
+ \operatorname{Hom}_{\mathrm{cont}}(\pi_1^{\mathrm{et}}(X,b),A)/A
+   \longrightarrow\tfrac1n\mathbb Z/\mathbb Z,
+ \qquad [\rho]\longmapsto
+       \operatorname{inv}_{F,n,\zeta}(\rho^*c),
+\]
+is well defined. For \(u\in(\mathbb Z/n)^\times\), replacing
+\(\zeta\) by \(\zeta^u\) multiplies the function by \(u\).
+\end{theorem}
+
+\begin{proof}
+Proposition~\ref{prop:do26-pullback} constructs \(\rho^*c\) in the
+required cohomology group.  It is independent of the cocycle representing
+\(c\), because the construction is defined on extension classes.
+If \(\rho'=a\rho a^{-1}\), the map of fibers \(x\mapsto ax\)
+is \(\pi\)-equivariant and commutes with the right \(A\)-action.
+It therefore induces an isomorphism \(P_\rho\to P_{\rho'}\).
+The two pullbacks agree by Proposition~\ref{prop:do26-pullback}.
+At the group-cochain level, Lemma~\ref{lem:do26-conjugation} gives
+the same invariance by an explicit coboundary.
+Proposition~\ref{prop:do26-orientation} gives the value and its
+dependence on the root.  A change of geometric base point gives an
+equivalence of finite-cover fiber functors, unique up to inner
+conjugation, so it does not alter the function on torsor isomorphism
+classes.  This is the finite construction of
+Kim~\cite[\S1, pp.~1--3]{Kim2016}.
+\end{proof}
+
+For \(A=1\), positive-degree group cohomology vanishes, so this function
+is zero.  It is also zero for \(n=1\).  Neither conclusion requires
+\(H^3(X,\underline{\mathbb Z/n})\) to vanish for other values of \(n\).
+
+\subsection{The ramification boundary}
+
+The group \(\pi_1^{\mathrm{et}}(X,b)\) classifies extensions
+unramified at every finite prime, including primes above \(n\).
+For a finite set \(S\) of finite primes, put
+\(X_S=\operatorname{Spec}\mathcal O_F[S^{-1}]\).
+A representation of \(\pi_1^{\mathrm{et}}(X_S,b)\) gives the
+pullback of Proposition~\ref{prop:do26-pullback} on \(X_S\).
+An extension to a torsor on \(X\) requires trivial inertia at every
+prime of \(S\).  To see this criterion, normalize \(X\) in the
+finite generic algebra of the torsor.  Over a discrete valuation ring,
+trivial inertia is equivalent to an unramified extension.  Its residue
+extensions are separable because finite fields are perfect.  The
+normalization is then finite \'etale at those primes and at all primes
+of \(X_S\), and hence supplies the extension.
+
+Kim's boundary construction takes \(S\) to contain every prime above
+\(n\). For \(v\in S\), let \(F_v\) be the completion of \(F\)
+and let \(G_{F_v}=\operatorname{Gal}(\overline F_v/F_v)\). Choose
+embeddings that give restriction maps
+\(G_{F_v}\to\pi_1^{\mathrm{et}}(X_S,b)\). Given a local
+representation \(\rho_v\) and a cocycle \(c\), the set
+\[
+ \mathcal H_v(\rho_v)=
+ \{\beta\in C^2_{\mathrm{cont}}(G_{F_v},\mathbb Z/n):
+                      d\beta=\rho_v^*c\}/B^2
+\]
+where \(B^2=dC^1_{\mathrm{cont}}(G_{F_v},\mathbb Z/n)\),
+is either empty or a torsor under
+\(H^2(G_{F_v},\mathbb Z/n)\).  Indeed, the difference of two
+solutions is a two-cocycle, and quotienting by coboundaries gives a
+free transitive action.  Nonemptiness follows from the local vanishing
+\(H^3(F_v,\mathbb Z/n)=0\), proved with the invariant
+identification in Lemma~\ref{lem:do27-local}. The chosen root
+identifies the acting group with \(\tfrac1n\mathbb Z/\mathbb Z\).
+A finite product of these torsors can then be pushed out by the
+sum of local invariants, as in
+Kim~\cite[\S2, pp.~4--6]{Kim2016}.
+Those local primitives and their compatibility are additional data.
+The construction on \(X\) above provides no scalar evaluation of an
+arbitrarily ramified representation on \(X_S\).
+
+\subsection{Infinite places}
+
+The totally imaginary hypothesis excludes real decomposition groups.
+To discuss other fields, let \(F\) now be an arbitrary number field,
+put \(X=\operatorname{Spec}\mathcal O_F\), and let \(X_\infty\)
+be the set of real embeddings and conjugate pairs of complex embeddings.
+The notation \(\overline{\operatorname{Spec}\mathcal O_F}\) alone
+does not select a cohomology theory.
+
+The Artin--Verdier site \(\widetilde X_{\mathrm{et}}\) has objects
+\((Y,M)\), where \(Y\to X\) is separated and \'etale,
+\(M\subset Y_\infty\), and a complex point of \(M\) does not map
+to a real point of \(X_\infty\). A morphism carries the chosen
+infinite subset into the chosen infinite subset. A family covers when
+it jointly covers both the schemes and those subsets. Coefficients on
+this site mean specified sheaves, together with their infinite-place
+specialization data; they are not determined by a topological
+compactification \cite[\S1]{Bienenfeld1987}.
+
+At a real place the decomposition group is \(C_2\). For the trivial
+module \(\mathbb Z/2\), its two-periodic resolution has zero
+cochain differentials, so
+\[
+ H^q(C_2,\mathbb Z/2)=\mathbb Z/2\qquad(q\geq0).
+\]
+For odd-order coefficients, the higher groups vanish by averaging.
+Thus ordinary real-place cohomology has no finite
+\(2\)-cohomological dimension. A three-dimensional duality statement
+with real places must specify its framework: ordinary small-site
+cohomology with the \(2\)-primary part excluded; modified cohomology
+with Tate cohomology at the real places; or derived sheaf cohomology on
+an explicitly defined extended Artin--Verdier site, with a constructible
+torsion sheaf, its extension, and its infinite-place specialization
+maps. The latter two are different constructions. The trace used in
+Proposition~\ref{prop:do26-orientation} has the stated totally imaginary
+ordinary small-site domain \cite[\S2]{Mazur1973}.

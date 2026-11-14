@@ -1,0 +1,1161 @@
+\section{The arithmetic trace on a finite set of local cochains}
+\label{sec:do27-trace}
+
+An arithmetic class of degree three can be evaluated through local
+classes of degree two. The passage uses a gluing complex and a choice
+of primitives. Its sign is forced by the differential. We construct
+this passage and compare it with the arithmetic orientation.
+
+Retain the totally imaginary field \(F\), the ordinary small site of
+\(X=\operatorname{Spec}\mathcal O_F\), the positive integer \(n\),
+and the chosen primitive root \(\zeta\) from
+Section~\ref{sec:do26-orientation}. Put \(M=\underline{\mathbb Z/n}\).
+Let \(S\) be a nonempty finite set of finite primes containing every
+prime above \(n\), and write
+\[
+ U=X\setminus S,\qquad
+ R_v=\mathcal O_{X,v}^{h},\quad D_v=\operatorname{Spec}R_v,
+ \quad K_v=\operatorname{Frac}R_v.
+\]
+The completion of \(K_v\) is \(F_v\), with valuation ring
+\(\widehat R_v\). All sites remain ordinary small \'etale sites.
+Every scheme map below gives a morphism of these sites by base change.
+Cohomological degrees increase under the differential. Coefficient
+sheaves and Galois modules are discrete, and products indexed by \(S\)
+are finite. The complexes are algebraic complexes of abelian groups.
+Sheaf tensor products are over \(\underline{\mathbb Z}\); none is
+completed. We write multiplicative abelian groups additively in complexes.
+
+Use the coefficient homomorphism
+\[
+ \epsilon=\iota e_\zeta:M\longrightarrow\mathbb G_m,
+ \qquad a\longmapsto\zeta^a,
+\]
+where \(\iota:\mu_{n,X}\hookrightarrow\mathbb G_m\).
+Lemma~\ref{lem:do26-roots} identifies its kernel-valued factor with
+the constant sheaf, including at coefficient primes. The nonzero
+power-map cokernel in Lemma~\ref{lem:coefficient-prime-defect} remains
+part of the coefficient sequence on \(X\).
+
+\subsection{The arithmetic input and the local groups}
+
+We use the class-field trace and divisor normalization of
+\eqref{eq:do26-trace-input}--\eqref{eq:do26-trace-normalization}.
+For the generic point of a henselian discrete valuation ring with finite
+residue field, the same local class-field input gives
+\(R^{>0}j_*\mathbb G_m=0\).
+Its stated scope includes henselian, as well as complete, rings
+\cite[\S1, (1.1), p.~525]{Mazur1973}. In particular, with
+\(\delta_S\) the divisor connecting map for \(S\),
+\begin{equation}
+\label{eq:do27-input}
+ \operatorname{tr}_F\delta_S((t_v)_{v\in S})=\sum_{v\in S}t_v.
+\end{equation}
+The connecting map lifts a cocycle and applies the differential.
+This sign and the arithmetic Frobenius normalization are fixed before
+the gluing complex is formed.
+
+\begin{lemma}[The groups needed at a boundary prime]
+\label{lem:do27-local}
+For \(v\in S\), one has
+\[
+ H^q(D_v,\mathbb G_m)=0\ (q>0),\qquad
+ H^q(D_v,M)=0\ (q\geq2).
+\]
+The same statements hold for \(\operatorname{Spec}\widehat R_v\).
+On either fraction field \(L=K_v,F_v\),
+\[
+ H^1(L,\mathbb G_m)=0,\quad
+ \operatorname{inv}_v:H^2(L,\mathbb G_m)\xrightarrow{\sim}\mathbb Q/\mathbb Z,
+ \quad H^q(L,\mathbb G_m)=0\ (q\geq3).
+\]
+Consequently \(\epsilon\) gives
+\[
+ H^2(L,M)\xrightarrow{\sim}\tfrac1n\mathbb Z/\mathbb Z,
+ \qquad H^3(L,M)=0.
+\]
+Completion preserves the displayed invariants.
+\end{lemma}
+
+\begin{proof}
+Let \(R\) be either valuation ring, with residue field \(k\).
+A strictly henselian local scheme has exact global sections on its
+small \'etale site. Indeed, any \'etale covering has a member with a
+point above the closed point. Hensel's lemma supplies a section of
+that member. This lifts each section through a sheaf epimorphism.
+Finite \'etale neighborhoods of the closed point of
+\(\operatorname{Spec}R\) are cofinal among its \'etale neighborhoods.
+Descent along their strict henselian limit therefore computes
+\[
+ H^q(R,\mathcal F)=H^q_{\mathrm{cont}}
+       (G_k,\mathcal F(R^{\mathrm{sh}})).
+\]
+For \(\mathbb G_m\), the module is
+\(E=(R^{\mathrm{sh}})^\times\). The unit-norm and cyclic-resolution
+arguments of Lemmas~\ref{lem:do26-norm} and
+\ref{lem:do26-local-invariant} give \(H^{>0}(G_k,E)=0\).
+They apply to either valuation ring and to unramified extensions of
+arbitrary degree, including degrees divisible by the residue
+characteristic. For \(M\), the cyclic-resolution and inflation
+argument in Lemma~\ref{lem:do26-defect} gives
+\(H^q(G_k,M)=0\) for \(q\geq2\), also at coefficient primes.
+
+The local direct-image input identifies fraction-field cohomology
+with the cohomology of \(G_k\) acting on
+\(L^{\mathrm{nr},\times}\). The valuation sequence is
+\[
+ 0\longrightarrow E\longrightarrow L^{\mathrm{nr},\times}
+   \xrightarrow{v}\mathbb Z\longrightarrow0.
+\]
+Valuation is surjective on invariants, because the base field has a
+uniformizer. Thus degree one vanishes. In degree two the sequence
+identifies the group with \(H^2(G_k,\mathbb Z)\).
+The sequence \(0\to\mathbb Z\to\mathbb Q\to\mathbb Q/\mathbb Z\to0\)
+then identifies it with \(H^1(G_k,\mathbb Q/\mathbb Z)\).
+Positive cohomology of \(\mathbb Q\) vanishes by averaging on finite
+quotients. Finite torsion cohomology of \(G_k\) vanishes above degree
+one, so the higher groups in the assertion vanish.
+Evaluation at arithmetic Frobenius defines \(\operatorname{inv}_v\).
+
+The fraction field has characteristic zero. Its \'etale Kummer sequence
+is therefore exact. The degree-two assertion follows from the vanishing
+of \(H^1(L,\mathbb G_m)\). Multiplication by \(n\) on
+\(H^2(L,\mathbb G_m)=\mathbb Q/\mathbb Z\) is surjective, so the
+same sequence gives \(H^3(L,M)=0\). The chosen root identifies
+\(M\) with \(\mu_n\) on this field.
+
+For an unramified cyclic extension of degree \(d\), let
+\(\sigma\) be arithmetic Frobenius and \(\varpi\) a uniformizer.
+The cocycle of Lemma~\ref{lem:do26-local-invariant} is
+\begin{equation}
+\label{eq:do27-carry}
+ \alpha(\sigma^i,\sigma^j)=
+ \varpi^{\lfloor(i+j)/d\rfloor},\qquad 0\leq i,j<d,
+ \qquad \operatorname{inv}_v[\alpha]=1/d.
+\end{equation}
+Completion preserves the unramified extension, arithmetic Frobenius,
+and the valuation of \(\varpi\). These classes exhaust
+\(\mathbb Q/\mathbb Z\), proving compatibility of the invariants.
+\end{proof}
+
+\begin{lemma}[Deleting a nonempty finite set]
+\label{lem:do27-open}
+One has \(H^3(U,\mathbb G_m)=0\). For every
+\(a\in H^2(U,\mathbb G_m)\),
+\[
+ \sum_{v\in S}\operatorname{inv}_v(a|_{K_v})=0.
+\]
+\end{lemma}
+
+\begin{proof}
+For \(j_U:U\hookrightarrow X\), the local direct-image input gives
+\(R^{>0}j_{U*}\mathbb G_m=0\). The divisor sequence is
+\[
+ 0\to\mathbb G_{m,X}\to j_{U*}\mathbb G_{m,U}
+    \xrightarrow{(v)_{v\in S}}
+       \bigoplus_{v\in S}i_{v*}\mathbb Z\to0.
+\]
+Since \(H^2(k_v,\mathbb Z)=\mathbb Q/\mathbb Z\) and
+\(H^3(k_v,\mathbb Z)=0\), its long exact sequence contains
+\[
+ H^2(U,\mathbb G_m)\longrightarrow
+ \bigoplus_{v\in S}\mathbb Q/\mathbb Z
+ \xrightarrow{\delta_S}H^3(X,\mathbb G_m)
+ \longrightarrow H^3(U,\mathbb G_m)\longrightarrow0.
+\]
+The first arrow is the local invariant map by the local input and
+valuation computation. Naturality from the full divisor sequence gives
+\(\operatorname{tr}_F\delta_S=\sum_{v\in S}\).
+This sum is surjective because \(S\neq\varnothing\). The assertions
+now follow from exactness.
+\end{proof}
+
+\subsection{A cochain model on the small site}
+
+For an abelian sheaf \(\mathcal F\), we specify the cochains
+to fix the maps and the cup products.
+Choose a conservative family of geometric points of \(X\).
+Let \(p^*\) be the family of stalk functors and \(p_*\) its right
+adjoint. Put \(T=p_*p^*\). The unit and counit define the augmented
+cosimplicial resolution
+\[
+ \mathcal F\longrightarrow T\mathcal F
+       \rightrightarrows T^2\mathcal F\rightrightarrows T^3\mathcal F
+       \longrightarrow\cdots.
+\]
+Use its unnormalized cochain complex \(I^q\mathcal F=T^{q+1}\mathcal F\),
+with differential \(\sum_{i=0}^{q+1}(-1)^id^i\).
+For an \'etale \(V\to X\), put
+\(C^q(V,\mathcal F)=\Gamma(V,I^q\mathcal F)\).
+Every geometric stalk of the augmented resolution has the extra
+codegeneracy induced by the counit. Thus it is exact.
+The terms are acyclic for sections over any such \(V\).
+Indeed, the sections of \(p_*A\) are products of the groups \(A\)
+indexed by lifts of geometric points to \(V\). This functor is exact.
+Resolve \(A\) by injectives in the product category of abelian groups.
+Since \(p^*\) is exact, \(p_*\) preserves injectives, proving the
+acyclicity. This is the Godement construction
+\cite{do27-Godement}; the argument here applies to the specified site.
+
+Choose affine separated \'etale neighborhoods \(V\to X\) of \(v\)
+with fiber \(\operatorname{Spec}k_v\) at \(v\), and with no fiber
+at the other points of \(S\). Define
+\[
+ C(D_v,\mathcal F)=\varinjlim_V C(V,\mathcal F),\qquad
+ C(K_v,\mathcal F)=\varinjlim_V C(V\cap U,\mathcal F).
+\]
+The limits of these schemes are \(D_v\) and \(\operatorname{Spec}K_v\).
+The continuity theorem for \'etale cohomology identifies the cohomology
+of these complexes with the indicated small-site groups
+\cite[Theorem 59.51.3]{do27-Limits}.
+Its hypotheses hold: the schemes are quasi-compact and separated,
+and the transition morphisms can be taken affine. Filtered colimits
+of abelian groups are exact. The same complexes apply to the restriction
+of any sheaf on an open neighborhood containing \(v\).
+
+Write \(C_U=C(U,\mathcal F)\),
+\(C_D=\prod_{v\in S}C(D_v,\mathcal F)\), and
+\(C_K=\prod_{v\in S}C(K_v,\mathcal F)\).
+Restrictions define \(r:C_U\to C_K\) and \(s:C_D\to C_K\).
+The finite gluing complex is
+\begin{equation}
+\label{eq:do27-complex}
+ \begin{split}
+ A_S^q(\mathcal F)&=C_U^q\oplus C_D^q\oplus C_K^{q-1},\\
+ D(u,a,b)&=(du,da,ru-sa-db).
+ \end{split}
+\end{equation}
+Complexes are zero in negative degrees. Equivalently,
+\(A_S=\operatorname{Cone}(r-s)[-1]\) with the displayed sign
+convention. The map from global cochains is
+\[
+ J_S:C(X,\mathcal F)\longrightarrow A_S(\mathcal F),
+ \qquad z\longmapsto(z|_U,(z|_{D_v})_v,0).
+\]
+
+\begin{proposition}[Finite \'etale gluing]
+\label{prop:do27-gluing}
+The map \(J_S\) is a quasi-isomorphism. For every bilinear sheaf
+pairing \(\mathcal F\otimes\mathcal G\to\mathcal H\), it respects
+the cohomological cup pairing.
+\end{proposition}
+
+\begin{proof}
+For every term \(I^q\mathcal F\), restriction from \(V\) to an open
+subscheme of \(V\) is surjective. It is a projection between the
+products indexed by lifts of geometric points. Consequently
+\[
+ 0\longrightarrow C(X,\mathcal F)
+ \longrightarrow C_U\oplus C_D
+ \xrightarrow{r-s}C_K\longrightarrow0
+\]
+is degreewise exact. To check its kernel, represent the finitely many
+local germs on neighborhoods \(V_v\). Shrink them until equality
+with the given section on \(U\) holds on every \(V_v\cap U\).
+The family \(U\amalg\coprod_vV_v\to X\) is an \'etale cover.
+An overlap for distinct \(v\)'s lies over \(U\). On a self-overlap,
+the complement of the diagonal also lies over \(U\): the chosen
+closed fiber is a single residue-field isomorphism. Thus the sections
+agree on every overlap and descend uniquely to \(X\).
+Surjectivity on the right follows by lifting separately from
+\(V_v\cap U\) to \(V_v\). Finiteness of \(S\) permits these
+choices and refinements simultaneously.
+
+For completeness, let \((u,a,b)\) be a cocycle. Lift \(b\) to
+\(\ell\in(C_U\oplus C_D)^{q-1}\) with \((r-s)\ell=b\).
+Subtracting \(D(\ell,0)\) leaves \(((u,a)-d\ell,0)\), a
+cocycle in the kernel. This proves surjectivity of \(H(J_S)\).
+If a kernel cocycle is \(D(\ell,b)\), lift \(b\) one degree lower
+to \(m\). Then \(\ell-dm\) lies in the kernel and has the same
+differential. This proves injectivity.
+
+The functor \(T\) has a natural pairing: pair sections point by
+point. It induces pairings on all cosimplicial degrees. For cochains
+\(x\) and \(y\) of degrees \(p\) and \(q\), use
+\[
+ x\smile y=
+ (d^{p+q}\cdots d^{p+1}x)\,\cdot\,((d^0)^py).
+\]
+The dot denotes the given coefficient pairing. This
+Alexander--Whitney formula has
+\(d(x\smile y)=dx\smile y+(-1)^px\smile dy\).
+The cosimplicial identities cancel the interior cofaces in pairs;
+the two remaining groups are exactly the two displayed summands.
+It represents the derived cup pairing because the augmentation
+restricts it to the coefficient pairing in degree zero.
+Restrictions commute with every coface and with the pairing.
+
+For \(x=(u,a,b)\in A_S^p(\mathcal F)\) and
+\(y=(u',a',b')\in A_S^q(\mathcal G)\), set
+\begin{equation}
+\label{eq:do27-cup}
+ x\smile y=
+ \bigl(u\smile u',\ a\smile a',\
+        b\smile ru'+(-1)^p sa\smile b'\bigr).
+\end{equation}
+Its last component has degree \(p+q-1\). The identity
+\[
+ ru\smile ru'-sa\smile sa'
+ =(ru-sa)\smile ru'+sa\smile(ru'-sa')
+\]
+and the preceding Leibniz rule give
+\(D(x\smile y)=Dx\smile y+(-1)^px\smile Dy\).
+For associative coefficient pairings, the three terms in a triple
+product are
+\[
+ b\smile ru'\smile ru'',\quad
+ (-1)^p sa\smile b'\smile ru'',\quad
+ (-1)^{p+q}sa\smile sa'\smile b''.
+\]
+They are the same under both associations. Finally \(J_S\) has last
+component zero, so it commutes with this cup formula on cochains.
+\end{proof}
+
+For \(M\), multiplication in \(\mathbb Z/n\) gives an associative
+cup product. For \(\mathbb G_m\) we use only specified bilinear
+pairings, such as evaluation
+\(M\otimes\underline{\operatorname{Hom}}(M,\mathbb G_m)\to\mathbb G_m\).
+Multiplication of units is not a bilinear map
+\(\mathbb G_m\otimes\mathbb G_m\to\mathbb G_m\).
+
+\subsection{The degree-three trace and its sign}
+
+\begin{theorem}[Trace by local primitives]
+\label{thm:do27-trace}
+Let \((u,a,b)\in Z^3 A_S(\mathbb G_m)\). Choose
+\[
+ h\in C^2(U,\mathbb G_m),\quad
+ k_v\in C^2(D_v,\mathbb G_m),\qquad dh=u,\quad dk_v=a_v.
+\]
+Then
+\begin{equation}
+\label{eq:do27-trace}
+ T_S[(u,a,b)]
+   =\sum_{v\in S}\operatorname{inv}_v
+           [\,r_vh-s_vk_v-b_v\,]
+\end{equation}
+is independent of the choices and the representative. It defines a
+homomorphism \(H^3 A_S(\mathbb G_m)\to\mathbb Q/\mathbb Z\), and
+\[
+ T_S\circ H^3(J_S)=\operatorname{tr}_F.
+\]
+\end{theorem}
+
+\begin{proof}
+The primitives exist by Lemmas~\ref{lem:do27-local} and
+\ref{lem:do27-open}. The cone cocycle equation gives
+\(db=ru-sa\), so every cochain inside brackets is closed.
+Changing \(k_v\) changes that bracket by the restriction of a
+closed degree-two cochain on \(D_v\). Its class is zero by
+Lemma~\ref{lem:do27-local}. Changing \(h\) adds restrictions of a
+degree-two global cocycle on \(U\). Its local invariants sum to zero
+by Lemma~\ref{lem:do27-open}.
+
+If \((u,a,b)\) changes by \(D(p,q,t)\), use \(h+p\) and \(k+q\).
+The bracket changes by \(dt\). Thus the value depends only on the
+cohomology class. Add primitives to check additivity.
+
+We now compare connecting maps, including their signs. Put
+\(B=C_U\oplus C_D\), \(L=C_K\), and
+\(C_X=C(X,\mathbb G_m)\). In the degreewise exact
+sequence \(0\to C_X\to B\xrightarrow{r-s}L\to0\), lift a
+closed \(t\in L^2\) to \(\ell\in B^2\).
+The usual connecting class is represented by \(d\ell\in C_X^3\).
+But
+\[
+ D(\ell,0)=(d\ell,t),\qquad
+ [(0,0,t)]=-H^3(J_S)[\delta_{\mathrm{glue}}t].
+\]
+Hence \((0,0,-t)\) represents the positive connecting class.
+
+Under valuation, \(H^2(K_v,\mathbb G_m)\) identifies with
+\(H^2(k_v,\mathbb Z)\). We verify that the gluing boundary gives
+the divisor boundary with its positive sign. Resolve the finite divisor
+sequence by the same exact Godement functors. Taking sections gives
+a degreewise exact sequence of complexes: every term of the
+resolution is a product of stalk groups. These complexes also
+compute the open and local generic groups, by the higher-direct-image
+vanishing in the arithmetic input. Common double resolutions compare
+them with the complexes already chosen.
+
+Represent a residue class by a cocycle \(t\) of degree two, and
+lift it globally to a meromorphic cochain \(\ell\).
+Then \(d\ell=z\) is a \(\mathbb G_m\)-cocycle of degree three,
+representing \(\delta_S[t]\). Its restriction to \(U\) supplies
+\(h\), with \(dh=z_U\). At \(v\), choose a closed meromorphic
+cochain \(\beta_v\) with valuation exactly \(t_v\).
+Such a cochain exists: valuation is an isomorphism on degree-two
+cohomology, and a discrepancy which is a coboundary can be removed
+by lifting its primitive through the degreewise surjective valuation
+map. The difference \(\ell|_{D_v}-\beta_v\) has valuation zero,
+so it is a unit cochain \(k_v\). It satisfies \(dk_v=z_{D_v}\).
+In the local generic complex,
+\[
+ r_vh-s_vk_v=\beta_v.
+\]
+Thus \((h,k)\) is a lift of \(\beta\) through \(r-s\), and
+its differential is \(J_Sz\). This proves that
+\(\delta_{\mathrm{glue}}[\beta]=\delta_S[t]\).
+The reasoning takes place in degreewise exact resolutions and so
+also proves the statement after their comparison maps. By~\eqref{eq:do27-input},
+\[
+ \operatorname{tr}_F\delta_{\mathrm{glue}}(\beta)
+     =\sum_v\operatorname{inv}_v(\beta_v).
+\]
+
+Subtract \(D(h,k,0)\) from the original cocycle. The result is
+\((0,0,b-rh+sk)\). The connecting-map computation now gives
+exactly~\eqref{eq:do27-trace} and the asserted comparison.
+\end{proof}
+
+The sign is already visible over \(\mathbb F_3\). Let the complex
+\(B\) have \(B^2=B^3=\mathbb F_3\) and differential the identity.
+Let \(L\) be concentrated in degree two, with \(L^2=\mathbb F_3\),
+and let \(r:B\to L\) be the identity in degree two. Its kernel
+\(K\) is concentrated in degree three. Then
+\[
+ H^3(\operatorname{Cone}(r)[-1])
+   =\mathbb F_3^2/\{(t,t):t\in\mathbb F_3\}.
+\]
+The positive connecting class of \(1\in L^2\) is represented by
+\((1,0)\), so the normalized functional is \([(x,y)]\mapsto x-y\).
+It sends the bare cone class \((0,1)\) to \(-1=2\pmod3\).
+Reversing this sign sends that same class to \(1\), which contradicts
+the positive connecting normalization.
+
+For a single prime and a local class of invariant \(1/3\), the
+cone class \((0,0,\alpha)\) has trace \(-1/3\).
+Taking \(n=3\), \(F=\mathbb Q(\zeta_3)\), and the prime
+above \(3\) realizes this case by~\eqref{eq:do27-carry}. Kummer theory gives a
+class \(\gamma\in H^2(K_v,M)\) mapping to \(\alpha\), so the
+finite-coefficient cone class also has trace \(-1/3\).
+The opposite sign would disagree with the divisor orientation.
+This case also retains a coefficient prime in the integer scheme.
+
+\subsection{Passage to completed local fields}
+
+We next replace the henselian fields by the local fields in the
+finite adelic product \(\prod_{v\in S}F_v\).
+This is a change of local cochain complexes, rather than a completion
+of the coefficient group.
+
+\begin{lemma}[Finite coefficients and completion]
+\label{lem:do27-completion}
+For \(K=K_v\), base change to \(\widehat K=F_v\) gives an
+equivalence of finite \'etale field algebras. Thus the induced map of
+absolute Galois groups is an isomorphism, after choosing compatible
+separable closures. It preserves inertia and arithmetic Frobenius
+on the unramified quotient.
+\end{lemma}
+
+\begin{proof}
+We give the approximation argument. A henselian valuation extends
+uniquely to an algebraic closure, so its automorphisms are isometries.
+For a separable element \(\alpha\), put
+\(c=\min_{\alpha'\neq\alpha}|\alpha-\alpha'|>0\), where
+\(\alpha'\) runs through its conjugates. If \(|\alpha-\beta|<c\),
+every automorphism fixing \(\beta\) fixes \(\alpha\).
+Indeed, an automorphism \(\sigma\) fixing \(\beta\) satisfies
+\[
+ |\sigma\alpha-\alpha|
+ \leq\max\{|\sigma\alpha-\beta|,|\beta-\alpha|\}
+ =|\alpha-\beta|<c.
+\]
+It follows that \(K(\alpha)\subset K(\beta)\) when both elements
+are algebraic over the henselian field under consideration.
+If \(\alpha\in\widehat K\) is separable algebraic over \(K\),
+choose \(\beta\in K\) sufficiently close to it. Apply the same
+argument in the algebraic extension containing \(\alpha\).
+It gives \(\alpha\in K\). Thus \(K\) is separably closed in
+\(\widehat K\).
+
+For a finite Galois extension \(E/K\), this implies linear
+disjointness from \(\widehat K\). In fact
+\(E\cap\widehat K=K\), and restriction identifies
+\(\operatorname{Gal}(E\widehat K/\widehat K)\) with the subgroup
+of \(\operatorname{Gal}(E/K)\) whose fixed field is that
+intersection. The subgroup is the full group. Applying this to
+Galois closures preserves degrees and all embeddings of finite
+separable extensions.
+
+Conversely, take \(\widehat E=\widehat K(\alpha)\), a finite
+separable extension, and its monic minimal polynomial \(f\).
+Scale \(\alpha\) to be integral. Approximate the coefficients of
+\(f\) by coefficients in \(K\), obtaining a monic polynomial
+\(g\) of the same degree. They can be chosen so that
+\(|g(\alpha)|<|g'(\alpha)|^2\), and so that the resulting
+Hensel root \(\beta\in\widehat E\) is closer to \(\alpha\)
+than all its other conjugates. The estimate
+\(|\beta-\alpha|\leq|g(\alpha)/g'(\alpha)|\) makes this explicit.
+The preceding isometry argument over \(\widehat K\) gives
+\(\widehat K(\alpha)\subset\widehat K(\beta)\).
+Both fields lie in \(\widehat E\), so equality holds.
+The degree of \(K(\beta)\) is at most \(\deg g\) and at least
+\([\widehat E:\widehat K]\). These are the same number.
+Thus \(K(\beta)\otimes_K\widehat K=\widehat E\).
+Products and the embedding statement prove the equivalence.
+Approximating coordinates in a finite field basis shows that each
+finite extension is dense in its completed extension. A nonzero element
+can therefore be approximated with strictly smaller error than its
+absolute value. The approximant has the same valuation and, for units,
+the same residue. Thus value groups and residue fields are unchanged.
+The unramified subcategories and their Frobenius automorphisms agree.
+\end{proof}
+
+For clarity, the cochain map under this equivalence is not implicit.
+The small \'etale topos of a field \(L\) is the topos of discrete
+continuous \(G_L\)-sets. Finite \'etale objects give its finite
+continuous sets, and sheaf descent extends this description to all
+objects \cite[Lemmas 59.59.1--59.59.2]{do27-Field}.
+Its standard cochains with a discrete module \(N\) are
+\(C^q_{\mathrm{cont}}(G_L,N)\), with differential
+\[
+\begin{split}
+ (df)(g_1,\ldots,g_{q+1})={}&g_1f(g_2,\ldots,g_{q+1})\\
+ &+\sum_{i=1}^q(-1)^if(g_1,\ldots,g_ig_{i+1},\ldots,g_{q+1})\\
+ &+(-1)^{q+1}f(g_1,\ldots,g_q).
+\end{split}
+\]
+For a group map \(\theta:G_{F_v}\to G_{K_v}\) and a compatible
+module map \(\lambda:N\to N'\), completion sends
+\[
+ f\longmapsto\bigl[(g_1,\ldots,g_q)\mapsto
+       \lambda f(\theta g_1,\ldots,\theta g_q)\bigr].
+\]
+For \(M\), \(\lambda\) is the identity. For \(\mathbb G_m\),
+it is the chosen inclusion of separable closures on their units.
+For the latter coefficients, the map in degree zero is not an
+isomorphism. The local invariant comparison concerns degree two.
+The group cup formula is
+\[
+ (f\smile g)(g_1,\ldots,g_{p+q})=
+ f(g_1,\ldots,g_p)\cdot
+ (g_1\cdots g_p)g(g_{p+1},\ldots,g_{p+q}),
+\]
+for a specified equivariant bilinear pairing. Substitution shows
+that the completion map respects this formula and the differential.
+The bar resolution and the Godement resolution are acyclic resolutions
+of the same coefficient object. Their common double resolution
+provides comparison quasi-isomorphisms compatible with restriction
+and the derived cup pairing.
+
+Here is also a direct description before passing to the derived
+category. For a map of the local schemes, choose geometric points
+with compatible images. The adjunction maps give
+\(f^{-1}T\mathcal F\to T'f^{-1}\mathcal F\), by sending a section
+to each of its target stalks. Iterate this map in every cosimplicial
+degree and apply the coefficient map. Taking sections gives the
+cochain maps. The unit and counit identities make them commute with
+cofaces, pairings, and the restriction square. Apply these maps to
+the filtered neighborhood complexes above.
+
+Use these comparison maps to define
+\[
+ \widehat A_S(\mathcal F)=
+ \operatorname{Cone}\left(
+ C(U,\mathcal F)\oplus
+ \prod_{v\in S}C(\widehat R_v,\mathcal F)
+ \xrightarrow{r-s}\prod_{v\in S}C(F_v,\mathcal F)
+ \right)[-1].
+\]
+There is a cochain map \(\kappa_S:A_S\to\widehat A_S\).
+For \(M\), it is a quasi-isomorphism: the field terms agree by
+Lemma~\ref{lem:do27-completion}, and the ring terms have the same
+residue-field cohomology. The cone long exact sequence proves the
+claim. For \(\mathbb G_m\), it induces an isomorphism in degree
+three. Indeed, both degree-three groups are the cokernel of
+\[
+ H^2(U,\mathbb G_m)\longrightarrow
+          \prod_{v\in S}H^2(K_v,\mathbb G_m)
+ \quad\text{or}\quad
+ H^2(U,\mathbb G_m)\longrightarrow
+          \prod_{v\in S}H^2(F_v,\mathbb G_m).
+\]
+Lemmas~\ref{lem:do27-local} and \ref{lem:do27-open} justify this
+cokernel description. Local invariant compatibility identifies the
+arrows. Formula~\eqref{eq:do27-trace} defines \(\widehat T_S\)
+on the completed complex and gives
+\[
+ \widehat T_S H^3(\kappa_S)=T_S.
+\]
+
+\subsection{Orientation, boundary choices, and finite torsors}
+
+Write the already constructed arithmetic orientation as
+\[
+ \operatorname{or}_{F,n,\zeta}
+ :=\operatorname{inv}_{F,n,\zeta}
+ =\operatorname{tr}_F\circ H^3(\epsilon):
+ H^3(X,M)\xrightarrow{\sim}\tfrac1n\mathbb Z/\mathbb Z.
+\]
+Proposition~\ref{prop:do26-orientation} proves this isomorphism on
+\(X\), including its coefficient primes.
+For \(n=1\), all constructions with \(M\) have zero cohomology.
+The comparison just proved is the commutative diagram
+\begin{equation}
+\label{eq:do27-comparison}
+\begin{CD}
+ H^3(X,M) @>{H^3(\epsilon)}>> H^3(X,\mathbb G_m)\\
+ @V{H^3(\kappa_SJ_S)}V{\sim}V @VV{H^3(\kappa_SJ_S)}V\\
+ H^3\widehat A_S(M) @>{H^3(\epsilon)}>>
+ H^3\widehat A_S(\mathbb G_m) @>{\widehat T_S}>> \mathbb Q/\mathbb Z.
+\end{CD}
+\end{equation}
+Composing either path with the trace gives
+\(\operatorname{or}_{F,n,\zeta}\).
+For a sheaf homomorphism \(f:M\to\mathbb G_m\), the same diagram
+is the cup evaluation of degree three against degree zero.
+Proposition~\ref{prop:do27-gluing} proves this compatibility for all
+specified cup pairings, not only for \(f=\epsilon\).
+
+To state the ramified boundary precisely, put
+\[
+ C_{c,S}(U,\mathcal F)=
+ \operatorname{Cone}\left(C(U,\mathcal F)
+         \xrightarrow r\prod_{v\in S}C(F_v,\mathcal F)\right)[-1],
+ \quad D(u,b)=(du,ru-db).
+\]
+The subscript denotes this displayed finite cone. For \(\mathcal F=M\)
+or \(\mathbb G_m\), its degree-three cohomology has a canonical
+map to \(H^3(X,\mathcal F)\), obtained from
+\((u,b)\mapsto(u,0,b)\) and the gluing comparison.
+For \(\mathcal F=M\), this map is an isomorphism: the quotient
+complex consists of the local ring terms, whose degrees two and
+three vanish. For \(\mathbb G_m\), the same conclusion follows
+from their positive-degree vanishing and the degree-three comparison.
+On \(M\)-valued cochains the compact trace is
+\begin{equation}
+\label{eq:do27-compact-trace}
+ \operatorname{Tr}_{c,S}[(u,b)]
+  =\sum_{v\in S}\operatorname{inv}_v[\,r_vh-\epsilon b_v\,],
+ \qquad dh=\epsilon u.
+\end{equation}
+In particular the value is in \(\tfrac1n\mathbb Z/\mathbb Z\).
+This follows by its comparison with \(H^3(X,M)\), rather than an
+assertion that each auxiliary \(\mathbb G_m\)-cochain is killed by \(n\).
+
+\subsection{The positive boundary torsor and its dual}
+\label{sec:do28-dual}
+
+Put \(\Lambda=\tfrac1n\mathbb Z/\mathbb Z\) and
+\[
+ B_S=\prod_{v\in S}H^2(F_v,M),\qquad
+ \sigma_\zeta:B_S\longrightarrow\Lambda,
+ \quad(\eta_v)\longmapsto
+       \sum_v\operatorname{inv}_v(\epsilon_*\eta_v).
+\]
+For \(u\in Z^3C(U,M)\), define
+\[
+ \mathcal H_S(u)=
+ \{b\in\prod_{v\in S}C^2(F_v,M):db=ru\}/
+                \prod_{v\in S}dC^1(F_v,M).
+\]
+It is a nonempty \(B_S\)-torsor by Lemma~\ref{lem:do27-local}.
+For two points \(b,b'\), the notation \(b'-b\) means their unique
+difference in \(B_S\). All torsor actions below are additive right
+actions. The finite torsors carry the discrete topology.
+
+The positive and negative pushouts are the \(\Lambda\)-torsors
+\begin{equation}
+\label{eq:do28-pushouts}
+ L_S^\pm(u)=(\mathcal H_S(u)\times\Lambda)/\sim_\pm,
+ \qquad (b+\eta,t)\sim_\pm(b,t\pm\sigma_\zeta\eta).
+\end{equation}
+Their actions are \([b,t]_\pm+a=[b,t+a]_\pm\).
+For any fixed \(b\), the map \(t\mapsto[b,t]_\pm\) is a bijection.
+Indeed, freeness of \(\mathcal H_S(u)\) gives a unique difference
+between any two representatives. Thus the displayed actions are free
+and transitive. The natural map \(b\mapsto[b,0]_+\) has positive
+translation \(\sigma_\zeta\).
+
+After the field-cochain identification, \(\mathcal H_S\) is Kim's
+primitive torsor, and \(L_S^+\) is its positive sum pushout
+\cite[\S2, p.~5, the definitions of \(H(\rho_S)\) and
+\(L(\rho_S)\)]{Kim2016}. A scalar functional with negative translation
+instead defines an equivariant map on \(L_S^-\).
+
+For a \(\Lambda\)-torsor \(L\), define its opposite \(L^{\mathrm{op}}\)
+to have the same underlying set and action \(\ell*a=\ell-a\).
+Define its affine dual by
+\[
+ L^\vee=\{f:L\to\Lambda:f(\ell+a)=f(\ell)+a\},
+ \qquad(f+a)(\ell)=f(\ell)+a.
+\]
+This is a \(\Lambda\)-torsor. Each \(\ell_0\in L\) determines the
+map \(f_{\ell_0}(\ell)=\ell-\ell_0\). Every element of \(L^\vee\)
+has this form, since every equivariant map has exactly one zero.
+
+\begin{proposition}[Opposite torsor and dual evaluation]
+\label{prop:do28-dual}
+There are canonical equivariant isomorphisms
+\[
+ L_S^-(u)\xrightarrow{\iota_S}(L_S^+(u))^{\mathrm{op}}
+       \xrightarrow{\sim}(L_S^+(u))^\vee.
+\]
+They are given by
+\begin{equation}
+\label{eq:do28-dual-map}
+ \iota_S[b,t]_-=[b,-t]_+,
+ \qquad
+ \Psi_S([b,t]_-)([b',s]_+)
+       =s+t+\sigma_\zeta(b'-b).
+\end{equation}
+In particular
+\(E_S(\ell,m)=\Psi_S(m)(\ell)\) is a canonical evaluation pairing.
+It satisfies
+\(E_S(\ell+a,m+a')=E_S(\ell,m)+a+a'\).
+\end{proposition}
+
+\begin{proof}
+The negative pushout relation maps under \(\iota_S\) to
+\[
+ [b+\eta,-t]_+=[b,-t+\sigma_\zeta\eta]_+.
+\]
+This is the image of \([b,t-\sigma_\zeta\eta]_-\), so the map
+is well defined. Adding \(a\) on its source subtracts \(a\) in the
+positive torsor, which is the opposite action.
+The map \(L^{\mathrm{op}}\to L^\vee\), \(\ell_0\mapsto f_{\ell_0}\),
+is equivariant because \(f_{\ell_0-a}=f_{\ell_0}+a\).
+For \(\ell_0=[b,-t]_+\), its value at \([b',s]_+\) is the
+right side of~\eqref{eq:do28-dual-map}.
+This proves the formula and both isomorphisms. The evaluation identity
+follows directly from addition in the two coordinates.
+\end{proof}
+
+This also gives a literal duality of complex lines. Let
+\(\chi(a)=\exp(2\pi ia)\) and define
+\(\mathcal L(L)=(L\times\mathbb C)/((\ell+a,z)\sim(\ell,\chi(a)z))\),
+with its vector-space structure and usual complex topology defined in
+any torsor coordinate.
+The formula
+\[
+ ([\ell,z],[m,w])\longmapsto zw\chi(E_S(\ell,m))
+\]
+is independent of representatives and is a nonzero bilinear pairing.
+It identifies \(\mathcal L(L_S^-)\) with
+\(\mathcal L(L_S^+)^*\). These are finite-dimensional associated
+lines, with no determinant or analytic trace asserted.
+
+\begin{lemma}[A global primitive with finite coefficients]
+\label{lem:do28-global-primitive}
+Under the stated hypotheses, \(H^3(U,M)=0\).
+For every \(a\in H^2(U,M)\), one has
+\(\sigma_\zeta(r a)=0\).
+\end{lemma}
+
+\begin{proof}
+The sequence in Lemma~\ref{lem:do27-open}, together with
+\(H^2(X,\mathbb G_m)=0\), identifies
+\[
+ H^2(U,\mathbb G_m)
+ \xrightarrow{\sim}
+ \ker\left(\bigoplus_{v\in S}\mathbb Q/\mathbb Z
+                         \xrightarrow{\sum_v}\mathbb Q/\mathbb Z\right).
+\]
+Choose \(v_0\in S\). Projection to the other coordinates identifies
+this kernel with \((\mathbb Q/\mathbb Z)^{|S|-1}\), the omitted
+coordinate being the negative sum. Hence multiplication by \(n\)
+on \(H^2(U,\mathbb G_m)\) is surjective.
+Every prime above \(n\) lies in \(S\). The \'etale Kummer sequence
+is therefore exact on \(U\), and \(e_\zeta:M\to\mu_n\) is an
+isomorphism there. Its long exact sequence, with
+\(H^3(U,\mathbb G_m)=0\), gives \(H^3(U,M)=0\).
+Finally apply \(\epsilon_*\) to \(a\), and use the zero-sum
+statement of Lemma~\ref{lem:do27-open}.
+\end{proof}
+
+\begin{theorem}[The global boundary point and the arithmetic trace]
+\label{thm:do28-state}
+For \(u\in Z^3C(U,M)\), choose \(\beta\in C^2(U,M)\) with
+\(d\beta=u\). There is a well-defined point
+\begin{equation}
+\label{eq:do28-state}
+ \lambda_S(u)=[r\beta,0]_+\in L_S^+(u),
+\end{equation}
+independent of \(\beta\). For every \(b\in\mathcal H_S(u)\),
+\begin{equation}
+\label{eq:do28-state-trace}
+ \tau_u(b):=\operatorname{Tr}_{c,S}[(u,b)]
+   =\sigma_\zeta(r\beta-b)
+   =\lambda_S(u)-[b,0]_+.
+\end{equation}
+Consequently the map
+\[
+ \Theta_u:L_S^-(u)\longrightarrow\Lambda,
+ \qquad [b,t]_-\longmapsto\tau_u(b)+t,
+\]
+is an equivariant isomorphism and satisfies
+\(\Theta_u(m)=E_S(\lambda_S(u),m)\).
+Its zero is the dual point \(\lambda_S(u)^\vee=\Psi_S^{-1}(f_{\lambda_S(u)})\).
+\end{theorem}
+
+\begin{proof}
+Lemma~\ref{lem:do28-global-primitive} gives \(\beta\).
+Two choices differ by a global two-cocycle \(a\), whose local
+invariants sum to zero. The positive pushout relation gives
+\([r\beta+r a,0]_+=[r\beta,\sigma_\zeta(r a)]_+=[r\beta,0]_+\).
+Thus \(\lambda_S(u)\) is independent of that choice.
+
+Take \(h=\epsilon\beta\) in~\eqref{eq:do27-compact-trace}.
+It gives the first equality in~\eqref{eq:do28-state-trace}.
+The positive pushout relation gives
+\([r\beta,0]_+=[b,\sigma_\zeta(r\beta-b)]_+\), which proves
+the torsor difference formula. In particular
+\(\tau_u(b+\eta)=\tau_u(b)-\sigma_\zeta\eta\).
+This is exactly the relation needed to define \(\Theta_u\).
+It is equivariant and therefore is an isomorphism of torsors.
+Substitute \(\lambda_S(u)=[b,\tau_u(b)]_+\) in the evaluation
+formula to obtain \(\Theta_u(m)=E_S(\lambda_S(u),m)\).
+In coordinates its zero is \([b,-\tau_u(b)]_-\), independent of
+\(b\). Under \(\Psi_S\) this is the function with zero
+\(\lambda_S(u)\), as asserted.
+\end{proof}
+
+Kim's global boundary point is \([r\beta,0]_+\)
+\cite[\S2, p.~6, the displayed definition of \(\operatorname{CS}_c\)]{Kim2016}.
+Theorem~\ref{thm:do28-state} identifies the cone trace with its
+difference from the chosen boundary point. Kim also prints the scalar
+coordinate \(\sum_v\operatorname{inv}_v(b_v-r_v\beta)\)
+\cite[\S5, p.~12]{Kim2016}. For the same cochains and local
+invariants that displayed coordinate equals \(-\tau_u(b)\).
+Negation is the comparison between these two scalar coordinates.
+The divisor normalization remains~\eqref{eq:do27-input}.
+
+\subsection{Gluing and orientation compatibility}
+\label{sec:do28-gluing}
+
+For two \(\Lambda\)-torsors define
+\(L_1\otimes_\Lambda L_2=(L_1\times L_2)/((\ell_1+a,\ell_2)\sim
+(\ell_1,\ell_2+a))\), with addition in either factor.
+Write \(\sigma_T\) for the sum of local invariant maps over a
+finite subset \(T\), with the root \(\zeta\) fixed.
+A finite partition \(S=S_1\amalg S_2\) gives canonical isomorphisms
+\begin{equation}
+\label{eq:do28-block-gluing}
+ L_S^\pm(u)\cong L_{S_1}^\pm(u)\otimes_\Lambda L_{S_2}^\pm(u),
+ \qquad
+ ([b_1,t_1]_\pm,[b_2,t_2]_\pm)\longmapsto
+       [(b_1,b_2),t_1+t_2]_\pm,
+\end{equation}
+where the arrow displays the inverse to the indicated isomorphism.
+The factors mean boundary torsors for restrictions of this same \(u\).
+Indeed, \(B_S=B_{S_1}\times B_{S_2}\) and
+\(\sigma_S=\sigma_{S_1}+\sigma_{S_2}\). Substitution proves that
+the formula respects both pushout relations and the contracted
+product relation. It is equivariant and hence bijective.
+The evaluation formula gives
+\[
+ E_S(\ell_1\otimes\ell_2,m_1\otimes m_2)
+   =E_{S_1}(\ell_1,m_1)+E_{S_2}(\ell_2,m_2).
+\]
+It follows that this gluing commutes with the opposite and dual
+identifications. It is associative under further finite partitions,
+because addition of the displayed coordinates is associative.
+For an empty block, use the torsor \(\Lambda\) with point zero as
+the tensor unit.
+
+A chosen global primitive \(\beta\) gives block points
+\(\lambda_{S_i}(\beta)=[r_{S_i}\beta,0]_+\).
+Their tensor is \(\lambda_S(u)\).
+Changing \(\beta\) by a global cocycle \(a\) translates those
+block points by \(\sigma_{S_i}(r a)\). Their sum is zero by
+Lemma~\ref{lem:do28-global-primitive}. Thus the glued point is
+independent of \(\beta\), even when the individual block points
+are not.
+
+There is also a direct gluing formula for two degree-three cocycles.
+Suppose \(u_1,u_2\in Z^3C(U,M)\) satisfy \(r u_1=r u_2\) as
+cochains. Their boundary torsors have the same definition, so write
+\(L^+\) for this common torsor. Then
+\begin{equation}
+\label{eq:do28-difference-gluing}
+ E_S(\lambda_S(u_1),\lambda_S(u_2)^\vee)
+   =\operatorname{Tr}_{c,S}[(u_1-u_2,0)].
+\end{equation}
+To prove the formula, take a common boundary primitive \(b\).
+The left side is \(\lambda_S(u_1)-\lambda_S(u_2)\), which equals
+\(\tau_{u_1}(b)-\tau_{u_2}(b)\) by
+Theorem~\ref{thm:do28-state}. Subtraction of the two relative
+cocycles gives \((u_1-u_2,0)\), proving the equality.
+Through the finite \'etale gluing isomorphism, the right side is the
+arithmetic orientation of the corresponding class in \(H^3(X,M)\).
+Thus dual evaluation has exactly the difference sign required by
+that orientation.
+
+Let \(A\) be a finite group, and let \(P_X\) be a finite \'etale
+right \(A\)-torsor on \(X\). Fix \(c\in H^3(A,\mathbb Z/n)\)
+with trivial coefficient action. The exact associated-sheaf functor
+\(N\mapsto P_X\times^A\underline N\) acts on Yoneda extensions
+and gives \(f_{P_X}^*c\in H^3(X,M)\).
+Choose a cocycle \(z\) representing this class and put \(u=z_U\).
+At each deleted prime choose \(a_v\) with
+\(da_v=z|_{\widehat R_v}\). Local ring cohomology makes the
+class of \(a_v\) modulo coboundaries unique. Put \(b^0=sa\).
+Subtracting \(D(0,a,0)\) from \((z_U,z_D,0)\) gives
+\((z_U,0,b^0)\). The established trace comparison therefore gives
+\begin{equation}
+\label{eq:do28-unramified-orientation}
+ \operatorname{or}_{F,n,\zeta}(f_{P_X}^*c)
+   =\lambda_S(u)-[b^0,0]_+
+   =E_S(\lambda_S(u),[b^0,0]_-).
+\end{equation}
+Notice that \([b^0,0]_-\) is the dual of the positive boundary
+point \([b^0,0]_+\). It need not be the dual of the global point
+\(\lambda_S(u)\). This distinction permits a nonzero orientation.
+For a torsor on \(U\) that does not extend to \(X\), the global
+point \(\lambda_S(u)\) still exists. The scalar requires a boundary
+point, and its translation remains \(-\sigma_\zeta\).
+
+\subsection{Functoriality of the dual comparison}
+\label{sec:do28-functoriality}
+
+A boundary cocycle \(v\in\prod_S Z^3C(F_v,M)\) has its primitive
+torsor \(\mathcal H(v)\). A boundary two-cochain \(q\) satisfying
+\(dq=v'-v\) gives a transport
+\[
+ F_q:\mathcal H(v)\longrightarrow\mathcal H(v'),
+ \quad[b]\longmapsto[b+q],\qquad
+ F_q^\pm[b,t]_\pm=[b+q,t]_\pm.
+\]
+Replacing \(q\) by a coboundary leaves these maps unchanged.
+Composition satisfies \(F_{q'}F_q=F_{q+q'}\).
+Differences of two primitive points are unchanged by translation.
+Thus~\eqref{eq:do28-dual-map} gives the exact identities
+\begin{equation}
+\label{eq:do28-functor-dual}
+ \iota F_q^-=(F_q^+)^{\mathrm{op}}\iota,
+ \qquad
+ \Psi F_q^-(m)=\Psi(m)\circ(F_q^+)^{-1}.
+\end{equation}
+The inverse in the second formula specifies the variance of the dual.
+In particular
+\(E_{v'}(F_q^+\ell,F_q^-m)=E_v(\ell,m)\).
+These identities apply to the local cochain translations used in
+Kim's torsor functor \cite[\S2, pp.~5--6]{Kim2016}.
+They require no choice of a torsor origin.
+
+For global cocycles \(u,u'\), let \(u'-u=dz\).
+The compatible boundary transport is \(q=rz\).
+One has
+\[
+ (u',b+rz)-(u,b)=D(z,0),\quad
+ F_{rz}^+\lambda_S(u)=\lambda_S(u'),\quad
+ \Theta_{u'}F_{rz}^-=\Theta_u.
+\]
+The first identity proves trace compatibility. For the second, use
+\(\beta+z\) as a primitive for \(u'\).
+If another cochain \(z'\) has the same differential, then
+\(z'-z\) is a global two-cocycle. Reciprocity gives
+\(\sigma_\zeta(r(z'-z))=0\), so the two induced maps on
+\(L_S^+\) and \(L_S^-\) agree.
+
+This gives a precise functor on cocycles: its objects are the global
+three-cocycles, and its arrows are two-cochains \(z\) modulo
+\(dC^1(U,M)\), with \(dz=u'-u\). Composition is addition.
+The constructions \(L_S^\pm\), \(\Psi_S\), \(\lambda_S\), and
+\(\Theta\) respect this composition by the displayed identities.
+Every automorphism acts trivially on the pushed-out torsors, since it
+is a global two-cocycle. Different choices of representatives therefore
+give canonically compatible torsor maps.
+
+The associated-sheaf functor of a finite torsor is exact and preserves
+tensor pairings, as can be checked on a cover trivializing the torsor.
+An isomorphism of torsors gives a natural isomorphism of these functors
+which is the identity on the trivial coefficient endpoints.
+It therefore gives equal pulled-back Yoneda classes. Choose a two-cochain
+\(z\) whose differential is the difference of the chosen
+three-cocycles. The preceding independence from \(z\) makes the
+maps on \(L_S^\pm\) independent of this choice. For a composite
+of torsor isomorphisms, the sum of the two cochains has differential
+equal to the difference for the composite. Thus the maps compose correctly.
+The global point and its dual evaluation are natural under these maps.
+Together with the cup comparison in Proposition~\ref{prop:do27-gluing},
+this proves functorial compatibility with the orientation pairing.
+
+We specify how this statement compares actual group cochains with
+sheaf cochains. A finite continuous group cochain factors through a
+finite quotient. A finite collection of cochains and their differential
+identities therefore factors through one finite quotient \(Q\) of
+\(\pi_1(U)\). The corresponding finite \'etale torsor gives the
+exact functor \(T_Q\). Apply it to the coinduced bar resolution of
+\(M\), and resolve its terms by the Godement functors. The resulting
+first-quadrant double complex is a resolution of \(M\).
+Its total differential is \(d_h+(-1)^p d_v\), with \(p\) the
+horizontal degree. An invariant bar cochain maps to its associated
+global section and then to Godement degree zero. The augmentation
+makes its other differential zero, so this is a cochain map.
+Passing through larger finite quotients gives the continuous-cochain
+comparison. The same construction on each local field is the
+field-site equivalence, so it is a quasi-isomorphism there.
+All constructions use restriction of the finite torsor, so they give
+compatible global and local maps through the common double resolutions.
+No global \(K(\pi,1)\) assertion is needed.
+
+For a square presented with a cochain homotopy, write its comparison
+maps as \(F_U,F_\partial\) and fix a degree-minus-one map \(H\)
+with
+\[
+ r'F_U-F_\partial r=dH+Hd.
+\]
+The induced primitive map is explicitly
+\[
+ (u,b)\longmapsto(F_Uu,F_\partial b+Hu).
+\]
+Its boundary equation follows by applying \(d\).
+If \(d\beta=u\), then
+\[
+ F_\partial r\beta+Hu-r'F_U\beta=-dH\beta.
+\]
+Thus it carries \([r\beta,0]_+\) to the positive point represented
+by \(r'F_U\beta\). It also intertwines \(\Psi\) and \(\Theta\),
+since the local comparisons preserve the invariant maps.
+This proves that Kim's global point, when represented by a continuous
+group primitive, maps to~\eqref{eq:do28-state}. The argument needs
+a comparison map, not a global cohomology isomorphism.
+
+Finally replace \(\zeta\) by \(\zeta^a\), where
+\(a\in(\mathbb Z/n)^\times\). Then
+\(\sigma_{\zeta^a}=a\sigma_\zeta\) and
+\(\tau_{u,\zeta^a}=a\tau_{u,\zeta}\).
+The maps between the pushed-out torsors are
+\[
+ [b,t]_{\pm,\zeta}\longmapsto[b,at]_{\pm,\zeta^a}.
+\]
+They are equivariant for the automorphism \([a]\) of \(\Lambda\).
+They carry the global points to the global points and multiply the
+evaluation pairing by \(a\). The opposite action commutes with
+\([a]\). Hence the dual comparison has the same primitive-root
+normalization as the arithmetic orientation.
+
+For a concrete sign test, take \(n=3\) and a boundary class \(\eta\)
+with \(\sigma_\zeta\eta=1/3\). The positive boundary point changes
+by \(+1/3\), its opposite changes by \(-1/3\), and
+\(\tau_u(b+\eta)=\tau_u(b)-1/3\).
+In the ramified example \(F=\mathbb Q(\zeta_9)\), with \(S\)
+containing the primes above \(3\) and \(7\), take the torsor
+\(y^3=7\) on \(U\). Its lift \(y^9=7\) is a \(C_9\)-torsor.
+The ninth roots of unity lie in the unramified degree-three extension
+of \(\mathbb Q_7\): \(9\mid7^3-1\), and Hensel's lemma lifts
+their simple residue roots. Hence each prime over \(7\) in \(F\)
+has \(v(7)=1\). Both displayed polynomials are Eisenstein there,
+so these torsors are ramified at those primes. Use representatives
+\(0,\ldots,8\) for \(C_9\), and write \(\bar i\) for the
+residue of \(i\) in \(\{0,1,2\}\). On \(C_3\), let
+\[
+ c(i,j,k)=i\left\lfloor\frac{j+k}{3}\right\rfloor\pmod3.
+\]
+Its pullback to \(C_9\) has the primitive
+\(B(i,j)=\bar i\lfloor j/3\rfloor\pmod3\).
+Indeed, expanding \(dB\) cancels the quotients of \(j\) and \(k\),
+leaving \(\bar i\lfloor(\bar j+\bar k)/3\rfloor\).
+Pull back \(B\) to a global primitive \(\beta\).
+For \(b=r\beta\), the global point is \([b,0]_+\) and the trace
+is zero. Replacing one local primitive by \(b+\eta\), with invariant
+\(1/3\), leaves the global point fixed and changes its coordinate
+to \(-1/3\). This tests the opposite-torsor comparison on a fixed
+ramified arithmetic torsor.
+
+\subsection{Restriction and refinement of the support}
+
+Let \(S\subset T\) be nonempty finite sets as above, and put
+\(U_T=X\setminus T\). There is a cochain map
+\(R_{ST}:A_S(\mathcal F)\to A_T(\mathcal F)\).
+Restrict the global component from \(U\) to \(U_T\).
+Keep the old local components. At \(w\in T\setminus S\), set
+\[
+ a_w=u|_{D_w},\qquad b_w=0.
+\]
+The square of restriction maps commutes, so this formula commutes
+with \(D\). Formula~\eqref{eq:do27-cup} shows that it preserves
+the cup pairing. Moreover
+\[
+ R_{ST}J_S=J_T,\qquad R_{TV}R_{ST}=R_{SV}\quad(S\subset T\subset V).
+\]
+The same formulas give maps for completed local terms.
+
+The trace is compatible on cohomology. To see this directly, let
+\((u,a,b)\) be a degree-three \(\mathbb G_m\)-cocycle and choose
+\(dh=u\). At a new prime choose the local primitive
+\(k_w=h|_{D_w}\). Its contribution to~\eqref{eq:do27-trace} is
+\(r_wh-s_wk_w=0\). The old contributions are unchanged. Hence
+\[
+ T_T H^3(R_{ST})=T_S,
+ \qquad \widehat T_T H^3(\widehat R_{ST})=\widehat T_S.
+\]
+
+For a degree-three class in the finite compact cone, first map it
+to the gluing complex and then restrict. A new local ring component
+is \(u|_{\widehat R_w}\). Choose \(a_w\) with
+\(da_w=u|_{\widehat R_w}\) and remove it as above.
+The new boundary primitive is \(b_w=s_wa_w\).
+Its ambiguity is zero in cohomology because
+\(H^2(\widehat R_w,M)=0\). This gives a canonical refinement map
+in degree three, and it preserves~\eqref{eq:do27-compact-trace}.
+For a torsor unramified at the new prime, these are precisely the
+primitives supplied by its local ring extension.
+
+The same refinement acts on the positive and negative boundary torsors.
+For \(w\in T\setminus S\), the local primitive class
+\([a_w]\), with \(da_w=u|_{\widehat R_w}\), is unique modulo
+coboundaries. Its generic restriction is a distinguished boundary
+point. Define
+\[
+ \mathcal R_{ST}^\pm[b,t]_\pm
+       =[(b,(s_wa_w)_{w\in T\setminus S}),t]_\pm.
+\]
+If \(a_w\) changes by a closed ring cochain, its class in degree
+two is zero. Thus the formula is independent of the chosen primitives.
+On the old acting group, the new sum map is \(\sigma_S\), so the
+formula respects both pushout relations. It is an equivariant
+isomorphism of \(\Lambda\)-torsors.
+
+For a global primitive \(\beta\) on \(U\), choose
+\(a_w=\beta|_{\widehat R_w}\). This proves
+\[
+ \mathcal R_{ST}^+\lambda_S(u)=\lambda_T(u|_{U_T}),\qquad
+ \Theta_{u|_{U_T}}\mathcal R_{ST}^-=\Theta_u.
+\]
+Moreover
+\[
+ \Psi_T\mathcal R_{ST}^-(m)
+    =\Psi_S(m)\circ(\mathcal R_{ST}^+)^{-1}.
+\]
+The last identity follows by subtracting two refined primitive tuples:
+their new components have difference zero. Hence the evaluation pairing
+is unchanged. Refinements compose, since adjoining these unique local
+ring primitive classes in either order gives the same tuple.
+For \(u'=u+dz\), choose the new ring primitive \(a_w+z|_{\widehat R_w}\).
+This also proves commutation with the global cocycle transports.
+Thus support refinement commutes with the orientation functor, its
+positive boundary point, and its opposite and dual torsors.
+
+Changing an \'etale neighborhood representative refines the filtered
+system defining \(C(D_v)\) and \(C(K_v)\). Equality in those
+colimits means equality after a common refinement. Every formula
+uses only finitely many components and finitely many cofaces.
+It therefore descends to these colimits and commutes with such
+refinement. A change of the cochain resolution gives the same
+cohomological maps through the common double resolution and the
+fixed connecting-map convention.
+
+Local unramified primitive classes, the global boundary point, and a
+prepared state have different carriers. The local primitives belong
+to quotients of degree-two cochains on the local rings. The global
+point \(\lambda_S(u)\) belongs to the finite
+\(\Lambda\)-torsor \(L_S^+(u)\) and determines the nonzero vector
+\([\lambda_S(u),1]\) in its associated complex line. Interpreting this
+vector as a prepared state requires a specified quantum state space and
+a preparation map compatible with that theory's gluing operations.
+The finite torsor construction supplies no such quantum comparison.
+
+The finite adelic cochain trace therefore supplies the oriented scalar
+for an unramified finite torsor and the difference coordinate for a
+ramified torsor with a chosen boundary point. A comparison
+with integration of Schwartz--Bruhat functions, a Mellin transform,
+or a determinant requires a map from the arithmetic coefficient
+complex to that analytic carrier. No such map is part of the
+finite gluing theorem. A continuous arithmetic Chern--Simons theory
+would additionally require its continuous gauge group, coefficient
+complex, topology, and compatible gluing and state maps. The finite
+sums above imply no vanishing statement for an infinite product of
+cohomology groups.

@@ -1,0 +1,945 @@
+\section{The Euler product as an analytic determinant}
+\label{sec:euler-det}
+
+There are two Hilbert spaces in an Euler product: one has a vector for
+each prime, and the other has a vector for each occupation configuration.
+For the two primes \(2,3\), put
+\[
+ K_{\{2,3\}}(s)=\operatorname{diag}(2^{-s},3^{-s})
+ \quad\text{on }\mathbb C^2.
+\]
+The occupation basis is \(e_{a,b}\), with \(a,b\in\mathbb N_0\).
+Its energy is \(a\log2+b\log3\), so for \(\operatorname{Re}s>0\),
+\[
+ \sum_{a,b\geq0}2^{-as}3^{-bs}
+ =\det(I-K_{\{2,3\}}(s))^{-1}.
+\]
+At \(s=1\), the trace is \(3\) and the determinant is \(1/3\).
+Passing to all primes requires convergence in an operator ideal.
+
+\subsection{The prime operator and its Fock space}
+
+Let \(\mathscr K=\ell^2(\mathcal P)\), where \(\mathcal P\) is the set
+of rational primes.  Define
+\[
+ Ae_p=(\log p)e_p,\qquad
+ \mathcal D(A)=\left\{x\in\mathscr K:
+ \sum_p(\log p)^2|x_p|^2<\infty\right\}.
+\]
+The inner product is linear in its first argument.  This diagonal
+operator is closed: convergence of a sequence and of its images gives
+coordinatewise convergence, and the limiting image has coordinates
+\((\log p)x_p\), placing the limit in the displayed domain.
+Its adjoint has the same domain, since testing against the finitely
+supported vectors forces those coordinates and their square summability.
+Thus \(A\) is positive and self-adjoint.  The resolvent
+\((A+I)^{-1}\) is the norm limit of finite diagonals because its
+entries \(1/(1+\log p)\) tend to zero; hence it is compact.
+For \(\operatorname{Re}s>0\), let
+\[
+ K(s)=e^{-sA},\qquad K(s)e_p=p^{-s}e_p.
+\]
+For an integer \(m\geq1\), the Schatten ideal \(\mathcal S_m\) consists
+of compact operators with \(m\)-summable singular values.  The singular
+values \(\mu_j(T)\) are the nonnegative square roots of the eigenvalues
+of \(T^*T\), counted with multiplicity.  The ideal norm is
+\(\|T\|_m=(\sum_j\mu_j(T)^m)^{1/m}\); \(\mathcal S_1\) is the
+trace class.  For a trace-class diagonal \(Te_j=t_je_j\), the
+Fredholm determinant used here is the convergent product
+\(\det(I-T)=\prod_j(1-t_j)\).  Absolute summability of the entries
+makes this the limit of the finite diagonal determinants.
+
+\begin{theorem}[Analytic Euler determinant]
+\label{thm:euler-fredholm}
+For \(m\geq1\), the map \(s\mapsto K(s)\) is holomorphic with values
+in \(\mathcal S_m\) precisely on the half-plane
+\(\operatorname{Re}s>1/m\).  There,
+\[
+ \|K(s)\|_m^m=\sum_p p^{-m\operatorname{Re}s}.
+\]
+Let
+\(\mathscr F_{\mathrm{sym}}(\mathscr K)=\bigoplus_{q\geq0}\operatorname{Sym}^q
+\mathscr K\) be the Hilbert bosonic Fock space, with normalized occupation
+basis \(|(r_p)_p\rangle\) indexed by finitely supported nonnegative
+integers.  The summand \(q\) has particle number \(q=\sum_p r_p\);
+the vacuum is the unit vector in the \(q=0\) summand.  The map
+\[
+ U:\mathscr F_{\mathrm{sym}}(\mathscr K)\longrightarrow\ell^2(\mathbb N^\times),
+ \qquad U|(r_p)_p\rangle=e_{\prod_p p^{r_p}}
+\]
+is unitary.  Second quantization satisfies
+\[
+ U\left(\bigoplus_{q\geq0}K(s)^{\otimes_s q}\right)U^{-1}
+ =e^{-sH},\qquad \operatorname{Re}s>0.
+\]
+These Fock operators are trace class exactly when
+\(\operatorname{Re}s>1\), and on that half-plane
+\[
+ \operatorname{Tr}_{\mathscr F_{\mathrm{sym}}(\mathscr K)}
+ \left(\bigoplus_{q\geq0}K(s)^{\otimes_s q}\right)
+ =\det(I-K(s))^{-1}=\zeta(s).
+\]
+The determinant is the ordinary Fredholm determinant on \(\mathscr K\),
+normalized to tend to \(1\) as real \(s\to+\infty\).
+\end{theorem}
+
+\begin{proof}
+The singular values of \(K(s)\) are \(p^{-\operatorname{Re}s}\).
+\label{proof:prime-harmonic}
+The prime series \(\sum_p p^{-x}\) converges for \(x>1\) by comparison
+with \(\sum_{n\geq2}n^{-x}\).  It diverges for \(x\leq1\).
+Indeed, convergence of \(\sum_p1/p\) would bound all products
+\(\prod_{p\leq R}(1-1/p)^{-1}\): the series
+\(-\log(1-1/p)\) is at most \(2/p\).  Their geometric expansions contain
+\(\sum_{n\leq R}1/n\), which is unbounded.  Comparison proves the
+remaining divergence claims.
+
+For a compact subset of \(\operatorname{Re}s>1/m\), choose
+\(\sigma_0>1/m\) below its real parts.  The finite diagonal truncations
+of \(K(s)\) converge uniformly there in \(\mathcal S_m\), because their
+\(m\)-norm tails are bounded by \(\sum_{p>R}p^{-m\sigma_0}\).
+They are holomorphic, so their limit is holomorphic in that Banach space.
+At \(\operatorname{Re}s=0\), the diagonal operator is unitary and
+noncompact.  For \(\operatorname{Re}s<0\), it is unbounded on its
+maximal diagonal domain.
+
+Unique factorization makes \(U\) a bijection of orthonormal bases.
+On an occupation vector, second quantization has eigenvalue
+\(\prod_p p^{-sr_p}\), which proves the operator equality.
+Its trace-class domain follows from Proposition~\ref{prop:prime-product}.
+For a finite set of primes \(F\), summing all occupations gives
+\(\prod_{p\in F}(1-p^{-s})^{-1}\).  The projections onto configurations
+supported in \(F\) tend to the identity.  For \(\operatorname{Re}s>1\),
+the omitted absolute diagonal sum tends to zero, so the convergence is
+in trace norm.  On \(\mathscr K\), the finite compressions converge in
+\(\mathcal S_1\).  Their determinants converge to
+\(\prod_p(1-p^{-s})\), the Fredholm determinant of the diagonal operator.
+Both products converge locally uniformly.  This proves
+the trace--determinant identity, including its analytic meaning and normalization.
+\end{proof}
+
+\subsection{Regularization and its exact boundary}
+
+When \(0<\operatorname{Re}s\leq1\), the prime operator remains compact.
+The divergent first terms of its logarithmic determinant can be removed.
+For \(m\geq1\), define the entire function
+\[
+ E_m(z)=(1-z)\exp\left(\sum_{k=1}^{m-1}\frac{z^k}{k}\right),
+\]
+where an empty sum is zero.  Since \(E_m(z)-1=O(z^m)\) at zero,
+\(E_m(K)-I\) is trace class for the diagonal \(K\in\mathcal S_m\)
+used here.  Define
+\[
+ \det_m(I-K)=\det\bigl(E_m(K)\bigr).
+\]
+This fixes the regularization, including every exponential factor.
+
+\begin{theorem}[Regularized prime determinants]
+\label{thm:prime-regularization}
+For every integer \(m\geq1\),
+\[
+ \Delta_m(s):=\det_m(I-K(s))
+ =\prod_p E_m(p^{-s})
+\]
+is nonzero and holomorphic on \(\operatorname{Re}s>1/m\).  It has the
+unique holomorphic logarithm tending to zero along the positive real axis,
+\[
+ L_m(s):=\log \Delta_m(s)
+ =-\sum_p\sum_{k\geq m}\frac{p^{-ks}}{k}.
+\]
+If \(P(z)=\sum_p p^{-z}\) for \(\operatorname{Re}z>1\), then
+\[
+ \Delta_m(s)=\zeta(s)^{-1}
+ \exp\left(\sum_{k=1}^{m-1}\frac{P(ks)}{k}\right),
+ \qquad \operatorname{Re}s>1.
+\]
+For \(\sigma=\operatorname{Re}s>1/m\) and integer \(R\geq2\),
+\[
+ \left|L_m(s)-\sum_{p\leq R}\log E_m(p^{-s})\right|
+ \leq\frac{R^{1-m\sigma}}
+ {m(m\sigma-1)(1-2^{-\sigma})}.
+\]
+On the same initial half-plane, the full logarithmic derivative is
+\[
+ L_m'(s)=\sum_p(\log p)\frac{p^{-ms}}{1-p^{-s}}.
+\]
+The logarithms in the tail estimate use the power series
+\(\log E_m(z)=-\sum_{k\geq m}z^k/k\) for \(|z|<1\).
+\end{theorem}
+
+\begin{proof}
+For \(|z|\leq2^{-\sigma}<1\), the defining series gives
+\[
+ |\log E_m(z)|\leq\frac{|z|^m}{m(1-2^{-\sigma})}.
+\]
+Summation over primes proves absolute and locally uniform convergence
+of the logarithmic series.  Exponentiation gives a nonzero holomorphic
+product.  The trace-class diagonal \(E_m(K(s))-I\) has the same Fredholm
+product, so this is the stated operator determinant.  Its limit at
+\(+\infty\) is \(1\), and the logarithm has limit zero.
+On \(\operatorname{Re}s>1\), add back the omitted terms and apply
+Theorem~\ref{thm:euler-fredholm}.  Finally,
+\[
+ \sum_{p>R}p^{-m\sigma}
+ \leq\sum_{n>R}n^{-m\sigma}
+ \leq\int_R^\infty x^{-m\sigma}\,dx
+\]
+proves the stated tail bound.  On a smaller closed half-plane within
+this domain, differentiation is justified by
+\(\sum_{n\geq2}(\log n)n^{-m\sigma}<\infty\).
+Differentiating each summand and summing its geometric series gives the
+stated full logarithmic derivative.
+\end{proof}
+
+The two-prime example already distinguishes the normalizations:
+\[
+ \det_2(I-K_{\{2,3\}}(s))
+ =\det(I-K_{\{2,3\}}(s))\exp(2^{-s}+3^{-s}).
+\]
+At \(s=1\), its value is \(e^{5/6}/3\).  A constant cannot remove this
+parameter-dependent correction.
+
+\begin{theorem}[Fractional zero at the convergence boundary]
+\label{thm:fractional-zero}
+For \(m\geq2\), there is a disk about \(a_m=1/m\) and a nonvanishing
+holomorphic function \(G_m\) on that disk such that
+\[
+ \Delta_m(s)^m=(ms-1)G_m(s),\qquad \operatorname{Re}s>a_m.
+\]
+Moreover, \(G_m(a_m)>0\).  Thus \(\Delta_m\) has no single-valued meromorphic
+continuation to a neighborhood of \(a_m\).  On the real axis,
+\[
+ \Delta_m(s)\sim C_m(ms-1)^{1/m}\quad(s\downarrow a_m),\qquad C_m>0.
+\]
+\end{theorem}
+
+\begin{proof}
+Put
+\[
+ R_0(z)=\sum_{k\geq2}\frac{P(kz)}k,\qquad
+ B_m(s)=\sum_{k\geq m+1}\frac{P(ks)}k.
+\]
+The estimate in Theorem~\ref{thm:prime-regularization} shows that these
+functions are holomorphic on \(\operatorname{Re}z>1/2\) and
+\(\operatorname{Re}s>1/(m+1)\), respectively.
+For \(\operatorname{Re}z>1\),
+\[
+ \log\zeta(z)=P(z)+R_0(z).
+\]
+The residue of \(\zeta\) at \(1\) is one.  One can see its normalization
+directly from
+\[
+ \zeta(z)-\frac1{z-1}
+ =\sum_{n\geq1}\left(n^{-z}-\int_n^{n+1}x^{-z}\,dx\right).
+\]
+The right side converges locally uniformly for \(\operatorname{Re}z>0\),
+because its summands are \(O(n^{-\operatorname{Re}z-1})\) on compact
+sets.  Consequently \(Q(z)=(z-1)\zeta(z)\) is holomorphic near \(1\),
+with \(Q(1)=1\), and is nonzero on a sufficiently small disk.
+
+The logarithmic series of Theorem~\ref{thm:prime-regularization} gives, for
+\(\operatorname{Re}s>a_m\),
+\[
+ \Delta_m(s)^m
+ =\zeta(ms)^{-1}\exp\bigl(R_0(ms)-mB_m(s)\bigr)
+ =(ms-1)\frac{\exp\bigl(R_0(ms)-mB_m(s)\bigr)}{Q(ms)}.
+\]
+The last quotient is the required \(G_m\).  It is holomorphic and nonzero
+near \(a_m\), with
+\[
+ G_m(a_m)=\exp\bigl(R_0(1)-mB_m(a_m)\bigr)>0.
+\]
+If \(\Delta_m\) were meromorphic there, the order of its \(m\)-th power
+would be divisible by \(m\).  The displayed simple zero contradicts this.
+Since every factor is positive for real \(s>a_m\), the asymptotic follows
+with \(C_m=\exp(R_0(1)/m-B_m(a_m))\).
+\end{proof}
+
+The fractional zero suggests the coordinate \(t^m=ms-1\), in which
+the determinant has an ordinary zero.  The next section constructs its
+continuation surface and the comparison maps for different regularization
+orders from the convergent remainder functions.
+
+\section{Branched continuation of the prime determinant}
+\label{sec:prime-continuation}
+
+A fractional zero can become an ordinary zero after changing the
+coordinate on the domain.  The square root of \(s-a\) returns with the
+opposite sign after one counterclockwise circuit around \(a\).
+On the coordinate surface \(s=a+t^2\), it is the single-valued function
+\(t\).  For the prime determinant, the analogous construction will require
+infinitely many different ramification orders.
+
+Fix an integer \(m\geq2\) and retain precisely \(E_m\), \(L_m\), and
+\(\Delta_m\) from Theorem~\ref{thm:prime-regularization}.
+Thus the initial domain is \(\operatorname{Re}s>1/m\),
+\(p^{-s}=\exp(-s\log p)\) uses the real logarithm of \(p\), and
+\(L_m(s)\to0\) as real \(s\to+\infty\).
+Our base point is \(s_*=2\), with the positive value \(\Delta_m(2)\).
+The continuation concerns this fixed holomorphic germ; the summability
+domain of the operator in Theorem~\ref{thm:euler-fredholm} stays fixed.
+
+We work over \(\mathbb C\) and use its usual topology.  A meromorphic
+function is locally a quotient of holomorphic functions.  At a point \(a\),
+its order is the integer \(v\) in \(f(s)=(s-a)^v u(s)\), where \(u\)
+is holomorphic and nonzero.  Positive orders are zeros and negative
+orders are poles.  The divisor records these points with their integer
+orders; its support is the set of points with nonzero order.
+A covering map is locally a disjoint union of copies
+of an open set.  A branched covering also permits local coordinates
+\(s=a+t^q\), with \(q\) a positive integer.  We will construct these
+coordinates and their gluing maps explicitly.
+
+We use convergent complex power series and integration along piecewise
+smooth paths.  The local logarithms and residue formula needed for the
+continuation maps are developed next.
+
+\subsection{Logarithms, residues, and zeta factors}
+
+\subsubsection{Local logarithms and integrals}
+
+A locally uniform limit of holomorphic functions is holomorphic.
+For completeness, on a circle contained in the domain, uniform convergence
+allows passage to the limit in the Cauchy integral formula.
+Expanding \((z-s)^{-1}\) as a geometric series on a smaller concentric
+disk gives a convergent power series for the limit.
+The same argument gives locally uniform convergence of derivatives there.
+The integral formula itself follows by integrating the power-series
+primitive on small disks and subdividing the region between the circle
+and a smaller circle about \(s\).  Internal edges cancel, while the
+smaller circle contributes \(2\pi i f(s)\).
+
+If \(u(a)\ne0\), shrink a disk about \(a\) until
+\(|u(s)/u(a)-1|<1\).  The power series for \(\log(1+z)\), together
+with one logarithm of \(u(a)\), gives a holomorphic logarithm of \(u\).
+Two logarithms on a connected overlap differ by \(2\pi i n\),
+\(n\in\mathbb Z\), because their exponentials agree and the difference
+is continuous with discrete values.  Roots of a nonvanishing function
+are obtained by dividing such a logarithm by the required integer.
+
+For a closed path \(\gamma\) avoiding \(a\), define
+\[
+ \operatorname{wind}(\gamma,a)
+ =\frac1{2\pi i}\int_\gamma\frac{ds}{s-a}.
+\]
+To see that this is an integer, continue a local logarithm of \(s-a\)
+along finitely many small disks covering the path.  At the endpoint its
+change is \(2\pi i n\).  Integrating its derivative gives the formula.
+Subdividing a homotopy into small rectangles shows that the integral
+of a holomorphic one-form is unchanged under path homotopy with fixed
+endpoints: each rectangle lies in a disk with a power-series primitive.
+
+We need a related residue formula.  Suppose a one-form on a half-plane
+is holomorphic except at a locally finite set of simple poles \(a\),
+with residues \(r_a\).  A closed path lies inside a compact convex polygon
+in that half-plane whose boundary avoids the poles.
+There are only finitely many poles in the polygon.
+Subtract \(\sum_a r_a\,ds/(s-a)\).  The remaining form is holomorphic
+on a slightly smaller polygon containing the path and has zero integral
+around closed paths by subdivision.  It follows that
+\[
+ \int_\gamma\omega
+ =2\pi i\sum_a r_a\operatorname{wind}(\gamma,a).
+\]
+Only finitely many terms contribute.  These elementary integral identities
+will determine the entire continuation space.
+
+\subsubsection{Continuation of the ordinary zeta function}
+
+Write \(\Hp_c=\{s\in\mathbb C:\Re s>c\}\), and \(\Hp=\Hp_0\).
+For \(\Re z>1\), let \(\zeta(z)=\sum_{n\geq1}n^{-z}\).
+Finite geometric products and unique factorization give
+\[
+ \zeta(z)=\prod_p(1-p^{-z})^{-1},\qquad
+ Z(z):=\log\zeta(z)=\sum_p\sum_{j\geq1}\frac{p^{-jz}}j.
+\]
+Both limits are locally uniform and absolute on \(\Hp_1\).
+For example, all omitted integers in a finite prime product are bounded
+in absolute sum by the tail of \(\sum n^{-\Re z}\).
+The absolute logarithmic sum is bounded by
+\((1-2^{-\Re z})^{-1}\sum_{n\geq2}n^{-\Re z}\).
+Its exponential is the product, so \(\zeta\) is nonzero on \(\Hp_1\).
+The branch \(Z\) tends to zero on the positive real axis.
+
+The subtraction formula in the proof of
+Theorem~\ref{thm:fractional-zero} continues \(\zeta\) meromorphically
+to \(\Hp\), with its only pole at \(1\), simple and of residue one.
+Its locally uniform derivative bound proves holomorphy of the subtracted
+series throughout \(\Hp\).  This construction is sufficient for every
+zeta factor used below.
+
+Zeros are isolated.  A holomorphic function that is not identically zero
+has a first nonzero Taylor coefficient at each zero, which factors it as
+\((z-a)^v u(z)\) with \(u(a)\ne0\).  An accumulation of zeros would
+make every coefficient vanish and then, by overlapping disks, make the
+function identically zero.  The zeta function is nonzero on \(\Hp_1\),
+so this cannot occur.
+
+We will also need the absence of zeros on the positive real axis.
+For \(x>0\), the paired series
+\[
+ \eta(x)=\sum_{r\geq1}\bigl((2r-1)^{-x}-(2r)^{-x}\bigr)
+\]
+converges and is strictly positive.  Its complex analogue converges
+locally uniformly on \(\Hp\) by the same derivative estimate.
+Splitting even and odd terms for \(\Re z>1\), and then continuing,
+gives \(\eta(z)=(1-2^{1-z})\zeta(z)\).
+Thus \(\zeta(x)<0\) for \(0<x<1\), while \(\zeta(x)>0\) for \(x>1\).
+
+\subsection{The first continuation surface}
+
+The proof of Theorem~\ref{thm:fractional-zero} isolates the first
+divergent part without continuing the prime series itself.
+Retain its functions \(P\), \(R_0\), and \(B_m\), holomorphic on
+\(\Hp_1\), \(\Hp_{1/2}\), and \(\Hp_{1/(m+1)}\), respectively.
+The same calculation gives, on \(\Hp_{1/m}\),
+\[
+ mL_m(s)=-P(ms)-mB_m(s)
+ =-Z(ms)+R_0(ms)-mB_m(s).
+\]
+Consequently the single-valued meromorphic function
+\[
+ F_m(s)=\frac{\exp(R_0(ms)-mB_m(s))}{\zeta(ms)}
+ \quad\text{on }U_m:=\Hp_{1/(m+1)}
+\]
+extends \(\Delta_m^m\).  The stated domain follows because
+\(m/(m+1)>1/2\).  The numerator is holomorphic and nonzero throughout it.
+The function \(F_m\) has a simple zero at \(a_m=1/m\).
+At a point \(\rho/m\) where \(\zeta(\rho)=0\) has multiplicity \(v\)
+and \(\Re\rho>m/(m+1)\), it has a pole of order \(v\).
+There are no other zeros or poles on \(U_m\).
+
+\begin{theorem}[Minimal first surface]
+\label{thm:first-surface}
+Let \(U_m^\circ\) be \(U_m\) with the divisor support of \(F_m\)
+removed.  The equation
+\[
+ Y_m=\{(s,y):s\in U_m^\circ,\ y\in\mathbb C^*,\ y^m=F_m(s)\}
+\]
+defines a connected \(m\)-sheeted holomorphic cover.
+It carries the continuation of \(\Delta_m\) as the function \(y\),
+with the initial sheet specified by \(y(2)=\Delta_m(2)>0\).
+It admits a meromorphic branched filling over every divisor point.
+If \(v=\ord_a F_m\ne0\) and \(d=\gcd(m,|v|)\), the filling has
+\(d\) points over \(a\).  Each has ramification index \(m/d\), and
+\(y\) has order \(v/d\) there.
+At \(a_m\), this is the minimal local \(m\)-fold cover, and \(y\)
+has a simple zero.
+\end{theorem}
+
+\begin{proof}
+On a small disk avoiding the divisor, choose \(\log F_m\).
+The \(m\) functions
+\(y_j=\exp((\log F_m+2\pi i j)/m)\), \(0\leq j<m\), are disjoint
+local sheets.  A circuit about the simple zero at \(a_m\) permutes them
+by \(j\mapsto j+1\).  Thus all sheets are connected by continuation.
+
+Near a divisor point, write \(F_m(s)=(s-a)^v u(s)\) and choose
+\(h^m=u\) with \(h\) holomorphic and nonzero.  The charts are
+\[
+ s=a+t^{m/d},\qquad
+ y=\xi\,t^{v/d}h(a+t^{m/d}),\qquad \xi^m=1.
+\]
+Negative powers of \(t\) mean a meromorphic pole.  Changing \(t\) by
+an \((m/d)\)-th root of unity identifies exactly \(m/d\) choices of
+\(\xi\), because \(v/d\) and \(m/d\) are coprime.  Hence there are
+\(d\) charts.  They parametrize all the punctured sheets and fill their
+ends with smooth disk coordinates.  On overlaps their changes of
+coordinate are the roots of unity just described, so they glue.
+
+At \(a_m\), write \(F_m(s)=(ms-1)G_m(s)\), where
+\[
+ G_m(s)=\frac{\exp(R_0(ms)-mB_m(s))}{(ms-1)\zeta(ms)}.
+\]
+The denominator is nonzero near \(a_m\) and equals one there.
+Thus \(G_m(a_m)>0\).  The coordinate \(t^m=ms-1\) gives
+\(y=t\,G_m((1+t^m)/m)^{1/m}\), using the root positive at \(t=0\).
+One circuit multiplies \(y\) by \(e^{2\pi i/m}\).
+On any local cover \(s-a_m=t^e\) where \(y\) is meromorphic,
+its order must be \(e/m\), an integer.  Therefore \(m\) divides \(e\).
+Our chart attains this bound.
+\end{proof}
+
+For \(m=2\), the two sheets meet smoothly above \(1/2\), and one
+circuit changes the sign.  At a zero of \(\zeta(2s)\) of order two,
+the same construction gives two unramified simple poles.
+A simple zero of \(\zeta(2s)\) would instead give one ramified simple
+pole upstairs.  These are conditional descriptions of any such zeros
+in \(U_2\), not assertions that they exist there.
+
+\subsection{Finite extraction and continuation through the positive half-plane}
+
+The preceding surface uses the full domain of the two displayed remainder
+series.  To go farther left, remove finitely many more logarithmic factors.
+The coefficients determine every branch.
+
+In the extraction and the cover construction that follows, allow any
+integer \(m\geq1\); order one will recover the reciprocal zeta function.
+Define the integer \(\mu(n)\) as zero when a prime square divides \(n\),
+and as \((-1)^r\) when \(n\) is a product of \(r\) distinct primes.
+Set \(\mu(1)=1\).  Choosing subsets of the prime divisors proves
+\(\sum_{d\mid n}\mu(d)=0\) for \(n>1\), and the sum is one for \(n=1\).
+For \(n\geq1\), put
+\[
+ c_m(n)=\frac1n\sum_{\substack{k\mid n\\ k\geq m}}\mu(n/k).
+\]
+Then \(c_m(n)=0\) for \(n<m\), \(c_m(m)=1/m\), and
+\(|c_m(n)|\leq1\).  Summing over divisors in the opposite order gives
+\[
+ \sum_{d\mid n}d\,c_m(d)=\mathbf1_{n\geq m}.
+\]
+Indeed, the contribution for a fixed \(k\mid n\), \(k\geq m\), is
+\(\sum_{e\mid n/k}\mu(e)\), so only \(k=n\) survives.
+
+\begin{theorem}[Finite logarithmic extraction]
+\label{thm:extraction}\label{mono:prop:extraction}
+On \(\Hp_{1/m}\),
+\[
+ L_m(s)=-\sum_{n\geq m}c_m(n)Z(ns).
+\]
+For \(N\geq m\), the remainder
+\[
+ T_{m,N}(s)=-\sum_{n>N}c_m(n)Z(ns)
+\]
+is single-valued and holomorphic on \(U_N=\Hp_{1/(N+1)}\).
+On every open disk in \(U_N\) avoiding zeros and poles of
+\(\zeta(ns)\), \(m\leq n\leq N\), the formula
+\[
+ f_{m,N}(s)=\exp\left(T_{m,N}(s)
+       -\sum_{n=m}^N c_m(n)\ell_n(s)\right),
+ \qquad e^{\ell_n(s)}=\zeta(ns),
+\]
+gives a local branch of the continued determinant, when its logarithms
+are continued from the initial half-plane.
+The formulas for successive \(N\) agree with these continued choices.
+\end{theorem}
+
+\begin{proof}
+For \(x>1\) and \(\Re z=x\),
+\[
+ |Z(z)|\leq\frac1{1-2^{-x}}\sum_{r\geq2}r^{-x}
+ \leq\frac{2^{-x}+2^{1-x}/(x-1)}{1-2^{-x}}.
+\]
+For \(x\geq2\), this is at most \(4\,2^{-x}\).
+On a compact subset of \(U_N\), all \(ns\), \(n>N\), lie in
+\(\Hp_1\).  The large \(n\) terms therefore have a geometric bound,
+which proves local uniform convergence of \(T_{m,N}\) and its derivatives.
+
+On \(\Hp_{1/m}\), expand each \(Z(ns)\) into its prime series.
+Absolute convergence follows from the same bound, so sums can be reordered.
+The coefficient of \(p^{-js}\) becomes
+\[
+ -\sum_{n\mid j}\frac{c_m(n)}{j/n}
+ =-\frac{\mathbf1_{j\geq m}}j.
+\]
+This is the defining coefficient of \(L_m\).
+The local formula follows by keeping its first \(N\) terms separate.
+On \(U_N\),
+\[
+ T_{m,N}=T_{m,N+1}-c_m(N+1)Z((N+1)s).
+\]
+The last logarithm has its original single-valued branch there.
+For \(m=1\), divisor cancellation gives
+\(c_1(n)=\mathbf1_{n=1}\), so the same identity reduces to
+\(L_1=-Z\).  The compatibility therefore holds for every positive
+integer order.
+\end{proof}
+
+For example, \(c_2(n)=-\mu(n)/n\) for \(n>1\).
+The first coefficients are
+\[
+ c_2(2)=\frac12,\quad c_2(3)=\frac13,\quad c_2(4)=0,
+ \quad c_2(5)=\frac15,\quad c_2(6)=-\frac16.
+\]
+The first continuation takes a square root of an inverse zeta factor.
+The next takes a cube root as well.  The negative coefficient at six
+reverses the contribution of the pole of \(\zeta(6s)\).
+
+\subsubsection{The logarithmic derivative and coincident divisors}
+
+Let \(S_m\subset\Hp\) consist of points where \(\zeta(ns)\) has a
+zero or pole for some \(n\geq m\) with \(c_m(n)\ne0\).
+This set is locally finite.  On a compact set with \(\Re s\geq\epsilon>0\),
+only \(n\leq1/\epsilon\) can contribute, since \(\zeta\) is nonzero
+and holomorphic on \(\Hp_1\).  Each of these finitely many factors
+has finitely many zeros and poles on the compact set.
+Put \(\Omega_m=\Hp\setminus S_m\).
+
+The locally finite punctures do not disconnect the half-plane.
+A polygonal path between two points meets only finitely many punctures
+in a compact neighborhood, and small detours avoid them.
+Hence \(\Omega_m\) is path connected.
+
+On \(\Omega_m\), define the holomorphic one-form
+\[
+ \omega_m=dT_{m,N}
+ -\sum_{n=m}^N c_m(n)\frac{n\zeta'(ns)}{\zeta(ns)}\dd
+ \quad\text{where }s\in U_N.
+\]
+Theorem~\ref{thm:extraction} proves independence of \(N\).
+For every \(a\in\Hp\), define the rational number
+\[
+ \alpha_m(a)=-\sum_{n\geq m}c_m(n)\ord_a\zeta(ns).
+\]
+Only finitely many terms occur.  This is the residue of the meromorphic
+extension of \(\omega_m\), with value zero wherever that extension is
+holomorphic.  The signs include a zeta pole with order
+\(-1\).  Coincident zeros and poles contribute to the same sum.
+Each logarithmic derivative has a simple pole, so if this sum vanishes,
+\(\omega_m\) extends holomorphically at \(a\).
+For a loop \(\gamma\) in \(\Omega_m\), set
+\[
+ \chi_m(\gamma)=\exp\left(\int_\gamma\omega_m\right)
+ =\exp\left(2\pi i\sum_{a\in S_m}
+       \alpha_m(a)\operatorname{wind}(\gamma,a)\right).
+\]
+This is a homomorphism from based loops modulo homotopy to
+the unit complex numbers.  Every value is a root of unity.
+It is the monodromy character of the determinant.
+
+\subsection{The minimal cover and the determinant line}
+
+A Riemann surface is a Hausdorff space with a countable atlas of open
+subsets of \(\mathbb C\) and holomorphic coordinate changes.
+A pointed germ here means a holomorphic function near \(2\), with
+two such functions identified if they agree on a smaller neighborhood.
+A torsor for a group is a set on which the group acts so that exactly
+one group element carries any specified point to any other.
+For loops based at \(2\), multiplication means concatenation, and
+reversing a path gives the inverse.  The kernel of \(\chi_m\) consists
+of loops with character one.
+
+\begin{theorem}[Continuation on a minimal cover]
+\label{thm:minimal-cover}\label{mono:prop:local}
+There is a connected holomorphic covering
+\(\pi:\mathcal E_m\to\Omega_m\) and a nonzero holomorphic function
+\(\mathcal D_m\) on it, with the following properties.
+The pointed germ at \(2\) is \(\Delta_m\), and
+\[
+ \frac{d\mathcal D_m}{\mathcal D_m}=\pi^*\omega_m.
+\]
+The fiber of \(\pi\) is a torsor for \(\operatorname{im}\chi_m\).
+Every pointed connected cover on which that germ becomes single-valued
+maps uniquely to \(\mathcal E_m\) over \(\Omega_m\), preserving the germ.
+Thus \(\mathcal E_m\) has the fewest sheets among such covers.
+It has a meromorphic branched filling over every point of \(S_m\).
+If \(\alpha_m(a)=b/q\) in lowest terms with \(q>0\), each local end
+has ramification index \(q\), and \(\mathcal D_m\) has order \(b\).
+For \(\alpha_m(a)=0\), take \(b=0,q=1\).
+Every meromorphic realization with local ramification index \(e\)
+requires \(q\mid e\).
+\end{theorem}
+
+\begin{proof}
+Consider paths \(\gamma\) in \(\Omega_m\) from \(2\).
+Two paths are equivalent when they have the same endpoint and
+\(\exp(\int_\gamma\omega_m-\int_\eta\omega_m)=1\).
+Write \([\gamma]\) for the class, and set
+\[
+ \pi[\gamma]=\gamma(1),\qquad
+ \mathcal D_m[\gamma]=\Delta_m(2)
+       \exp\left(\int_\gamma\omega_m\right).
+\]
+The equivalence relation makes the function well-defined.
+For a small disk \(V\subset\Omega_m\) about \(\gamma(1)\), append
+paths inside \(V\).  A primitive of \(\omega_m\) on \(V\) shows
+that the resulting classes form a copy of \(V\).
+Two such copies are either disjoint or identical over a connected overlap,
+with change of coordinates equal to the identity on the base.
+These charts define the covering and its complex structure.
+They separate distinct points in a fiber, so the space is Hausdorff.
+There are at most countably many classes in a fiber, because finite sums
+of rational residues give a countable monodromy image.
+A countable disk basis on the base therefore gives a countable atlas.
+Every class is joined to the base class by the initial portions of its
+representing path.  Thus the cover is connected.
+
+The displayed exponential is holomorphic in each chart, with the stated
+logarithmic derivative.  On the initial half-plane it agrees with
+\(\Delta_m\), since the logarithmic derivatives and the values at \(2\)
+agree.  Appending loops gives the simply transitive action of
+\(\operatorname{im}\chi_m\) on each fiber.
+
+Let \(X\to\Omega_m\) be another pointed connected cover carrying the
+continued germ.  A path in \(X\) from its base point projects to a path
+\(\gamma\).  Its endpoint value is forced by the exponential formula.
+Two paths ending at the same point therefore have trivial exponential
+period.  Sending that point to \([\gamma]\) is well-defined, holomorphic,
+and unique.  It is onto because every path on the base lifts to \(X\).
+This proves minimality.
+
+Near a puncture, the Laurent calculation gives
+\[
+ \omega_m=\frac bq\frac{ds}{s-a}+dh(s)
+\]
+for a holomorphic \(h\) on a disk.  Each branch is consequently
+\(C(s-a)^{b/q}e^{h(s)}\), with \(C\ne0\).
+The punctured sheets form cycles of length \(q\), since \(b,q\) are
+coprime.  Fill each cycle with the coordinate \(s=a+t^q\).
+The function becomes \(Ct^b e^{h(a+t^q)}\), which is meromorphic.
+Different choices of the coordinate differ by a \(q\)-th root of unity.
+This gives the compatible local filling and the stated order.
+On a chart \(s-a=t^e\), a meromorphic realization would have integer
+order \(eb/q\); coprimality of \(b,q\) forces \(q\mid e\).
+\end{proof}
+
+The formula resolves cancellations before assigning ramification.
+For example, local exponents \(1/2\) and \(-1/2\) give a nonzero
+holomorphic branch, not a double cover.  A total exponent \(2/3\)
+gives a triple cover with a double zero.  An exponent \(-2/3\) gives
+the same cover with a double pole.  The denominator of the reduced total
+exponent, rather than any individual factor, is the minimal local degree.
+
+\subsubsection{A finite description on each half-plane}
+
+The construction has finite equations on every \(U_N\).
+Let \(M_N\) be the least common multiple of the denominators of
+\(c_m(m),\ldots,c_m(N)\), in lowest terms.  Define
+\[
+ A_{m,N}(s)=\exp(M_N T_{m,N}(s))
+       \prod_{n=m}^N\zeta(ns)^{-M_Nc_m(n)}.
+\]
+This is meromorphic on \(U_N\), since all powers are integers.
+Over \(U_N\setminus S_m\), the equation
+\(y^{M_N}=A_{m,N}(s)\) is connected and has exactly \(M_N\) sheets.
+To prove this, first note the identity
+\[
+ \alpha_m(1/n)=c_m(n),\qquad n\geq m.
+\]
+Only \(\zeta(ns)\) has a pole at \(1/n\); all other scaled zeta
+values there are nonzero finite values on the positive real axis.
+For \(m\leq n\leq N\), these points lie in \(U_N\).
+Small loops about them generate the subgroup of roots of unity generated
+by \(\exp(2\pi i c_m(n))\).  Its order is \(M_N\): a positive integer
+annihilates every exponent modulo \(\mathbb Z\) exactly when it is
+divisible by every reduced denominator.  Thus continuation reaches all
+the roots of the polynomial equation.  Conversely every residue on
+\(U_N\) has denominator dividing \(M_N\), so no further sheets occur.
+The path construction identifies this equation, with base value
+\(y(2)=\Delta_m(2)\), with the minimal continuation using paths in
+that half-plane.
+
+For order two, the first degrees are
+\[
+ \begin{array}{c|ccccc}
+ N&2&3&4&5&6\\ \hline
+ M_N&2&6&6&30&30
+ \end{array}
+\]
+The point \(1/4\) introduces no sheet, since \(c_2(4)=0\).
+At \(1/6\), the exponent \(-1/6\) gives a simple pole after the
+sixfold local pullback.  Both facts occur within the degree-thirty surface
+over \(U_6\).  For order three, the exponents \(1/3\) and \(1/4\)
+already force degree twelve over \(U_4\).
+
+Since \(M_N\mid M_{N+1}\), the remainder identity implies
+\[
+ A_{m,N+1}|_{U_N}=A_{m,N}^{\,M_{N+1}/M_N}.
+\]
+The transition between the pointed components is exactly
+\((s,y)\mapsto(s,y)\).  Its image is the pointed component over
+\(U_N\) inside the next surface.  The maps also extend over filled
+divisor points, since both use the same reduced residue and local coordinate.
+
+Every path in \(\Omega_m\) is compact and has positive minimum real
+part.  It therefore lies in some \(U_N\).  The union of these compatible
+pointed surfaces is \(\mathcal E_m\).  This proves continuation through
+the whole positive half-plane with its described branched fillings.
+It is the full domain supplied by this exhaustion of convergent
+remainders.  No assertion of maximal continuation outside \(\Hp\) is
+needed or proved.
+
+\subsubsection{Branches as a section of a line bundle}
+
+There is also a description without enlarging the base.
+Choose small disks \(V_i\) covering \(\Omega_m\), and continue the
+initial determinant to a branch \(f_i\) on each disk along a chosen path.
+On a connected component of \(V_i\cap V_j\), put
+\[
+ g_{ij}=f_i/f_j.
+\]
+Both branches have logarithmic derivative \(\omega_m\), so \(g_{ij}\)
+is constant.  It is a value of \(\chi_m\), and
+\(g_{ij}g_{jk}=g_{ik}\) on triple overlaps.
+Identify \((s,v_j)\in V_j\times\mathbb C\) with
+\((s,v_i)\in V_i\times\mathbb C\) when \(v_i=g_{ij}v_j\).
+The cocycle identity makes the quotient a holomorphic line bundle
+\(\mathcal L_m\).  The values \(f_i\) define a nonzero holomorphic
+section of it.  All bundle and section maps have now been specified.
+
+Because the transition constants have zero derivative, ordinary
+differentiation of local coordinates defines a flat connection \(\nabla\)
+on \(\mathcal L_m\).  Flat means that continuing a locally constant
+coordinate around a sufficiently small loop returns the same coordinate.
+The determinant section satisfies \(\nabla f=\omega_m f\).
+Its nonvanishing trivializes the underlying holomorphic line bundle.
+In that trivialization, the connection is \(d+\omega_m\).
+Its parallel transport around \(\gamma\) multiplies by
+\(\chi_m(\gamma)^{-1}\).  Thus the continuation information lies in the
+specified connection as well as the section; it is not a claim that the
+underlying holomorphic line bundle is nontrivial.
+The branched charts of Theorem~\ref{thm:minimal-cover} describe its
+meromorphic extension after the required local pullback.
+
+\subsection{Changing the regularization order}
+
+The order of regularization changes the function.  The comparison must
+therefore include a multiplier and the space on which it is defined.
+For \(n>m\), define on \(\Hp_{1/m}\)
+\[
+ H_{m,n}(s)=\exp\left(\sum_{k=m}^{n-1}\frac{P(ks)}k\right).
+\]
+Subtracting the absolutely convergent defining series gives
+\[
+ \Delta_n=H_{m,n}\Delta_m,\qquad
+ H_{m,n}H_{n,r}=H_{m,r}\quad(m<n<r).
+\]
+For instance, \(H_{2,3}=\exp(P(2s)/2)\).
+At \(s=1/2\), its continued local exponent is \(-1/2\), canceling
+the exponent \(1/2\) of \(\Delta_2\).  The resulting \(\Delta_3\)
+is already holomorphic and nonzero there by its initial definition.
+
+\begin{theorem}[Comparison on common covers]
+\label{thm:order-comparison}
+On \(\Omega=\Omega_m\cap\Omega_n\), the multiplier \(H_{m,n}\)
+continues with logarithmic derivative \(\omega_n-\omega_m\) and
+character \(\chi_n\chi_m^{-1}\).  On the pointed cover defined by
+\(\ker\chi_m\cap\ker\chi_n\), all three functions are single-valued
+and \(\mathcal D_n=H_{m,n}\mathcal D_m\).
+At a divisor point, the multiplier has local exponent
+\(\alpha_n-\alpha_m\).  The comparisons preserve their cocycle identity
+on common covers and in the corresponding line bundles.
+
+Multiplication descends to a map from the minimal \(m\)-cover to the
+minimal \(n\)-cover precisely when
+\(\ker\chi_m\subseteq\ker\chi_n\), with characters restricted to
+\(\Omega\).  Here each minimal cover uses paths in \(\Omega\) from
+the fixed base point.  Such descent is not automatic.
+\end{theorem}
+
+\begin{proof}
+The initial identity gives the difference of logarithmic derivatives and
+fixes the multiplier at \(2\).  Path integration therefore defines its
+unique continuation.  The exponential period is the quotient of the two
+characters.  It is trivial on their common kernel, so multiplication is
+well-defined on the stated common cover.  The local exponent follows by
+subtracting residues.  For three orders, the logarithmic derivatives
+telescope and the base values multiply correctly.  Uniqueness of the
+continued germ proves the cocycle identity.
+
+For the line bundles, choose the same continuation paths on a common disk
+cover.  The multiplier has transition constants
+\(g_{ij}^{(n)}/g_{ij}^{(m)}\), so it is a nonzero section of
+\(\mathcal L_n\otimes\mathcal L_m^{-1}\).
+Multiplying local coordinates gives an isomorphism of holomorphic line
+bundles carrying the determinant section to the other one.  The difference
+of the two flat connections is the specified logarithmic derivative.
+
+A point of the minimal \(m\)-cover identifies paths whose quotient loop
+lies in \(\ker\chi_m\).  Sending it to the corresponding path class
+in the \(n\)-cover is well-defined exactly when every such loop lies
+in \(\ker\chi_n\).  This proves the descent criterion in both directions.
+\end{proof}
+
+For a concrete failure, compare orders \(2\) and \(3\) around \(s=1/4\).
+The coefficient formulas give \(c_2(4)=0\) and \(c_3(4)=1/4\).
+All other scaled zeta factors are finite and nonzero at that positive
+real point.  Thus \(\chi_2=1\) and \(\chi_3=i\) on its small positive
+loop.  The order-three branch cannot be a function on the minimal
+order-two cover near this loop.  The common cover in the theorem supplies
+the required comparison without discarding this monodromy.
+
+\subsection{Why the number of sheets is unbounded}
+
+The finite equations determine the whole sheet group, including its
+prime-power orders.  For a prime \(p\), let \(e_p\) be the least
+positive integer such that \(p^{e_p}\geq m\).  Equivalently,
+\(p^{e_p-1}<m\leq p^{e_p}\).
+For a positive integer \(d\), let \(\mu_d\subset\mathbb C^*\) be the
+group of \(d\)-th roots of unity.
+
+\begin{theorem}[Exact monodromy group]
+\label{thm:monodromy-group}
+For \(m\geq2\), the image of the continuation character is
+\[
+ \operatorname{im}\chi_m
+ =\bigcup_{N\geq m}\mu_{M_N}
+ =\{z\in\mathbb C^*:z\text{ has finite order }d,
+       \ v_p(d)\leq e_p\text{ for every prime }p\}.
+\]
+Here \(v_p(d)\) is the exponent of \(p\) in the prime factorization of
+\(d\).  As an abstract group, this is
+\(\bigoplus_p\mathbb Z/p^{e_p}\mathbb Z\): only finitely many
+coordinates are nonzero in each element.
+\end{theorem}
+
+\begin{proof}
+Every loop lies in some \(U_N\), whose monodromy image is exactly
+\(\mu_{M_N}\).  This proves the first equality.
+For \(n>1\), divisor cancellation rewrites the coefficient as
+\[
+ c_m(n)=-\frac1n\sum_{\substack{k\mid n\\k<m}}\mu(n/k).
+\]
+If \(v_p(n)>e_p\), then \(k<m\) implies \(v_p(k)\leq e_p-1\).
+Thus \(p^2\mid n/k\) in every term, so \(c_m(n)=0\).
+Every nonzero coefficient consequently has denominator with
+\(p\)-valuation at most \(e_p\).
+
+Conversely, take \(n=p^{e_p}\).  Its only divisor at least \(m\) is
+\(n\) itself, so \(c_m(n)=1/p^{e_p}\).
+The loop about \(1/p^{e_p}\) gives a generator of \(\mu_{p^{e_p}}\).
+These loops for finitely many distinct primes generate all roots with
+order dividing their product.  Indeed, cyclic groups of coprime orders
+intersect trivially and their product has the product order.
+This proves the second equality and the direct-sum description.
+\end{proof}
+
+For \(m=2\), every \(e_p=1\), so the possible orders are precisely
+the squarefree positive integers.  For \(m=3\), one has \(e_2=2\),
+while \(e_p=1\) for every odd prime.  The allowed orders divide four
+times an odd squarefree integer.  Increasing the regularization can change
+this group, as well as the local determinant values.
+
+\begin{theorem}[Prime ramification and the boundary at zero]
+\label{thm:infinite-degree}
+Fix \(m\geq2\).  For every prime \(q\geq m\),
+\[
+ \alpha_m(1/q)=1/q.
+\]
+Hence the minimal continuation cover over \(\Omega_m\) has infinite
+degree.  No finite-degree branched cover of the whole positive half-plane
+carries the continued determinant as a meromorphic function.
+Nor can one finite-degree branched cover of a neighborhood of zero carry
+all these continued germs at the positive points \(1/q\).
+\end{theorem}
+
+\begin{proof}
+At \(s=1/q\), the factor \(\zeta(ns)\) has a pole only for \(n=q\).
+Every other \(n/q>0\) is a nonzero finite zeta value by the real-axis
+calculation above.  Since \(q\) is prime and \(m\geq2\), its only
+divisor at least \(m\) is \(q\), so \(c_m(q)=1/q\).
+The residue formula gives the claimed exponent.
+
+A small loop about \(1/q\) therefore has character
+\(e^{2\pi i/q}\), of order \(q\).  Infinitely many primes exceed \(m\):
+if only finitely many did, all primes would form a finite list, while
+one plus their product has a prime divisor outside that list.
+Thus the image of \(\chi_m\) is infinite.
+
+On a meromorphic realization over a local chart
+\(s-1/q=t^e\), the order is \(e/q\), which must be an integer.
+Therefore its ramification index is at least \(q\).
+A finite-degree cover has all local indices bounded by its degree.
+Arbitrarily large primes contradict such a bound, both on \(\Hp\)
+and in any neighborhood of zero containing their reciprocals.
+\end{proof}
+
+Multiplying by a single-valued meromorphic factor cannot remove this
+obstruction.  Its local order is an integer, so it changes
+\(\alpha_m(a)\) by an integer and leaves the character unchanged.
+The result concerns this determinant germ and its explicitly constructed
+continuation.  It neither identifies a global arithmetic cohomology nor
+asserts that the entire imaginary axis is a natural boundary.
+The continuation through \(\Hp\), its minimal local ramification,
+and its order-comparison maps are determined by the formulas above.
+

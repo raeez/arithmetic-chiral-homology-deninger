@@ -1,0 +1,136 @@
+\section{The divisor monoid and its integral bar}
+\label{sec:divisor-bar}
+
+The shifts $e_n\mapsto e_{pn}$ compose according to multiplication of
+integers.  Fix a finite ordered set $F$ of primes and let
+\[
+ M_F=\left\{\prod_{p\in F}p^{r_p}:r_p\in\mathbb N_0\right\}.
+\]
+Unique factorization identifies this monoid with the effective divisors
+$\sum_{p\in F}r_p[p]$.  Over any commutative ring $R$, its monoid algebra is
+\[
+ A_F=R[M_F]=R[u_p:p\in F],\qquad
+ \epsilon(u_p)=0,\qquad I_F=\ker\epsilon.
+\]
+Here $u_p$ represents the divisor $[p]$ and multiplication adds divisors.
+The augmentation takes the coefficient of the empty divisor.
+The unit is the empty divisor. The coefficient modules have the discrete
+topology, and all tensors in this section are algebraic.  All algebra
+elements have homological degree zero.
+
+For one prime, multiplication by $u_p$ gives an exact resolution
+\[
+ 0\longrightarrow A_{\{p\}}\eta_p
+ \xrightarrow{\ d\ }A_{\{p\}}
+ \xrightarrow{\epsilon}R\longrightarrow0,
+ \qquad d\eta_p=u_p.
+\]
+It is exact over arbitrary $R$: multiplication by an indeterminate is
+injective, and the quotient is $R$.  The classical Koszul resolution for these polynomial generators is their
+finite tensor product:
+\[
+ K_F=A_F\otimes_R\Lambda_R(\eta_p:p\in F),\qquad |\eta_p|=1,
+ \qquad d\eta_p=u_p,
+\]
+with the graded derivation differential.  The exterior algebra imposes
+$\eta_p^2=0$ also in characteristic two.
+
+The normalized bar computing $R\otimes_{A_F}^{\mathbf L}R$ is the
+algebraic direct sum
+\[
+ B(A_F)=\bigoplus_{n\geq0}I_F^{\otimes_R n},
+ \qquad |[a_1|\cdots|a_n]|=n,
+\]
+with
+\[
+ d[a_1|\cdots|a_n]
+ =\sum_{j=1}^{n-1}(-1)^j
+       [a_1|\cdots|a_ja_{j+1}|\cdots|a_n].
+\]
+The empty word has degree zero.  Deconcatenation is its coproduct.
+
+\begin{proposition}[Integral prime-set bar comparison]
+\label{prop:divisor-bar}
+Give $\Lambda_R(\eta_p:p\in F)$ zero differential and primitive generators
+for its graded coalgebra structure.  The map
+\[
+ \eta_{p_1}\wedge\cdots\wedge\eta_{p_n}
+ \longmapsto
+ \sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)
+       [u_{p_{\sigma(1)}}|\cdots|u_{p_{\sigma(n)}}]
+ \quad(p_1<\cdots<p_n)
+\]
+is a quasi-isomorphism of coaugmented differential graded coalgebras
+\[
+ \Lambda_R(\eta_p:p\in F)\longrightarrow B(A_F).
+\]
+It is compatible with inclusions of finite prime sets and with scalar
+extension.  In particular,
+\[
+ \operatorname{Tor}^{A_F}_n(R,R)=\Lambda_R^n(R^F).
+\]
+\end{proposition}
+
+\begin{proof}
+The tensor product defining $K_F$ resolves $R$.  Indeed, each one-variable
+resolution is a complex of free $R$-modules with an $R$-linear contraction
+onto its constant term.  Their finite tensor product has the same property.
+Its terms are free $A_F$-modules.
+
+Lift the displayed map to $K_F\to A_F\otimes_R B(A_F)$ by retaining the
+left coefficient.  The target is the normalized left bar resolution of
+$R$ over $A_F$.  Its differential has the additional first face
+$a[a_1|\cdots|a_n]\mapsto aa_1[a_2|\cdots|a_n]$.
+The internal faces in the alternating sum cancel in pairs, because
+$u_pu_q=u_qu_p$.  The first faces are exactly the terms of the Koszul
+differential.  Thus this lift is a chain map inducing the identity on $R$.
+Both complexes are free resolutions: the bar resolution has the usual
+contraction inserting the augmentation-ideal part of the left coefficient.
+A chain map lifting the identity between projective resolutions is a
+chain homotopy equivalence.  To construct its inverse and the two
+homotopies, lift each cycle through the next surjective differential,
+inductively in homological degree.  Projectivity permits every lift.
+Tensoring over $A_F$ with $R$ preserves this homotopy equivalence and
+annuls the Koszul differential.
+
+For the coalgebra assertion, cut each alternating word after its $j$th
+entry.  Grouping terms by the subset of generators before the cut gives
+exactly the signed subset coproduct of the exterior coalgebra.  This
+also verifies the empty cuts and the counit.  The formulas preserve
+prime inclusions and coefficients.  No factorial is inverted.
+\end{proof}
+
+For two primes the degree-two representative is
+$[u_p|u_q]-[u_q|u_p]$.  Its differential is
+$-u_pu_q+u_qu_p=0$, and its reduced coproduct is
+$[u_p]\otimes[u_q]-[u_q]\otimes[u_p]$.
+For three distinct primes the exterior degree-three class is nonzero
+whenever $R\ne0$.  The untwisted divisor construction therefore has no
+uniform concentration in degrees zero through two.
+
+Filtered union over finite prime sets gives the same comparison for
+$A=R[u_p:p\text{ prime}]$ and the direct-sum exterior coalgebra on all
+prime generators.  Every bar tensor involves only finitely many monomials
+and therefore finitely many primes.  Thus both coalgebras and the comparison
+are the filtered colimits of the finite-set constructions.  Filtered
+colimits of $R$-modules are exact, so their comparison remains a
+quasi-isomorphism.  This uses no product completion in word length.
+
+Over $\mathbb C$, the orthonormal monomial completion of $A_F$ is
+$\ell^2(M_F)$.  Multiplication by $u_p$ extends to $S_p$.
+The self-adjoint diagonal operator
+$N_Fu^{\mathbf r}=(\sum_pr_p\log p)u^{\mathbf r}$, with
+$\mathbf r=(r_p)_{p\in F}$, has domain
+\[
+ \mathcal D(N_F)=\left\{(c_{\mathbf r})\in\ell^2(M_F):
+ \sum_{\mathbf r}\left(\sum_{p\in F}r_p\log p\right)^2
+                 |c_{\mathbf r}|^2<\infty\right\}.
+\]
+Its heat trace is
+$\prod_{p\in F}(1-p^{-s})^{-1}$ for $\operatorname{Re}s>0$.
+This constructs the algebra before its scalar trace.  The polynomial
+augmentation has $\epsilon(u_p)=0$, whereas the Gibbs state satisfies
+$\varphi_{\beta,p}(S_p^*S_p)=1$ and
+$\varphi_{\beta,p}(S_p)=0$.  It is a positive functional, not a
+multiplicative augmentation.  Adjoining the Hilbert adjoints therefore
+changes the available boundary data for a bar.
